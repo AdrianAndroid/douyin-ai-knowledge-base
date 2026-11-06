@@ -1,0 +1,20 @@
+{
+  "author": "王小浪不浪成都恋商情感文化传播有限公司",
+  "douyin_id": "wangxiaolangk",
+  "profile_work_count": 491,
+  "running": false,
+  "partial": true,
+  "author_completed": false,
+  "updated_at": "2026-11-07T03:56:16",
+  "counts": {
+    "error": 2
+  },
+  "pending": 491,
+  "pending_known": true,
+  "note": "incomplete，待补提491个",
+  "last": {
+    "id": "7667885557959698854",
+    "status": "error",
+    "error": "AI text or metadata timeout"
+  }
+}

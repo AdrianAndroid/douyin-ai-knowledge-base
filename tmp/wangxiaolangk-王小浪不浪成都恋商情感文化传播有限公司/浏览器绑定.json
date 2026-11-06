@@ -1,0 +1,83 @@
+{
+  "run": "run_573b10a4429c",
+  "slot": "B",
+  "douyin_id": "wangxiaolangk",
+  "verified_at": "2026-11-07T03:31:38+08:00",
+  "worktree": {
+    "selector": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+    "id": "da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+    "path": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+    "branch": "AdrianAndroid/orca-b-wangxiaolangk",
+    "head": "bd02f7db94d3ce5ce2af1094a1a12b60e9abfb06",
+    "request_id": "99f09bc0-21e9-4af0-bb30-1abac2bf0315",
+    "exit_code": 0
+  },
+  "browser": {
+    "profile_id": "2bd87da7-ccc5-4110-b058-691269a45eef",
+    "profile_label": "douyin-pilot-WEI_QISHUN",
+    "page": "eb12641b-ca19-470e-8bc2-8e9bce2aed98",
+    "page_worktree_matched": true,
+    "page_profile_matched": true,
+    "loaded": true,
+    "load_error": null,
+    "tab_list_request_id": "9c7faec3-7169-4ab2-93cf-64d3132989f0",
+    "tab_show_request_id": "5ea26400-9aaf-420b-a676-05efe21f7c01",
+    "profile_show_request_id": "4f7eeea4-ca74-4006-ac38-8da587f84ef2",
+    "exit_codes": {
+      "tab_list": 0,
+      "tab_show": 0,
+      "tab_profile_show": 0
+    }
+  },
+  "navigation": {
+    "profile_url": "https://www.douyin.com/user/MS4wLjABAAAArdqNGZ5-cnvTgxNaN0jB38Kz6ZTeUqtWiuXsodLOEQgfcgK_vQ_D-kcOcmhQGyHk?from_tab_name=main",
+    "goto_request_id": "b1123463-9974-4389-8190-edc3b6d28f13",
+    "goto_exit_code": 0,
+    "wait_load_request_id": "5f1230da-a6a7-4ba3-a227-511c28ce7daf",
+    "wait_load_exit_code": 0,
+    "explicit_worktree_and_page_on_every_browser_command": true
+  },
+  "dom_preflight": {
+    "request_id": "374ec9df-76ef-4558-b755-0a366d897b5f",
+    "exit_code": 0,
+    "url": "https://www.douyin.com/user/MS4wLjABAAAArdqNGZ5-cnvTgxNaN0jB38Kz6ZTeUqtWiuXsodLOEQgfcgK_vQ_D-kcOcmhQGyHk?from_tab_name=main",
+    "sec_uid_url_exact_match": true,
+    "author_expected": "王小浪不浪成都恋商情感文化传播有限公司",
+    "author_observed": "王小浪不浪成都恋商情感文化传播有限公司",
+    "author_matched": true,
+    "douyin_id_expected": "wangxiaolangk",
+    "douyin_id_label_matched": true,
+    "followed": true,
+    "follow_buttons": [
+      "已关注",
+      "已关注"
+    ],
+    "login_verified": true,
+    "login_markers": [],
+    "captcha_markers": [],
+    "rate_limit_markers": [],
+    "invalid_page_markers": [],
+    "configured_profile_work_count": 491,
+    "previous_queue_snapshot_work_count": 490,
+    "observed_works_header": "作品\n491",
+    "observed_profile_work_count": 491,
+    "work_count_change": "490→491",
+    "work_count_changed_since_queue_snapshot": true,
+    "config_updated_to_observed_count": true
+  },
+  "credential_access": {
+    "cookies_read": false,
+    "other_storage_read": false,
+    "session_credentials_read": false,
+    "dom_only": true
+  },
+  "coordinator_fix_review": {
+    "message_id": "msg_0f1d36b1a172",
+    "status": "AUTHOR_PREFLIGHT_FIX_REQUIRED",
+    "independent_tab_request_id": "2129f400-3e9c-4f68-b4ab-1bdbcbe918e5",
+    "requested_change": "仅将本作者配置和预检证据的 profile_work_count 从旧快照490更新为491",
+    "completed_at": "2026-11-07T03:44:15+08:00",
+    "shared_queue_modified": false
+  },
+  "real_extraction_started": false
+}
