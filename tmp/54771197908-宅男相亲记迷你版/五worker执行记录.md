@@ -68,3 +68,21 @@
 本槽位提取进程已退出，`/tmp/orca-extract-da2e8721-3aa8-432b-8a51-fb648a32632c-54771197908.lock` 可立即排他取得并释放。两份 Markdown 文件名 ID、正文作者/抖音号/作品 ID/日期及 AI 标记全部匹配，无重复或无效文件，正文字符数分别为 727 和 442。`待补提作品.json` 的 66 个 ID 与最新进度完全一致；`提取状态.json` 为 `running:false`、`partial:true`、`author_completed:false`，没有生成 `文案校验.json` 或 `提取完成报告.json`。
 
 当前已写 `五worker运行状态.json` 并停止继续写输出，报告 `AUTHOR_BATCH_SETTLED` 后等待协调器独立验收、提交、合并。若协调器授权继续，下一批最多 2 条；等待期间没有启动该批次。
+
+## 验收后 --skip-ids 改造及测试事故
+
+协调器 `msg_555f463cb741` 独立核验合并 2 篇，worker=`7435a02`，merge=`78e60b25c678d4f3118e00c3688f708ae9b2847a`，当前 branch 为 `AdrianAndroid/orca-e-54771197908-batch3`。仅新增 CLI `--skip-ids`：支持重复参数与逗号分隔，数字 ID 校验；跳过项不增加 attempted、不写进度、不记 saved/no_ai，仍保留 pending。
+
+`--help` 子进程测试退出 0，非法 `--skip-ids not-an-id` 退出 2。随后内存 CLI 夹具误用 runpy 返回字典，未替换被测 main 实际 globals，意外进入真实提取路径；发现超时后立即 SIGINT（exit 130）。经 `msg_1715de126f60` 如实报告，并由协调器 `msg_7a5cbd2e90d3` 独立确认：没有新增 Markdown 或进度，仍 2 篇、6 行进度、66 pending，仅 summary 时间/note 被异常收尾改写。此后未再做 runpy 或直接内部调用，也未再改提取代码。
+
+## 批次 3：明确 NEXT_BATCH_GO 后仅运行指定 CLI
+
+协调器 `msg_8b5bb59a0246` 明确授权仅运行一次：`extract_author.py --max-items 2 --skip-ids 7597740933051960591,7699798075400916266`，固定原 worktree/Profile/page 环境，不做任何额外测试。
+
+- 起止：2026-11-07 04:13:34 至 04:18:44（+08:00）。
+- 日志明确记录两个旧错误 ID 均为 `SKIP_REQUESTED ... remains_pending=true`；它们没有 attempted、没有新增进度，最终仍 pending。
+- 仅处理两个新 ID：`7699441653064404258`、`7697195016107658547`；两者各发生一次 `AI text or metadata timeout`。
+- 本批 attempted=2、saved=0、no_ai=0、errors=2、pending=66；达到 max-items=2 后正常部分批次收尾，退出码 2。
+- 累计进度 8 行，记录 attempted=8、saved=2、no_ai=0、errors=6；最新唯一状态为 saved=2、error=4，真实 pending=66。
+
+槽位 E 进程已退出，排他锁已释放。Markdown 仍只有原两篇，四个最新错误 ID 全部仍在 pending；`running:false`、`partial:true`、`author_completed:false`，未生成完整校验或完成报告。已更新 `五worker运行状态.json`，现在停止输出写入并报告 `AUTHOR_BATCH_SETTLED`，等待独立验收，不做 Git 写操作，不处理其他作者。

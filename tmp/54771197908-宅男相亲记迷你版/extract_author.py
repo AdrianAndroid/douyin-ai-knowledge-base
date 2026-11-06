@@ -546,11 +546,22 @@ def positive_int(value):
     return number
 
 
+def parse_skip_ids(value):
+    video_ids = [item.strip() for item in value.split(",")]
+    if not video_ids or any(not re.fullmatch(r"\d{15,25}", item) for item in video_ids):
+        raise argparse.ArgumentTypeError("expected comma-separated numeric video IDs")
+    return video_ids
+
+
 def main():
     parser = argparse.ArgumentParser(description="Extract one author's Douyin AI summaries")
     parser.add_argument("--max-items", type=positive_int,
                         help="stop after at most N new item attempts; pending items stay pending")
+    parser.add_argument("--skip-ids", action="append", default=[], type=parse_skip_ids,
+                        metavar="ID[,ID...]",
+                        help="leave these pending IDs unprocessed; repeat or comma-separate")
     args = parser.parse_args()
+    skip_ids = {video_id for group in args.skip_ids for video_id in group}
     with exclusive_lock():
         OUT.mkdir(parents=True, exist_ok=True)
         TMP.mkdir(parents=True, exist_ok=True)
@@ -576,6 +587,9 @@ def main():
                         break
                     latest = latest_rows(rows)
                     if latest.get(video_id, {}).get("status") in {"saved", "no_ai"}:
+                        continue
+                    if video_id in skip_ids:
+                        print(f"SKIP_REQUESTED id={video_id} remains_pending=true", flush=True)
                         continue
                     existing_files = sorted(OUT.glob(f"*-{video_id}-*.md"))
                     if existing_files:
