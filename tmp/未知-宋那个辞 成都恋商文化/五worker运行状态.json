@@ -4,16 +4,28 @@
   "running": false,
   "partial": true,
   "author_completed": false,
-  "max_items": 5,
+  "max_items": 2,
   "skip_ids": [
     "7602272401598024987",
     "7613069165708053795"
   ],
-  "attempted_ids": [],
-  "attempted_count": 0,
+  "attempted_ids": [
+    "7606324862663118131",
+    "7680121778726784297"
+  ],
+  "attempted_count": 2,
   "run_saved": [],
   "run_no_ai": [],
-  "run_errors": [],
+  "run_errors": [
+    {
+      "id": "7606324862663118131",
+      "error": "AI text or metadata timeout"
+    },
+    {
+      "id": "7680121778726784297",
+      "error": "AI text or metadata timeout"
+    }
+  ],
   "saved_count": 0,
   "no_ai_count": 0,
   "errors": [
@@ -24,10 +36,18 @@
     {
       "id": "7602272401598024987",
       "error": "AI text or metadata timeout"
+    },
+    {
+      "id": "7606324862663118131",
+      "error": "AI text or metadata timeout"
+    },
+    {
+      "id": "7680121778726784297",
+      "error": "AI text or metadata timeout"
     }
   ],
   "latest_counts": {
-    "error": 2
+    "error": 4
   },
   "pending": [
     "7613069165708053795",
@@ -442,17 +462,11 @@
   ],
   "pending_count": 409,
   "pending_known": true,
-  "started_at": "2026-11-07T04:18:03",
-  "finished_at": "2026-11-07T04:18:04",
-  "result": "fatal",
-  "fatal": "browser binding verification failed: {'worktree_root': True, 'worktree_id': True, 'page': True, 'page_worktree': True, 'tab_profile': True, 'tab_loaded': True, 'profile_page': True, 'profile_worktree': True, 'profile_id': True, 'author_url': False}",
+  "started_at": "2026-11-07T04:52:54",
+  "finished_at": "2026-11-07T04:58:03",
+  "result": "partial_errors",
+  "fatal": null,
   "validation": null,
   "output": "/Users/zhaojian/orca/workspaces/ai-learn/puffin/抖音关注/未知-宋那个辞 成都恋商文化",
-  "lock_path": "/tmp/orca-douyin-da2e8721-3aa8-432b-8a51-fb648a32632c-81957333169.lock",
-  "settlement_audit": {
-    "audited_at": "2026-11-07T04:20:35",
-    "progress_rows": 2,
-    "new_progress_rows": 0,
-    "pending_source": "待补提作品.json"
-  }
+  "lock_path": "/tmp/orca-douyin-da2e8721-3aa8-432b-8a51-fb648a32632c-81957333169.lock"
 }
