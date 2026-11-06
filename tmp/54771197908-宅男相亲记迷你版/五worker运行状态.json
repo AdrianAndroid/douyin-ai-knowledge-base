@@ -6,27 +6,30 @@
   "status": "AUTHOR_BATCH_SETTLED",
   "author": "宅男相亲记迷你版",
   "douyin_id": "54771197908",
+  "branch": "AdrianAndroid/orca-e-54771197908-batch3",
   "go_message": "msg_f6cb3e043c07",
-  "updated_at": "2026-11-07T03:46:24+08:00",
+  "batch_acceptance_message": "msg_555f463cb741",
+  "batch_3_go_message": "msg_8b5bb59a0246",
+  "updated_at": "2026-11-07T04:18:44+08:00",
   "running": false,
   "partial": true,
   "author_completed": false,
   "profile_listed_items": 68,
-  "attempted": 6,
+  "attempted": 8,
   "saved": 2,
   "no_ai": 0,
-  "errors": 4,
-  "unique_error_ids": 2,
+  "errors": 6,
+  "unique_error_ids": 4,
   "pending": 66,
   "saved_ids": [
     "7631174028669078836",
     "7593308836811869440"
   ],
-  "error_ids": [
+  "error_ids_latest": [
     "7597740933051960591",
     "7699798075400916266",
-    "7597740933051960591",
-    "7699798075400916266"
+    "7699441653064404258",
+    "7697195016107658547"
   ],
   "batches": [
     {
@@ -56,8 +59,45 @@
       "exit_code": 130,
       "stop_reason": "The same two IDs again reached consecutive 150-second AI text or metadata timeouts with no new save; SIGINT checkpoint finalization",
       "log": "提取运行-批次2.log"
+    },
+    {
+      "batch": 3,
+      "started_at": "2026-11-07T04:13:34+08:00",
+      "stopped_at": "2026-11-07T04:18:44+08:00",
+      "command": "extract_author.py --max-items 2 --skip-ids 7597740933051960591,7699798075400916266",
+      "max_items": 2,
+      "skipped_ids": [
+        "7597740933051960591",
+        "7699798075400916266"
+      ],
+      "skipped_ids_attempted": 0,
+      "skipped_ids_progress_rows": 0,
+      "skipped_ids_still_pending": true,
+      "new_ids": [
+        "7699441653064404258",
+        "7697195016107658547"
+      ],
+      "attempted": 2,
+      "saved": 0,
+      "no_ai": 0,
+      "errors": 2,
+      "pending": 66,
+      "exit_code": 2,
+      "stop_reason": "Both authorized new IDs reached AI text or metadata timeout; max-items=2 partial batch settled normally",
+      "log": "提取运行-批次3.log"
     }
   ],
+  "test_incident": {
+    "report_message": "msg_1715de126f60",
+    "coordinator_acknowledgement": "msg_7a5cbd2e90d3",
+    "description": "A runpy fixture failed to patch function globals and accidentally entered the real extractor before NEXT_BATCH_GO; it was interrupted immediately.",
+    "new_markdown": 0,
+    "new_progress_rows": 0,
+    "saved_after_incident": 2,
+    "pending_after_incident": 66,
+    "coordinator_independently_confirmed": true,
+    "further_runpy_or_internal_calls": false
+  },
   "process": {
     "slot_e_extractor_alive": false,
     "lock_path": "/tmp/orca-extract-da2e8721-3aa8-432b-8a51-fb648a32632c-54771197908.lock",
@@ -65,41 +105,32 @@
   },
   "content_verification": {
     "homepage_ids": 68,
-    "progress_rows": 6,
+    "progress_rows": 8,
     "latest_counts": {
       "saved": 2,
-      "error": 2
+      "error": 4
     },
     "markdown_files": 2,
     "unique_markdown_ids": 2,
-    "invalid_markdown": [],
-    "pending_matches_latest_progress": true,
-    "saved_bodies": {
-      "7631174028669078836": {
-        "chars": 727,
-        "headers_id_date_ai_marker_valid": true
-      },
-      "7593308836811869440": {
-        "chars": 442,
-        "headers_id_date_ai_marker_valid": true
-      }
+    "markdown_ids": [
+      "7593308836811869440",
+      "7631174028669078836"
+    ],
+    "old_error_ids_pending": {
+      "7597740933051960591": true,
+      "7699798075400916266": true
+    },
+    "batch_3_new_error_ids_pending": {
+      "7699441653064404258": true,
+      "7697195016107658547": true
     },
     "completion_report_exists": false,
     "full_validation_exists": false
   },
-  "browser_health_after_batch_1": {
-    "request_id": "631f6e41-c1bc-4f0d-8f2b-a9b86ec4541a",
-    "author_id_and_following_match": true,
-    "login_wall": false,
-    "captcha": false,
-    "rate_limited": false,
-    "page_unavailable": false
-  },
-  "next_batch_limit_if_authorized": 2,
-  "next_batch_started": false,
   "waiting_for_coordinator_acceptance": true,
   "writes_during_wait": false,
   "git_write_operations": false,
+  "other_authors_processed": false,
   "file_boundary": [
     "tmp/54771197908-宅男相亲记迷你版",
     "抖音关注/54771197908-宅男相亲记迷你版"
