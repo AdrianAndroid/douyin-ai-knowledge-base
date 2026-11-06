@@ -3,7 +3,7 @@
 - run：`run_573b10a4429c`
 - task：`task_4ec80a8b1b81`
 - dispatch：`ctx_b1f5e1508517`
-- 当前阶段：阶段 1 预检；尚未收到 `AUTHOR_EXTRACTION_GO`，未启动真实提取。
+- 当前阶段：唯一一次 `--refresh-ids-only` 已在绑定核验阶段失败并停止，等待协调器独立验收；未重试，真实提取仍未授权。旧 737 清单、配置、pending、历史进度和 109 篇正文均保持不变。
 - 允许边界：仅当前 worktree 的 `tmp/52327471915-凯哥恋爱说/` 与 `抖音关注/52327471915-凯哥恋爱说/`；主队列只读；不执行 Git 写操作。
 
 ## 1. 修改或运行前的独立断点基线
@@ -81,6 +81,96 @@
 
 因上述 GO 前真实提取偏差，已按停止原则中止后续预检。没有完成正常作者页的作者名、抖音号、sec_uid、已关注和登录状态独立核验；没有重新执行 A 的 JS 隔离探针，没有清理旧测试 key，也不宣称旧页面清理或五槽位探针成功。意外 `process_one` 的页面返回不能替代这些预检。
 
-## 5. 预检结论
+## 5. 首次预检结论
 
 **AUTHOR_PREFLIGHT_BLOCKED**。未收到 `AUTHOR_EXTRACTION_GO`，但离线测试偏差意外处理了 2 个作品；现已停止，所有实际变化保留并记录。Git 写操作为零，主队列、其他 worktree、其他作者及共享计划/记录均未修改；当前变化均在允许的 TMP/OUT 边界内。等待协调器决定如何处置这 2 个意外新增结果及是否/如何重新预检，不自行继续。
+
+## 6. 协调器接受部分批次后的重新预检（preflight2）
+
+记录时间：`2026-11-07T03:44:00+08:00`。
+
+- 协调器回复 `AUTHOR_BATCH_ACCEPTED`：此前 2 篇已独立核验并作为 partial 批次合并，禁止删除。worker commit=`b05aa84c752aa0f09351e1e88df1bdd023c7fd09`，merge=`7d0f3d0186b3339570e219db4e9da2f56e16ac9e`。
+- 当前 branch=`AdrianAndroid/orca-a-52327471915-preflight2`，开始 HEAD=`7d0f3d0186b3339570e219db4e9da2f56e16ac9e`；记录前 Git status 为空。worker 未执行任何 Git 写操作。
+- 接受后的断点为：737 个清单 ID 且唯一，109 个 Markdown 且唯一，进度 110 行，按 ID 最新 `saved=109`，pending=628；未删除或回滚 2 篇。
+- 本次所有提取器测试均为独立 CLI 子进程；未使用 runpy，未直接调用 `run` 或 `process_one`。所有提取器测试均把 Orca 可执行路径设为 `/definitely/missing/orca-preflight2`，因此不能访问真实浏览器。
+- 独立 CLI 静态语法/JSON/路径检查退出码 0：output 为 `抖音关注/52327471915-凯哥恋爱说`，解析严格等于当前 worktree 的对应目录；TMP/OUT 在 ROOT 内，配置无 page/profile。
+- 完整环境下 CLI `--help` 退出码 0；三项环境分别缺失均退出码 1，并明确报告缺失变量。
+- 父进程持锁后，第二实际 CLI 子进程退出码 73，stdout 空，stderr 为 `ERROR: author extraction lock is already held: /tmp/orca-author-extract-da2e8721-3aa8-432b-8a51-fb648a32632c-52327471915.lock`。
+- 无父进程持锁时，单 CLI 子进程因不存在的 Orca 路径按预期退出码 1，最后一行为 `FileNotFoundError: ... '/definitely/missing/orca-preflight2'`；随后父进程能立即非阻塞获得锁，证明子进程退出后锁已释放。
+- 全部 CLI 测试前后，737 ID 清单、pending、进度、summary 和 109 篇 Markdown 组合哈希完全不变：ID=`e733688712fb0ae0cf90eb87789ccf384cdc9145d86a1e9100a7f05c8272ed3b`，pending=`8026fba4c95925b368f29948cc6719a22b4cd52974bd17dc14b7f0e65330ac8a`，进度=`b5f4d655a136bbde22741e23d304662beec05a544eccdf2f4e1187868ebd3258`，summary=`0466e7cbf7577517b28e9bbdc55456c9e47ea84f090bb5705c163000dc1a64fe`，109 篇组合=`1c0986e45783fab1c81e22e3e46f7ba65817700327102c4bf14b448a34db9266`。
+
+### 正常作者页身份与登录
+
+- 初始绑定检查请求 ID=`c6ec844b-5a9c-4652-aa1e-6719712ec2ce`，固定 page 的 worktreeId/profileId 均匹配。
+- 用完整 worktree selector + 固定 page 导航到队列精确 profile_url，请求 ID=`14be2cdf-df2d-4399-8aa1-bf011217f74f`。页面直接显示“凯哥恋爱说”、`抖音号：52327471915` 和“已关注”。
+- 身份检查 eval 请求 ID=`4273199c-c8b1-4987-9c61-65bd3721ce32`：`readyState=complete`，最终 URL 中 sec_uid 与队列完全一致，标题为“凯哥恋爱说的抖音 - 抖音”；作者名、抖音号和已关注均通过。
+- 登录证据：`已关注=true`、登录按钮=false，投稿/消息/通知入口均存在；验证码/安全验证及限流/频繁操作文案均未发现。
+- 页面当前显示“作品 738”，固定断点清单仍为 737。未自行扩清单、未点击或处理新增作品，已向协调器报告该差异。
+
+### JS 上下文与 tab/Profile 绑定
+
+- 专用 window key=`__orcaFiveWorkerSlotAProbe_preflight2`；eval 请求 ID=`9c6bda5c-e307-4959-ac32-f15659d7f916`。
+- 写入前不存在该自有 key；写入并读回预期值成功，delete 返回 true，删除后自有 key 不存在。同一返回中的 URL、origin 和作者名均匹配凯哥页面。
+- 未读取 Cookie、本地/会话存储、其他槽位值或任何会话凭据；仅创建并清理上述本次专用 window key。
+- 最终 tab list 请求 ID=`4d9ea507-1733-4aa8-95aa-64d343092205`：固定 page、完整 worktree、固定 Profile、凯哥精确 URL 和标题全部匹配，`loaded=true`、`loadError=null`。
+- 这仅证明槽位 A 当前 JS 上下文及绑定通过；不宣称旧页面清理成功，不宣称五槽位探针全部通过。
+
+### 重新预检结论
+
+**AUTHOR_PREFLIGHT_READY slot=A douyin_id=52327471915**。同作者活跃进程为 0；最终 `lsof` 锁文件退出码 1 且无输出，锁未持有。重新预检没有真实作品处理，没有生成完整校验或完成报告。等待协调器明确 `AUTHOR_EXTRACTION_GO slot=A douyin_id=52327471915`，在此之前不启动提取、不发送 worker_done。
+
+## 7. ID 刷新模式实现及无浏览器测试（等待 AUTHOR_ID_REFRESH_GO）
+
+协调器随后回复 `AUTHOR_ID_REFRESH_FIX_REQUIRED`：页面 738、断点清单 737，不能漏掉新增作品；当前只授权实现和测试 `--refresh-ids-only`，尚未授权真实刷新或真实提取。
+
+### 实现边界
+
+- CLI 新增互斥参数 `--refresh-ids-only` 与 `--max-items`；同时使用退出码 2。
+- `main()` 在任何刷新逻辑前持有同作者 `LOCK_EX|LOCK_NB`，随后执行 `verify_browser_binding()`；只有成功后才进入 `refresh_ids_only()`。
+- 刷新模式的唯一页面采集调用为 `collect_profile_ids(persist=False, expected_count=738)`；不调用 `run` 或 `process_one`，不点击作品、不打开 modal、不读取 AI 正文。
+- 刷新前先验证旧清单为当前配置的 737 个唯一 ID。采集后必须同时满足：新清单恰好 738、738 唯一、完整包含旧 737、恰好新增 1 个；任一不满足即非零退出，不写 ID、pending、配置、summary、账号核对或刷新证据。
+- `persist=False` 时 `collect_profile_ids` 不再提前写账号核对或 ID 文件。验证通过后才通过既有 `write_json` 逐文件原子替换 ID、pending、配置、派生 summary、账号核对及 `ID刷新证据.json`；配置只改 `profile_work_count=738`，不写浏览器 ID。
+- 历史进度只读，证据记录其前后 SHA-256；正文不写。成功后 summary 保持 `running=false、partial=true、author_completed=false`，pending 按新清单和历史 saved/no_ai 真实重算。
+
+### CLI 无浏览器测试
+
+- 所有目标提取器执行均为独立 CLI 子进程；未导入或直接调用内部函数。参数、环境和锁测试的 Orca 路径为 `/definitely/missing/orca-refresh-test`，不可能连接浏览器。
+- AST 语法检查 exit=0；CLI help exit=0 且包含 `--refresh-ids-only`；refresh 与 max-items 互斥 exit=2。
+- 三项环境分别缺失均 exit=1；重复启动锁测试 exit=73，stdout 空，stderr 明确锁已持有；单进程因不存在 Orca 路径按预期 exit=1，退出后锁可立即重新获取。
+- 上述测试前后真实作者的 ID、pending、进度、summary、配置和 109 篇正文组合哈希完全不变。配置当前 SHA-256=`f67222acf6e1fd54f19fc5c631196e21d196b9e1ef878d8712db12b68018fefe`，其余哈希与第 6 节相同。
+
+### 临时副本 + 假 Orca CLI 端到端测试
+
+测试复制提取器及数据到 `/tmp` 新临时目录，通过实际 CLI 子进程和假 Orca 可执行文件模拟 tab list 与 ID 收集响应；未连接真实浏览器，未触碰真实作者输出，测试后临时目录自动清理。
+
+成功用例（旧 737 + 1 个新 ID）：
+
+- exit=0；4 次滚动读取达到稳定，最终 `COLLECTED profile=738 actual=738 persist=False`。
+- 新清单 738 且唯一，完整包含旧 737，仅新增测试 ID `7999999999999999999`；pending=629，配置数=738，无浏览器 ID。
+- 进度哈希不变；summary=`profile_work_count:738、pending:629、running:false、partial:true、author_completed:false`。
+- 证据记录 progress 未变、`process_one_called=false`、`ai_text_read=false`；无 `.tmp` 遗留。
+- 假浏览器共 8 次 eval，未出现 `__EXPECTED_VIDEO_ID__`、`__batchPause` 或 `modal_id`，证明未进入作品处理/AI JS。
+
+失败用例（738 个唯一但缺 1 个旧 ID、增加 2 个新 ID）：
+
+- exit=1；stderr 最后一行为 `RuntimeError: refresh validation failed; old list unchanged: old=737, new=738, unique=738, added=2, missing=1`。
+- ID、pending、进度、summary、配置、账号核对六项前后哈希全部不变；未生成 `ID刷新证据.json`。
+- 同样共 8 次 eval，未出现作品处理或 AI JS。
+
+**当前结论：AUTHOR_ID_REFRESH_FIX_READY。** 真实清单仍为 737 唯一，配置仍为 737，109 篇和 pending=628 未变；尚未执行真实 ID 刷新。等待协调器明确 `AUTHOR_ID_REFRESH_GO slot=A douyin_id=52327471915`。
+
+## 8. 唯一一次真实 ID 刷新尝试：绑定核验失败并停止
+
+协调器消息 `msg_bfc8314e6e83` 明确授权 `AUTHOR_ID_REFRESH_GO slot=A douyin_id=52327471915`，仅允许运行一次 `--refresh-ids-only`，成功或失败均保存证据并停止。
+
+- 实际 CLI 调用次数：**1**。命令为当前提取器 `python3 -I .../extract_author.py --refresh-ids-only`，显式环境为固定完整 worktree、Profile=`9483ec18-4a86-4e2c-92d5-a2441a1cafb6`、page=`01b0f677-3907-4ee8-91d7-7f707439b8de`。
+- 起止时间均为 `2026-11-07T04:04:50+08:00`；exit=1，timeout=false，stdout 为空。
+- 失败发生在 `main -> verify_browser_binding`，错误为 `RuntimeError: browser binding mismatch`。stderr 中 tab 返回的 pageId、profileId、worktreeId 与固定值目视一致，但函数仍判定不匹配；当前未继续推断根因。
+- 因失败发生在绑定核验，未进入 `collect_profile_ids`，未调用 `run/process_one`，未打开作品或读取 AI 正文，未进行第二次刷新。
+- 完整命令、环境绑定、stdout/stderr、前后文件哈希和派生计数已保存到 `ID刷新CLI结果.json`。成功路径专用的 `ID刷新证据.json` 未生成。
+- 尝试前后 ID 清单均为 737 且唯一，配置仍为 737，pending=628；新增 ID=0、缺失旧 ID=0。109 篇正文与历史进度哈希完全不变。
+- 受保护文件前后共同 SHA-256：ID=`e733688712fb0ae0cf90eb87789ccf384cdc9145d86a1e9100a7f05c8272ed3b`，pending=`8026fba4c95925b368f29948cc6719a22b4cd52974bd17dc14b7f0e65330ac8a`，进度=`b5f4d655a136bbde22741e23d304662beec05a544eccdf2f4e1187868ebd3258`，summary=`0466e7cbf7577517b28e9bbdc55456c9e47ea84f090bb5705c163000dc1a64fe`，配置=`f67222acf6e1fd54f19fc5c631196e21d196b9e1ef878d8712db12b68018fefe`，账号核对=`5ea2dc95d90bf4c71a8b846c1eba8b7983b1b45bd1cf5834da9af84df0841efa`，109 篇组合=`1c0986e45783fab1c81e22e3e46f7ba65817700327102c4bf14b448a34db9266`。
+- 事后同作者活跃进程=0；锁文件 `lsof` exit=1、stdout/stderr 均空，锁未持有。
+- 当前 `五worker运行状态.json` 记录 `AUTHOR_BATCH_SETTLED`、`running:false、partial:true、author_completed:false`。未生成完整校验或作者完成报告，未执行 Git 写操作。
+
+**本次刷新未成功，不重试；等待协调器独立验收和进一步明确授权。真实提取仍未授权。**

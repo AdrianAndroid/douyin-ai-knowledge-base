@@ -1,18 +1,69 @@
 {
   "slot": "A",
   "douyin_id": "52327471915",
+  "branch": "AdrianAndroid/orca-a-52327471915-preflight2",
   "worktree": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
   "profile": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
   "page": "01b0f677-3907-4ee8-91d7-7f707439b8de",
-  "initial_tab_list_request_id": "acc724b7-477e-40b1-93b0-a1cf5ea2c2e3",
-  "initial_binding": {
+  "worktree_show_request_id": "0fd8b648-b111-4f14-8980-562973e4d7e0",
+  "preflight2_initial_tab_list_request_id": "c6ec844b-5a9c-4652-aa1e-6719712ec2ce",
+  "author_goto_request_id": "14be2cdf-df2d-4399-8aa1-bf011217f74f",
+  "identity_eval_request_id": "4273199c-c8b1-4987-9c61-65bd3721ce32",
+  "js_probe_eval_request_id": "9c6bda5c-e307-4959-ac32-f15659d7f916",
+  "final_tab_list_request_id": "4d9ea507-1733-4aa8-95aa-64d343092205",
+  "binding_verified": {
     "worktree_matched": true,
     "profile_matched": true,
+    "page_matched": true,
     "loaded": true,
     "load_error": null,
-    "url_identity": "不纸设计旧作品弹层；未作为凯哥身份依据"
+    "final_url": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main",
+    "final_title": "凯哥恋爱说的抖音 - 抖音"
   },
-  "worktree_show_request_id": "0fd8b648-b111-4f14-8980-562973e4d7e0",
+  "author_preflight": {
+    "exact_queue_profile_url_navigated": true,
+    "ready_state": "complete",
+    "author_name": "凯哥恋爱说",
+    "author_name_verified": true,
+    "douyin_id_verified_in_page_text": true,
+    "sec_uid_verified_in_final_url": true,
+    "following_button_verified": true,
+    "login_verified": true,
+    "login_evidence": "已关注=true，登录按钮=false，投稿/消息/通知入口均存在",
+    "captcha_text_found": false,
+    "rate_limit_text_found": false,
+    "visible_work_count": 738,
+    "assigned_resume_list_count": 737,
+    "count_note": "页面比固定清单多1个可见作品；未自行扩清单或提取新作品。"
+  },
+  "js_context_probe": {
+    "dedicated_window_key": "__orcaFiveWorkerSlotAProbe_preflight2",
+    "had_own_before": false,
+    "write_read_round_trip": true,
+    "delete_returned_true": true,
+    "own_key_cleaned": true,
+    "href_and_author_matched": true,
+    "cookie_read": false,
+    "storage_read": false,
+    "session_credentials_read": false,
+    "old_probe_cleanup_success_claimed": false,
+    "five_slot_probe_success_claimed": false,
+    "scope_note": "仅证明槽位A固定page的当前JS上下文写入、读取、删除成功及tab/profile绑定；未读取其他槽位或存储。"
+  },
+  "id_refresh_attempt": {
+    "time": "2026-11-07T04:04:50+08:00",
+    "verify_browser_binding_passed": false,
+    "exit_code": 1,
+    "error": "RuntimeError: browser binding mismatch",
+    "returned_tab_fields": {
+      "browserPageId": "01b0f677-3907-4ee8-91d7-7f707439b8de",
+      "profileId": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
+      "worktreeId": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+      "loaded": true,
+      "loadError": null
+    },
+    "note": "返回字段与固定值目视一致但函数判定不匹配；未进入collect_profile_ids，未重试。完整stderr见ID刷新CLI结果.json。"
+  },
   "extractor_binding": {
     "environment_only": true,
     "required_variables": [
@@ -24,16 +75,5 @@
     "eval_commands_include_worktree_and_page": true,
     "tab_list_uses_explicit_worktree": true
   },
-  "normal_author_preflight": {
-    "navigated_by_worker_for_identity_check": false,
-    "author_name_verified": false,
-    "douyin_id_verified": false,
-    "sec_uid_verified_on_page": false,
-    "following_verified": false,
-    "login_verified": false,
-    "js_isolation_probe_verified": false,
-    "old_probe_cleanup_claimed": false,
-    "note": "意外调用真实 process_one 后立即停止；未继续做正常作者页身份、登录或隔离探针检查。不能从该意外调用推断预检通过。"
-  },
-  "updated_at": "2026-11-07T03:31:42+08:00"
+  "updated_at": "2026-11-07T04:05:45+08:00"
 }

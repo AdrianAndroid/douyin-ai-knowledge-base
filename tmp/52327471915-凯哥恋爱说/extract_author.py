@@ -2,6 +2,7 @@
 import argparse
 import datetime as dt
 import fcntl
+import hashlib
 import json
 import os
 import re
@@ -334,7 +335,8 @@ def write_summary(rows, all_ids, running, note="", partial=True,
     })
 
 
-def collect_profile_ids(persist=True):
+def collect_profile_ids(persist=True, expected_count=None):
+    target_count = expected_count or EXPECTED_COUNT
     navigate(PROFILE)
     profile = {}
     for _ in range(80):
@@ -352,11 +354,12 @@ JSON.stringify({
     if (profile.get("name") != AUTHOR or not profile.get("hasId")
             or not profile.get("followed")):
         raise RuntimeError(f"author/following verification failed: {profile}")
-    write_json(TMP / "账号核对.json", {
-        "author": AUTHOR, "douyin_id": DOUYIN_ID, "sec_uid": SEC_UID,
-        "profile_work_count": EXPECTED_COUNT, "followed": True,
-        "verified_at": dt.datetime.now().isoformat(timespec="seconds"),
-    })
+    if persist:
+        write_json(TMP / "账号核对.json", {
+            "author": AUTHOR, "douyin_id": DOUYIN_ID, "sec_uid": SEC_UID,
+            "profile_work_count": target_count, "followed": True,
+            "verified_at": dt.datetime.now().isoformat(timespec="seconds"),
+        })
     eval_js(r'''
 document.querySelectorAll('video').forEach(v => {v.autoplay = false; v.pause()});
 window.__authorIds = new Set();
@@ -392,9 +395,9 @@ window.__collectAuthorIds = () => {
         stable = stable + 1 if current == last and current[0] > 0 else 0
         last = current
         print(f"SCROLL {index+1} count={current[0]} stable={stable}", flush=True)
-        if EXPECTED_COUNT and current[0] >= EXPECTED_COUNT and stable >= 3:
+        if target_count and current[0] >= target_count and stable >= 3:
             break
-        if stable >= (25 if current[0] < EXPECTED_COUNT else 12):
+        if stable >= (25 if current[0] < target_count else 12):
             break
         time.sleep(1)
     ids = eval_js("JSON.stringify(Array.from(window.__authorIds))")
@@ -402,8 +405,70 @@ window.__collectAuthorIds = () => {
         raise RuntimeError("no author works collected")
     if persist:
         write_json(IDS_FILE, ids)
-    print(f"COLLECTED profile={EXPECTED_COUNT} actual={len(ids)} persist={persist}", flush=True)
+    print(f"COLLECTED profile={target_count} actual={len(ids)} persist={persist}", flush=True)
     return ids
+
+
+def refresh_ids_only():
+    global EXPECTED_COUNT
+    if not IDS_FILE.exists():
+        raise RuntimeError("refresh requires an existing profile ID list")
+    old_ids = json.loads(IDS_FILE.read_text(encoding="utf-8"))
+    if len(old_ids) != EXPECTED_COUNT or len(set(old_ids)) != len(old_ids):
+        raise RuntimeError("old ID list does not match the configured unique work count")
+    old_count = len(old_ids)
+    target_count = old_count + 1
+    old_id_hash = hashlib.sha256(IDS_FILE.read_bytes()).hexdigest()
+    progress_hash = hashlib.sha256(PROGRESS.read_bytes()).hexdigest()
+    started_at = dt.datetime.now().isoformat(timespec="seconds")
+    new_ids = collect_profile_ids(persist=False, expected_count=target_count)
+    added_ids = [video_id for video_id in new_ids if video_id not in set(old_ids)]
+    if (len(new_ids) != target_count or len(set(new_ids)) != target_count
+            or not set(old_ids).issubset(new_ids) or len(added_ids) != 1):
+        raise RuntimeError(
+            f"refresh validation failed; old list unchanged: old={old_count}, "
+            f"new={len(new_ids)}, unique={len(set(new_ids))}, added={len(added_ids)}, "
+            f"missing={len(set(old_ids) - set(new_ids))}")
+    rows = load_rows()
+    pending = pending_ids(new_ids, rows)
+    config = json.loads((TMP / "配置.json").read_text(encoding="utf-8"))
+    config["profile_work_count"] = target_count
+    write_json(IDS_FILE, new_ids)
+    write_json(PENDING_FILE, pending)
+    write_json(TMP / "配置.json", config)
+    EXPECTED_COUNT = target_count
+    write_summary(rows, new_ids, False,
+                  f"仅刷新主页ID：{old_count}到{target_count}；未读取AI正文",
+                  partial=True, author_completed=False)
+    write_json(TMP / "账号核对.json", {
+        "author": AUTHOR, "douyin_id": DOUYIN_ID, "sec_uid": SEC_UID,
+        "profile_work_count": target_count, "followed": True,
+        "verified_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "refresh_ids_only": True,
+    })
+    evidence = {
+        "author": AUTHOR, "douyin_id": DOUYIN_ID, "refresh_ids_only": True,
+        "started_at": started_at,
+        "finished_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "old_count": old_count, "new_count": len(new_ids),
+        "new_unique_count": len(set(new_ids)),
+        "old_ids_fully_preserved": set(old_ids).issubset(new_ids),
+        "added_ids": added_ids, "pending": len(pending),
+        "old_id_sha256": old_id_hash,
+        "new_id_sha256": hashlib.sha256(IDS_FILE.read_bytes()).hexdigest(),
+        "progress_sha256_before": progress_hash,
+        "progress_sha256_after": hashlib.sha256(PROGRESS.read_bytes()).hexdigest(),
+        "progress_unchanged": progress_hash == hashlib.sha256(PROGRESS.read_bytes()).hexdigest(),
+        "markdown_output_writes": 0,
+        "ai_text_read": False, "process_one_called": False,
+        "partial": True, "author_completed": False,
+        "atomic_files": ["主页作品ID.json", "待补提作品.json", "配置.json",
+                          "提取状态.json", "账号核对.json", "ID刷新证据.json"],
+    }
+    write_json(TMP / "ID刷新证据.json", evidence)
+    print(f"ID_REFRESH_DONE old={old_count} new={len(new_ids)} "
+          f"added={','.join(added_ids)} pending={len(pending)}", flush=True)
+    return 0
 
 
 def process_one(video_id):
@@ -646,8 +711,11 @@ def run(max_items):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--max-items", type=int,
-                        help="本批最多实际尝试的作品数；省略则正常全量断点续提")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--max-items", type=int,
+                      help="本批最多实际尝试的作品数；省略则正常全量断点续提")
+    mode.add_argument("--refresh-ids-only", action="store_true",
+                      help="仅刷新主页ID清单；不调用作品提取或读取AI正文")
     args = parser.parse_args()
     if args.max_items is not None and args.max_items < 1:
         parser.error("--max-items must be a positive integer")
@@ -658,6 +726,8 @@ def main():
         return 73
     try:
         verify_browser_binding()
+        if args.refresh_ids_only:
+            return refresh_ids_only()
         return run(args.max_items)
     finally:
         fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
