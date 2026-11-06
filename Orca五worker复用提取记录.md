@@ -133,7 +133,13 @@
 - **A 仅 ID 刷新闸门**：协调器审查 `--refresh-ids-only` 代码和 CLI 测试后，通过 `msg_bfc8314e6e83` 授权一次仅 ID 刷新。实际运行在 `verify_browser_binding` 即退出 1，没有采集 ID、打开作品或读取 AI；根因是 tab 返回 `REPO_ID::path`，代码却误与带 `id:` 前缀的 selector 比较。前后 737 ID、628 pending、109 篇及进度/配置哈希完全不变。该失败批次以 worker 提交 `c723e30`、main 合并 `8bd6b7ceb416f534497888421bbd3aa87bb4ffe0` 封账；refresh2 分支仅获绑定修正的 TEST_ONLY_GO（`msg_d65a26b15e38`），真实刷新和提取均未再授权。
 - **E 第二次测试偏差**：E 在实现 `--skip-ids` 后再次误用 runpy 字典打桩并意外进入真实路径，随后 SIGINT。协调器独立确认仍 2 篇 Markdown、6 行进度、66 pending，两个旧错误 ID 未改写，仅 summary 的 updated_at/note 被异常收尾更新；没有新增作品成果，进程停止、锁释放。通过 `msg_7a5cbd2e90d3` 冻结测试并如实保留事故，不宣称无浏览器测试通过。
 - 协调器随后直接审查 E 的 `--skip-ids`  diff，确认跳过发生在 `process_one` 和 attempted 计数之前，不删除 pending。通过 `msg_8b5bb59a0246` 发放仅一次、最多 2 个新 ID 的 `NEXT_BATCH_GO`，命令必须正常 CLI 子进程执行并明确跳过 `7597740933051960591`、`7699798075400916266`，不再做任何测试或代码修改。
-- 四路首批集中超时后，为避免继续争抢浏览器/AI 资源，下一轮真实提取最多同时放开 **2 个槽位**；离线修正可并行。当前仅 E 获下一批真实 GO，active_count=1；A/B/C/D 均未获真实续提 GO。所有合并均逐条 stage、staged diff-check、commit、`--no-ff` 顺序执行，未推送 GitHub。
+- 四路首批集中超时后，为避免继续争抢浏览器/AI 资源，下一轮真实提取最多同时放开 **2 个槽位**；离线修正可并行。当时仅 E 获下一批真实 GO，active_count=1；A/B/C/D 均未获真实续提 GO。所有合并均逐条 stage、staged diff-check、commit、`--no-ff` 顺序执行，未推送 GitHub。
+
+### 步骤 12：C 获第二槽位 GO，D 通过离线审查后排队
+
+- C 通过 `msg_99cd95ab1a9a` 报告 skip 修正及隔离假 Orca CLI 测试完成。协调器独立审查 diff：`eligible` 只用于本批选择，`PENDING_FILE` 仍由完整 pending 写入；真实数据保持 409 ID、409 pending、2 行进度、0 Markdown，只有提取器和执行记录变化。回复 `msg_1df0d14fa667` 发放 `NEXT_BATCH_GO slot=C`，仅允许一次 `--max-items 5 --skip-ids 7613069165708053795 7602272401598024987`，旧错误继续 pending。当前 E+C 两路真实提取，active_count=2。
+- D 通过 `msg_23c12f30d2b9` 报告离线测试就绪。协调器确认 skip 在 max-items 选择前排除，未知 ID、重复和非法 ID 均拒绝；真实首批仍是 4 行进度、2 篇 Markdown、108 pending，只有提取器和执行记录变化。
+- 因 E+C 已占满两个真实提取槽位，回复 `msg_45efd906ed92` 仅给 D `TEST_ONLY_ACCEPTED` 和 `NEXT_BATCH_QUEUED`，明确**没有发放 GO**。D 随后正常结束当前 agent turn 并保持 dispatch 打开；这不是提取失败，也不是新的作者完成或授权。
 
 ## 四、复用与防冲突规则（后续任务必须执行）
 

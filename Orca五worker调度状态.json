@@ -7,7 +7,7 @@
   "status": "extracting",
   "total_remaining": 24,
   "completed_this_run": 0,
-  "active_count": 1,
+  "active_count": 2,
   "login_verified": true,
   "isolation_probe": {
     "slots_verified": [
@@ -160,7 +160,7 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAAk60tAmbWm0U1voip4VgEycfrn75m_iFdYDdXAhi73AmAcsqD0GGnzEYBayDSitMu?from_tab_name=main",
       "profile_work_count": 407,
       "source_plan_status": "ready",
-      "status": "skip_fix_test_only",
+      "status": "extracting_next_batch_max5",
       "slot": "C",
       "branch": "AdrianAndroid/orca-c-81957333169-batch2",
       "dispatch": "ctx_f78f85235fd4",
@@ -179,7 +179,7 @@
       "preflight_ask": "msg_3e01798c6d80",
       "extraction_go_reply": "msg_8e66ccef04d4",
       "coordinator_tab_show_request": "b20a8862-c442-4dc0-b7a5-56838f43db3b",
-      "coordinator_reply": "msg_9f5db2548784",
+      "coordinator_reply": "msg_1df0d14fa667",
       "observed_profile_work_count": 407,
       "expanded_profile_ids": 409,
       "last_partial_batch": {
@@ -190,6 +190,14 @@
         "pending": 409,
         "partial": true,
         "author_completed": false
+      },
+      "next_batch_go": {
+        "message": "msg_1df0d14fa667",
+        "max_items": 5,
+        "skip_ids": [
+          "7613069165708053795",
+          "7602272401598024987"
+        ]
       }
     },
     {
@@ -200,7 +208,7 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAACiiwHj4HX6RJRRkxnMk5bLJv2wKaI2Z_2GdqGWanwEo?from_tab_name=main",
       "profile_work_count": 110,
       "source_plan_status": "ready",
-      "status": "skip_fix_test_only",
+      "status": "next_batch_queued_concurrency_limit",
       "slot": "D",
       "branch": "AdrianAndroid/orca-d-89017187607-batch2",
       "dispatch": "ctx_9e33cb20e7dd",
@@ -219,7 +227,7 @@
       "preflight_ask": "msg_a63484a24de3",
       "extraction_go_reply": "msg_3c4a1c229eb3",
       "coordinator_tab_show_request": "389b7470-a3d7-4e77-819b-77ca5c9d75a8",
-      "coordinator_reply": "msg_245bbc1adcba",
+      "coordinator_reply": "msg_45efd906ed92",
       "last_partial_batch": {
         "attempted": 4,
         "saved": 2,
@@ -228,6 +236,14 @@
         "pending": 108,
         "partial": true,
         "author_completed": false
+      },
+      "next_batch_proposed": {
+        "max_items": 5,
+        "skip_ids": [
+          "7675722470506171654",
+          "7704580351188617977"
+        ],
+        "authorized": false
       }
     },
     {
@@ -659,5 +675,5 @@
     }
   ],
   "real_extraction_concurrency_limit": 2,
-  "updated_at": "2026-11-07T04:14:41+08:00"
+  "updated_at": "2026-11-07T04:18:36+08:00"
 }
