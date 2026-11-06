@@ -149,6 +149,12 @@
 - A 的绑定修正经 diff 审查：仅将 tab 返回值与 `REPO_ID::resolved_ROOT` 精确比较，CLI 仍使用完整 `id:` selector。通过 `msg_3d9f268cb1ae` 再授权一次 `--refresh-ids-only`，仍不允许真实作品提取。
 - D 的 skip 修正已验收；E/C 释放槽位后，通过 `msg_cc2dea57dee9` 发放 D 的 `NEXT_BATCH_GO`，但鉴于 E 新增项继续超时，将原拟 5 项主动缩为 **2 个新 ID**，跳过两个旧错误。当前真实提取仅 D，active_count=1；A 只进行主页 ID 刷新，C/E 均未获续提 GO。
 
+### 步骤 14：B 离线审查通过，按顺序排队
+
+- B 通过 `msg_88f49bf4e49d` 报告 skip 修正及隔离假 Orca CLI 测试完成，并如实保留前三次夹具失败与修正记录。协调器独立审查 diff：repeat/逗号参数、数字校验和去重完整，候选过滤与完整 pending 写回分离；真实 491 ID、491 pending、2 行进度、0 Markdown 未变。
+- 回复 `msg_9680fbcf64ab` 仅给 `TEST_ONLY_ACCEPTED` 和 `NEXT_BATCH_QUEUED`。当前顺序为 D 小批次执行、A 仅 ID 刷新、C 等待主页恢复，再到 B；B 未获真实 GO。后续若放行，将缩为最多 2 个新 ID，并延后两个旧错误及一个中断未写结果 ID。
+- B 随后正常结束 agent turn，dispatch 保持打开；没有续提、真实输出或 Git 写操作。
+
 ## 四、复用与防冲突规则（后续任务必须执行）
 
 1. **固定浏览器资源**：复用上表 5 个 worktree/Profile/page。登录失效时只暂停对应槽位并让用户在原 Profile/page 重新扫码，不通过新建 Profile 绕过。

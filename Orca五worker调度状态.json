@@ -125,14 +125,14 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAArdqNGZ5-cnvTgxNaN0jB38Kz6ZTeUqtWiuXsodLOEQgfcgK_vQ_D-kcOcmhQGyHk?from_tab_name=main",
       "profile_work_count": 491,
       "source_plan_status": "ready",
-      "status": "skip_fix_test_only",
+      "status": "next_batch_queued_concurrency_limit",
       "slot": "B",
       "branch": "AdrianAndroid/orca-b-wangxiaolangk-batch2",
       "dispatch": "ctx_505ffd5a8c58",
       "existing_markdown": 0,
       "progress_exists": true,
       "resume_audit_required": false,
-      "adaptive_next_limit": 5,
+      "adaptive_next_limit": 2,
       "worker_commit": "9de76be",
       "merge_commit": "8fc8c65dfed9ff491d77f6108a39fd9b60002f39",
       "last_error": "首批连续2个AI正文/元数据超时；第三个中断未写结果；下一批须延后3个旧ID且真实GO未授权",
@@ -140,7 +140,7 @@
       "terminal": "term_8b6e06ff-8368-4d81-a799-e36bfc876397",
       "branch_base": "8fc8c65dfed9ff491d77f6108a39fd9b60002f39",
       "preflight_ask": "msg_1694b6567cd9",
-      "coordinator_reply": "msg_0f00d0371a77",
+      "coordinator_reply": "msg_9680fbcf64ab",
       "coordinator_tab_show_request": "2129f400-3e9c-4f68-b4ab-1bdbcbe918e5",
       "observed_profile_work_count": 491,
       "preflight_verified_at": "2026-11-07T03:49:53.336312+08:00",
@@ -155,6 +155,15 @@
         "pending": 491,
         "partial": true,
         "author_completed": false
+      },
+      "next_batch_proposed": {
+        "max_items": 2,
+        "skip_ids": [
+          "7214392743617940797",
+          "7667885557959698854",
+          "7669142308360781979"
+        ],
+        "authorized": false
       }
     },
     {
@@ -677,5 +686,5 @@
     }
   ],
   "real_extraction_concurrency_limit": 2,
-  "updated_at": "2026-11-07T04:26:41+08:00"
+  "updated_at": "2026-11-07T04:28:24+08:00"
 }
