@@ -3,7 +3,7 @@
 > 创建时间：2026-11-07T02:56:37+08:00
 > 协调器：当前主会话
 > Orca run：`run_573b10a4429c`
-> 当前阶段：A 第二次仅 ID 刷新和 D 第二个两项批次均已验收合并并停止；真实提取槽位暂时为 0，C 按顺序等待主页恢复与小批次授权，B 继续排队，D/E 暂停等待诊断。
+> 当前阶段：A 第二次仅 ID 刷新和 D 第二个两项批次均已验收合并并停止；C 已获主页恢复与最多 2 个新 ID 的单槽位授权，B 继续排队，D/E 暂停等待诊断。
 
 ## 一、用户目标与当前范围
 
@@ -164,6 +164,14 @@
 - 独立确认 D 进度从 4 行增至 6 行，仅新增上述两个新 ID；两个 skip 旧错误仍各只有首批一行 error，未记 no_ai。110 个主页 ID、108 个唯一 pending 集合吻合，最新 saved=2、error=4，Markdown 仍为首批 2 篇，`running:false、partial:true、author_completed:false`，无完整校验/完成报告，进程=0、锁释放。
 - D staged 仅作者 TMP/OUT 7 个文件，包含 exitcode 证据，diff-check 通过。worker 提交 `1fe466d1a2d0e06ebaac009948e73ecb074c16f2`，本地 main 顺序合并 `eb54d70eae7604fb2816486b803b2511f93909fe`。回复 `msg_234eb71b2ad6` 验收封账，并因执行上下文错误及持续超时将 D 转为 `extraction_paused_pending_diagnostic`，不再扩大 skip 或消耗新 ID。
 - 两批完成后真实提取 active_count=0；下一步按既有顺序由 C 先恢复原精确作者主页并重新核验，再决定是否放行最多 2 个新 ID，B 保持排队，E 保持暂停。A 的 `msg_stop_217a36d6d04a3a60ee6f59ae` 只是 worker 收到“等待、不操作”后正常结束 turn，dispatch 仍 open，不是新提取失败。当前 main HEAD=`eb54d70eae7604fb2816486b803b2511f93909fe`，未推送 GitHub。
+
+### 步骤 16：C 获主页恢复与最多两项的单槽位授权
+
+- A/D 封账及协调器记录已提交到本地 main：`0d71634`（`记录A刷新失败与D第二批封账`）。提交仅含总记录和调度状态；既有调研文件 SHA-256 仍为 `7a7c11857635bd9db7df6c03eab0c5b273ef55317da55b4f0705f8f442f7d781`。
+- C 原 batch2 分支干净，同作者提取进程=0、排他锁可重新获取。其 CLI 参数确认 `--skip-ids` 接受两个独立 ID，选择逻辑仍先排除 skip、再应用 max-items，完整 pending 不被删改。
+- 通过 `msg_0bf0835c435b` 向原 dispatch 发放 `PROFILE_RESTORE_AND_NEXT_BATCH_GO slot=C douyin_id=81957333169`：先在原固定 page 恢复精确 sec_uid 作者主页，复核完整绑定、author_url、作者名、抖音号、登录和 JS 上下文，不得放宽校验；失败或 fatal 时在任何作品处理前停止。
+- 恢复通过后才允许一次正常 CLI：`extract_author.py --max-items 2 --skip-ids 7613069165708053795 7602272401598024987`。最多处理 2 个新 ID，两个旧错误继续 pending 且不新增其进度；禁止测试、代码修改、内部函数调用及 Git 写操作，结束后保存证据并 ask。
+- 此步仅为授权记录，不预先宣称主页已恢复或作品已处理。当前真实提取 active_count=1，仅 C 获 GO；B 未获 GO，D/E 暂停，A 的 737/738 差异仍待复核。未推送 GitHub。
 
 ## 四、复用与防冲突规则（后续任务必须执行）
 

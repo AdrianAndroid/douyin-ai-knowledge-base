@@ -7,7 +7,7 @@
   "status": "extracting",
   "total_remaining": 24,
   "completed_this_run": 0,
-  "active_count": 0,
+  "active_count": 1,
   "login_verified": true,
   "isolation_probe": {
     "slots_verified": [
@@ -192,14 +192,14 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAAk60tAmbWm0U1voip4VgEycfrn75m_iFdYDdXAhi73AmAcsqD0GGnzEYBayDSitMu?from_tab_name=main",
       "profile_work_count": 407,
       "source_plan_status": "ready",
-      "status": "profile_restore_queued",
+      "status": "profile_restore_and_next_batch_max2_authorized",
       "slot": "C",
       "branch": "AdrianAndroid/orca-c-81957333169-batch2",
       "dispatch": "ctx_f78f85235fd4",
       "existing_markdown": 0,
       "progress_exists": true,
       "resume_audit_required": false,
-      "adaptive_next_limit": 5,
+      "adaptive_next_limit": 2,
       "worker_commit": "9427038",
       "merge_commit": "29d9776eca3e686ff39cde636ce68ee59348cd71",
       "last_error": "第二批author_url=false，在任何新作品前退出；409 ID/409 pending/2行进度不变；须先恢复精确作者主页，当前未授权导航或续提",
@@ -211,7 +211,7 @@
       "preflight_ask": "msg_3e01798c6d80",
       "extraction_go_reply": "msg_8e66ccef04d4",
       "coordinator_tab_show_request": "b20a8862-c442-4dc0-b7a5-56838f43db3b",
-      "coordinator_reply": "msg_3f3e7f5af0c1",
+      "coordinator_reply": "msg_0bf0835c435b",
       "observed_profile_work_count": 407,
       "expanded_profile_ids": 409,
       "last_partial_batch": {
@@ -229,6 +229,18 @@
         "progress_rows": 2,
         "markdown": 0,
         "reason": "author_url=false"
+      },
+      "profile_restore_next_batch_go": {
+        "message": "msg_0bf0835c435b",
+        "restore_exact_profile_first": true,
+        "relax_author_url_validation": false,
+        "max_items": 2,
+        "skip_ids": [
+          "7613069165708053795",
+          "7602272401598024987"
+        ],
+        "tests_or_code_changes_authorized": false,
+        "settled": false
       }
     },
     {
@@ -715,5 +727,5 @@
     }
   ],
   "real_extraction_concurrency_limit": 2,
-  "updated_at": "2026-11-07T04:47:44+08:00"
+  "updated_at": "2026-11-07T04:51:47+08:00"
 }
