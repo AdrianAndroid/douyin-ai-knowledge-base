@@ -1,0 +1,39 @@
+RESUME_IDS count=35
+ROUND 1 pending=34
+SAVED id=7665297644117396755 title=面试官问：Agent 频繁出现工具误调用，该如何系统性优化？
+SAVED id=7667349875075370276 title=我当年面大模型岗，栽在一道所有人都觉得简单的题上
+SAVED id=7690583301362437427 title=面试官：业务问为什么跌了，Agent怎么查数不翻车？
+SAVED id=7688699655198199067 title=面试官问RAG知识库，候选人只会切片向量库，追问后当场沉默
+SAVED id=7687174357214334249 title=面试官问Agent改签题，候选人当场答不出，90%的人挂在这
+SAVED id=7686507030584053035 title=企业知识库Agent怎么搭？面试人6点答完面试官点头
+SAVED id=7686132013249711394 title=订机票Agent怎么搭？面试人这6点答完，面试官满意的点头了
+SAVED id=7685757844318129471 title=多Agent协作是伪需求？这道大厂架构师面试题，答对不到两成
+SAVED id=7684596001017056547 title=一道Agent记忆系统面试题，问崩了多少个精通大模型的候选人
+SAVED id=7684251315291163967 title=Agent大模型面试题：6分钟讲透企业客服Agent可靠落地
+SAVED id=7683877923190803748 title=RAG大模型面试别只答向量库，这题答错直接暴露你只会调API
+SAVED id=7683127609248517412 title=面试官问RAG排障第一句话就看出你是真做过项目还是只会背八股
+SAVED id=7682754397943745827 title=一道智能体面试题：查天气路况规划路线，工具失败如何可靠保底？
+SAVED id=7682469850488278282 title=一道大模型智能体面试题，多工具调用如何防止死循环与令牌爆炸？
+SAVED id=7680492771811102006 title=大模型面试必考RAG系统设计题目，90%的人只答对一半
+SAVED id=7680130011252133158 title=别再只会调API写Prompt，这道面试题淘汰80%的候选人
+SAVED id=7679400321189203206 title=大模型Agent面试必问：怎么防止它无限循环烧光API？
+SAVED id=7679040307220073763 title=面试官说：大模型面试必考Agent长任务目标漂移五层防线控制
+SAVED id=7678673707455302953 title=面试官：Agent订票翻车，你怎么排查？
+SAVED id=7678339564196384040 title=大厂Agent面试题：答出架构定级P7，90%的人挂在第一问
+SAVED id=7677596493011832079 title=面试官问：Agent跑3小时崩在第47步，怎么让它断点续跑？
+SAVED id=7677249439215406336 title=面试官问你： Agent调 50 次工具订不到酒店，怎么救？
+SAVED id=7676866203721288975 title=面试高分回答：一道题搞定 Agent 工具调用面试，直接复用
+SAVED id=7676038828834016553 title=面试官问：你做的那个RAG项目，召回率多少？答不上大概率拜拜
+SAVED id=7670134524986117385 title=面试官问：多 Agent 协作总出问题，该怎么设计架构？
+SAVED id=7667135439094041902 title=面试真相：93%的Agent项目死在Demo到生产最后一公里
+SAVED id=7666799339318070564 title=面试官问：Agent 输出总胡说八道，如何系统性治理幻觉？
+SAVED id=7666431014767447330 title=面试官：RAG 越更新效果越差？说明你没做运维体系
+SAVED id=7666039508516785423 title=面试官问：Agent长任务容易中途跑偏，该如何设计任务规划？
+SAVED id=7664607571549932854 title=面试官问：凑齐组件就是 Agent？90% 的人都没搞懂核心
+SAVED id=7663506401540525312 title=面试官：推理优化只会说量化？直接归为入门档
+SAVED id=7662691927015312694 title=面试官：大模型知识过时、答不对新问题怎么破？
+SAVED id=7661928187257031974 title=面试官：设计一套生产级 Agent 系统你的架构思路是什么？
+SAVED id=7660163396230221097 title=标题：面试官：大模型微调效果差、成本居高不下怎么破？
+ROUND 2 pending=0
+VALIDATION {"author": "LumaAgent", "douyin_id": "35753342697", "validated_at": "2026-11-06T16:28:20", "markdown_files": 35, "unique_video_ids": 35, "duplicate_ids": [], "invalid_files": [], "profile_listed_items": 35, "no_ai": 0, "listed_pending": [], "processed_not_in_profile_list": []}
+DONE pending=0

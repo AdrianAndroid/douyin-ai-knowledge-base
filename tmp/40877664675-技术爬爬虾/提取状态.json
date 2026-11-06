@@ -1,0 +1,20 @@
+{
+  "author": "技术爬爬虾",
+  "douyin_id": "40877664675",
+  "profile_work_count": 239,
+  "running": false,
+  "updated_at": "2026-11-03T18:40:47",
+  "counts": {
+    "saved": 239
+  },
+  "pending": 0,
+  "note": "处理结束，待补提0个",
+  "last": {
+    "id": "7471540363400891674",
+    "title": "接入DeepSeek的免费编程神器，企业级项目实测",
+    "date": "2025-02-15",
+    "status": "saved",
+    "file": "20250215-7471540363400891674-接入DeepSeek的免费编程神器，企业级项目实测.md",
+    "ai_len": 1098
+  }
+}

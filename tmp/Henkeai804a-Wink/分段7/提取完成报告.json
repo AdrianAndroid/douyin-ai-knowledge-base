@@ -1,0 +1,22 @@
+{
+  "author": "Wink",
+  "douyin_id": "Henkeai804a",
+  "sec_uid": "MS4wLjABAAAAMKeBsHRRRngtwWp74amIjgLTiRb38t7zL6JDRBItMCDB_V_FsvsH9Vzq8JYgTB6w",
+  "profile_work_count": 512,
+  "accessible_author_items": 40,
+  "running": false,
+  "updated_at": "2026-11-03T20:17:28",
+  "counts": {
+    "saved": 509,
+    "no_ai": 0,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 509,
+    "unique_video_ids": 509,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 469
+  },
+  "coverage_note": "主页显示作品512；实际展开并核对40个本作者作品。保存509个AI文案，0个无AI总结，待补提0个。"
+}

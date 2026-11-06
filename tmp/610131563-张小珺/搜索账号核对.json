@@ -1,0 +1,64 @@
+{
+  "author": "张小珺",
+  "expected_douyin_id": "610131563",
+  "searched_at": "2026-11-04T12:46:25",
+  "eligible_count": 1,
+  "candidates": [
+    {
+      "name": "张小珺",
+      "sec_uid": "MS4wLjABAAAAsP3v0n2TdtrKec54dqiNgAqanVkvTyjKf2p1z1ifz2k",
+      "text": "张小珺\n\n已关注\n抖音号: 61013156321.9万获赞14.6万粉丝\n\n我是小珺，财经媒体人和播客主持人，我会在这里分享AI、科技、创投的人物访谈和前沿知识，你也可以在播客《张小珺商业访谈录》关注我。联络：xiaojunzhang@lisw.ai",
+      "followed": true,
+      "name_match": true,
+      "id_match": true
+    },
+    {
+      "name": "张小珺",
+      "sec_uid": "MS4wLjABAAAAJcy7_0gSPOibmzymJQXazNGoDeTo1eknVFKAzgF0WiE",
+      "text": "张小珺\n\n私密账号\n关注\n抖音号: 1130333201593获赞70粉丝\n\n此用户没有填写简介",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    },
+    {
+      "name": "张小珺",
+      "sec_uid": "MS4wLjABAAAARt2GhcecYKSIiJIdX-mWwcldRYA5baAE6vkyzooWm9U",
+      "text": "张小珺\n\n关注\n抖音号: zxj52107131720获赞224粉丝\n\n有关必回90年宝妈日常带娃",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    },
+    {
+      "name": "张小珺",
+      "sec_uid": "MS4wLjABAAAAgM24v6MeU7p124hbQ-BepOsBQd6jibnFhuViOTKTMJ8",
+      "text": "张小珺\n\n关注\n抖音号: 598355002967获赞188粉丝\n\n此用户没有填写简介",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    },
+    {
+      "name": "张小珺",
+      "sec_uid": "MS4wLjABAAAAa16Ohx87yZcexCq_0Mu8QM1TWUxt_WWBASE-2AqAdAYZcNpG5SMFJ4eEMh0ukXXX",
+      "text": "张小珺\n\n关注\n抖音号: zz.38724hjls9991.9万获赞131粉丝\n\n爱人: @Charlie_",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    },
+    {
+      "name": "张小珺",
+      "sec_uid": "MS4wLjABAAAApKTo8mInfevGmV7HMWABnQTIZtdz1GfEo5m-dTZugdoX3fdGhQE7hHbysbPEnDU-",
+      "text": "张小珺\n\n关注\n抖音号: dy9m600uz53y233获赞100粉丝\n\n此用户没有填写简介",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    },
+    {
+      "name": "张小珺",
+      "sec_uid": "MS4wLjABAAAA8Tb4ccjaKGDkwFy5nRAT_Cr0N7XCCPY_vw6l-Gwz1QY",
+      "text": "张小珺\n\n关注\n抖音号: 2179312386852获赞54粉丝\n\n此用户没有填写简介",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    }
+  ]
+}

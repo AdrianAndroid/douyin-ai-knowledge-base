@@ -1,0 +1,24 @@
+{
+  "author": "凯哥恋爱说",
+  "expected_douyin_id": "52327471915",
+  "searched_at": "2026-11-05T22:44:21",
+  "eligible_count": 1,
+  "candidates": [
+    {
+      "name": "凯哥恋爱说",
+      "sec_uid": "MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2",
+      "text": "凯哥恋爱说\n\n已关注\n抖音号: 52327471915908.4万获赞62.7万粉丝\n\n希望可以通过这个账号促成一段又一段的姻缘提升社会的结婚率降低社会的离婚率为这个社会贡献一份我自己的绵薄之力。",
+      "followed": true,
+      "name_match": true,
+      "id_match": true
+    },
+    {
+      "name": "凯哥恋爱说",
+      "sec_uid": "MS4wLjABAAAAGyfJ5Pmpf4KdZuigOcEuP7GJUxOpBdXKjG_sYj04LM2LLnlvpxVSme3nBLD0U8fg",
+      "text": "凯哥恋爱说\n\n关注\n抖音号: 9314732517449获赞109粉丝\n\n经验丰富，了解女生给兄弟们提供有效建议",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    }
+  ]
+}

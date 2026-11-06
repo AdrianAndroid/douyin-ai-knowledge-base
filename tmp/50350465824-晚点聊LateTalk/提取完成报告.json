@@ -1,0 +1,22 @@
+{
+  "author": "晚点聊LateTalk",
+  "douyin_id": "50350465824",
+  "sec_uid": "MS4wLjABAAAAoKggm3qY5J58TQFDAcQWnAwAv_gzb4-ni6-qCu1zebiBCioFOi_dtpht8uJ4MTz-",
+  "profile_work_count": 67,
+  "accessible_author_items": 78,
+  "running": false,
+  "updated_at": "2026-11-04T19:39:51",
+  "counts": {
+    "saved": 78,
+    "no_ai": 0,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 78,
+    "unique_video_ids": 78,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示作品67；实际展开并核对78个本作者作品。保存78个AI文案，0个无AI总结，待补提0个。"
+}

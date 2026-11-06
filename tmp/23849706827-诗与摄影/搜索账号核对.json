@@ -1,0 +1,32 @@
+{
+  "author": "诗与摄影",
+  "expected_douyin_id": "23849706827",
+  "searched_at": "2026-11-05T22:48:53",
+  "eligible_count": 1,
+  "candidates": [
+    {
+      "name": "诗与摄影",
+      "sec_uid": "MS4wLjABAAAAfD47d06gG-MGJ_yzWeXUDvltBJvTs3LYn-hkVXNeZj-H2eKPlqZVGdts_b871e0A",
+      "text": "诗与摄影\n\n已关注\n抖音号: 2384970682786.6万获赞17.2万粉丝\n\n手机拍摄、拍照思路、构图技巧、摄影眼练习风光｜静物日常｜人文｜人像",
+      "followed": true,
+      "name_match": true,
+      "id_match": true
+    },
+    {
+      "name": "诗与摄影",
+      "sec_uid": "MS4wLjABAAAAdsJlyslQjrmO3gcYoZpxE279uf6iSBGcVkJrsjrH418aL8slEijpw6X1zqKhzFYk",
+      "text": "诗与摄影\n\n关注\n抖音号: 5562493169140获赞16粉丝\n\n@①2叁 @Ccank @daydreamer",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    },
+    {
+      "name": "诗与摄影",
+      "sec_uid": "MS4wLjABAAAA7Hxiu1Wk6CUTeHQy1-JcbnXXGSNU93m7t2nit-SWhOw",
+      "text": "诗与摄影\n\n私密账号\n关注\n抖音号: dyiop987vmng2获赞0粉丝\n\n此用户没有填写简介",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    }
+  ]
+}

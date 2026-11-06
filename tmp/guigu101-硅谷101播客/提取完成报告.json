@@ -1,0 +1,22 @@
+{
+  "author": "硅谷101播客",
+  "douyin_id": "guigu101",
+  "sec_uid": "MS4wLjABAAAAm3NQWnvDtr1YC_741RoTaOC_6WLrY22dHvYgYGiCRPe7FSnngqYF8EwxGm--uSsa",
+  "profile_work_count": 182,
+  "accessible_author_items": 185,
+  "running": false,
+  "updated_at": "2026-11-04T20:22:22",
+  "counts": {
+    "saved": 183,
+    "no_ai": 2,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 183,
+    "unique_video_ids": 183,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示作品182；实际展开并核对185个本作者作品。保存183个AI文案，2个无AI总结，待补提0个。"
+}

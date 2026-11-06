@@ -1,0 +1,27 @@
+{
+  "author": "姜胡说",
+  "douyin_id": "jianghushuo",
+  "profile_work_count": 720,
+  "running": false,
+  "updated_at": "2026-11-03T13:06:57",
+  "counts": {
+    "saved": 614,
+    "no_ai": 43,
+    "error": 0
+  },
+  "note": "提取完成；614个本作者视频AI文案已校验，43个图文作品无AI总结；待补提0个",
+  "accessible_author_items": 657,
+  "author_videos_with_ai": 614,
+  "notes_without_ai": 43,
+  "external_recommendations_excluded": 8,
+  "live_replays_found": 151,
+  "live_replay_ai_entry_found": false,
+  "collections": "1个合集，3集均为已处理的既有作品",
+  "short_dramas": 0,
+  "validation": {
+    "markdown_files": 614,
+    "unique_video_ids": 614,
+    "invalid_files": 0
+  },
+  "coverage_note": "主页显示作品720；实际展开并核对到657个本作者作品（614视频+43图文）。差额63未在作品列表中展开；直播回放、合集和短剧入口均已另行核查，未发现额外可提取的AI文案。"
+}

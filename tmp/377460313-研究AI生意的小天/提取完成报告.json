@@ -1,0 +1,22 @@
+{
+  "author": "研究AI生意的小天",
+  "douyin_id": "377460313",
+  "sec_uid": "MS4wLjABAAAAJ-2ZHSXEGvSDgLauBW6sw63BFJYEfXqxR4ju-9aJv5U",
+  "profile_work_count": 20,
+  "accessible_author_items": 20,
+  "running": false,
+  "updated_at": "2026-11-06T01:25:14",
+  "counts": {
+    "saved": 20,
+    "no_ai": 0,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 20,
+    "unique_video_ids": 20,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示作品20；实际展开并核对20个本作者作品。保存20个AI文案，0个无AI总结，待补提0个。"
+}

@@ -1,0 +1,22 @@
+{
+  "author": "立正说",
+  "douyin_id": "dylveigb9p85",
+  "sec_uid": "MS4wLjABAAAApZnQf4-Z3KBLPJEQ64r4beNIMTop4MnGTOkdfHZTS6b2KxRxtjvYJOnwmLzh0fml",
+  "profile_work_count": 50,
+  "accessible_author_items": 50,
+  "running": false,
+  "updated_at": "2026-11-03T15:53:54",
+  "counts": {
+    "saved": 49,
+    "no_ai": 1,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 49,
+    "unique_video_ids": 49,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示作品50；实际展开并核对50个本作者作品。保存49个AI文案，1个无AI总结，待补提0个。"
+}

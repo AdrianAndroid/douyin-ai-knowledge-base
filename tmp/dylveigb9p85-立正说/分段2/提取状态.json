@@ -1,0 +1,18 @@
+{
+  "author": "立正说",
+  "douyin_id": "dylveigb9p85",
+  "profile_work_count": 50,
+  "running": true,
+  "updated_at": "2026-11-03T15:44:07",
+  "counts": {
+    "saved": 41,
+    "error": 3
+  },
+  "pending": 3,
+  "note": "",
+  "last": {
+    "id": "7690067815130238244",
+    "status": "error",
+    "error": "{\n  \"id\": \"5f50cdd0-d0eb-43ee-9707-c46e4aa9a0f8\",\n  \"ok\": false,\n  \"error\": {\n    \"code\": \"browser_timeout\",\n    \"message\": \"Timed out waiting for browser condition after 25000ms.\"\n  },\n  \"_meta\": {\n    \"runtimeId\": \"106073c3-82c9-4317-9536-538194a6d603\"\n  }\n}"
+  }
+}

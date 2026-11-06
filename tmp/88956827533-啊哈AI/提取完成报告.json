@@ -1,0 +1,22 @@
+{
+  "author": "啊哈AI",
+  "douyin_id": "88956827533",
+  "sec_uid": "MS4wLjABAAAAtPxRD5wDfvQ19eS5tdyaJhSeSZdL0HPYgJn2yMzFRvDDUAd0ItB6La8LcCDTAfiT",
+  "profile_work_count": 24,
+  "accessible_author_items": 24,
+  "running": false,
+  "updated_at": "2026-11-06T06:09:36",
+  "counts": {
+    "saved": 24,
+    "no_ai": 0,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 24,
+    "unique_video_ids": 24,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示作品24；实际展开并核对24个本作者作品。保存24个AI文案，0个无AI总结，待补提0个。"
+}

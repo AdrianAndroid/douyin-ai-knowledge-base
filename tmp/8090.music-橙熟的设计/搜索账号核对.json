@@ -1,0 +1,24 @@
+{
+  "author": "橙熟的设计",
+  "expected_douyin_id": "8090.music",
+  "searched_at": "2026-11-05T22:50:19",
+  "eligible_count": 1,
+  "candidates": [
+    {
+      "name": "橙熟的设计",
+      "sec_uid": "MS4wLjABAAAAz_QFJrY3koD_VumXLsO3HTy-ZxHGMcntXpmjtCjujKg5EBp2MtC_hmnXGCGjwyxi",
+      "text": "橙熟的设计\n\n已关注\n抖音号: 8090.music2649.4万获赞170.2万粉丝\n\n华工建院毕业曾任万科室内装修设计师、金螳螂深化设计师梅州设计师工作室来聊搬砖以匠心，暖人心。",
+      "followed": true,
+      "name_match": true,
+      "id_match": true
+    },
+    {
+      "name": "橙熟的设计",
+      "sec_uid": "MS4wLjABAAAAvF-SaAOldDKhObdcEHXPBqm2YYo47Nfza3IY8hlKKgI",
+      "text": "橙熟的设计\n\n关注\n抖音号: HH5488074获赞4.7万粉丝\n\n分享给好看的人( •͈ᴗ⁃͈)ᓂ- - -♡",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    }
+  ]
+}

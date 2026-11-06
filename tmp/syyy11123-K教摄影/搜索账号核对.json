@@ -1,0 +1,24 @@
+{
+  "author": "K教摄影",
+  "expected_douyin_id": "syyy11123",
+  "searched_at": "2026-11-05T22:48:39",
+  "eligible_count": 1,
+  "candidates": [
+    {
+      "name": "K教摄影",
+      "sec_uid": "MS4wLjABAAAAOnRpvxiasUeDLCX4WG94yZ3LA6ogPP7MJ6rNzi7bFy8m6QrRR9orTshL80q-1cUc",
+      "text": "K教摄影\n\n已关注\n抖音号: syyy111235017.6万获赞436.4万粉丝\n\n新手摄影技术分享教学！感谢关注",
+      "followed": true,
+      "name_match": true,
+      "id_match": true
+    },
+    {
+      "name": "K教摄影",
+      "sec_uid": "MS4wLjABAAAAc7uDjmy1zWybJPzPskPOlAENLT-emiabzRPtGoRmDBg9oFTvC7OoN1SURc5872pG",
+      "text": "K教摄影\n\n关注\n抖音号: 557306794391291获赞103粉丝\n\n此用户没有填写简介",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    }
+  ]
+}

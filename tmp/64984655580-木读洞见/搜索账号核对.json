@@ -1,0 +1,24 @@
+{
+  "author": "木读洞见",
+  "expected_douyin_id": "64984655580",
+  "searched_at": "2026-11-04T12:48:08",
+  "eligible_count": 1,
+  "candidates": [
+    {
+      "name": "木读洞见",
+      "sec_uid": "MS4wLjABAAAALjL4BKmiiAPPqaFxShcbvJxCbDs-J4PT50DW4J5NcY_w8A9rojyZSMmIyWOuUshS",
+      "text": "木读洞见\n\n已关注\n抖音号: 64984655580326.6万获赞65.4万粉丝\n\n商务：djchao002（备注来意，否不通过）",
+      "followed": true,
+      "name_match": true,
+      "id_match": true
+    },
+    {
+      "name": "木读洞见",
+      "sec_uid": "MS4wLjABAAAA14HSfN286gF_7oekwPkniNaDziqCC0dmQnNsnxNmSgYJDu3cMJVPprst_Mtjn0OL",
+      "text": "木读洞见\n\n关注\n抖音号: 721932210750获赞21粉丝\n\n集八方执友！纳四季吉祥——钦硕安诚",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    }
+  ]
+}

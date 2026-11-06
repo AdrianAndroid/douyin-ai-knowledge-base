@@ -1,0 +1,18 @@
+{
+  "author": "Wink",
+  "douyin_id": "Henkeai804a",
+  "profile_work_count": 512,
+  "running": false,
+  "updated_at": "2026-11-03T20:15:04",
+  "counts": {
+    "saved": 404,
+    "error": 1
+  },
+  "pending": 1,
+  "note": "处理结束，待补提1个",
+  "last": {
+    "id": "7675722354014785012",
+    "status": "error",
+    "error": "AI text or metadata timeout"
+  }
+}

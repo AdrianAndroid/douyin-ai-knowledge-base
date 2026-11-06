@@ -1,0 +1,22 @@
+{
+  "author": "邵艾伦Alan",
+  "douyin_id": "AlanShao1",
+  "sec_uid": "MS4wLjABAAAAs4sP5aCndRqADm4J4d0XFNTP_o48ZFxG8qTYNtFv5yc",
+  "profile_work_count": 1410,
+  "accessible_author_items": 1411,
+  "running": false,
+  "updated_at": "2026-11-05T17:31:10",
+  "counts": {
+    "saved": 1406,
+    "no_ai": 5,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 1406,
+    "unique_video_ids": 1406,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示作品1410；实际展开并核对1411个本作者作品。保存1406个AI文案，5个无AI总结，待补提0个。"
+}

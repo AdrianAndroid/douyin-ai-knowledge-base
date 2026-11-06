@@ -1,0 +1,48 @@
+{
+  "author": "小Lin说",
+  "expected_douyin_id": "lindsay.zou",
+  "searched_at": "2026-11-04T12:45:25",
+  "eligible_count": 1,
+  "candidates": [
+    {
+      "name": "小Lin说",
+      "sec_uid": "MS4wLjABAAAAunpkE2IXyHAxm4A24G5d1Cf5141pnZy8HwNR5f2-6pI_GYBVR-Pv23uFyfMPB_9I",
+      "text": "小Lin说\n\n已关注\n抖音号: lindsay.zou6720.8万获赞1378.0万粉丝\n\n商业财经不无聊～毕业于北京大学经济学院｜前华尔街摩根大通分析师｜创业全网同名无小号，不会以任何方式私信粉丝，谨防受骗～",
+      "followed": true,
+      "name_match": true,
+      "id_match": true
+    },
+    {
+      "name": "小LIN说",
+      "sec_uid": "MS4wLjABAAAA1BOqNfyUHXRX7pKohoy-H0hKEDsoYojOg5i8oJxnoQY",
+      "text": "小LIN说\n\n关注\n抖音号: 3497735663112获赞685粉丝\n\n星空不问赶路人，时光不负有心人！",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    },
+    {
+      "name": "小LIN说",
+      "sec_uid": "MS4wLjABAAAAhNtRaKD1yew9P1T-TDA5cSERZsKIQrnbO0LU7vX6e80",
+      "text": "小LIN说\n\n关注\n抖音号: 43988375948获赞368粉丝\n\n辽宁大学表演专业配音员主持人从事声音工作10年摩羯座犟种",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    },
+    {
+      "name": "小 Lin 说",
+      "sec_uid": "MS4wLjABAAAAcjl2q08f56rR_zRyA5iwRwA_UirLtLOFL80C0EYfus4_ZJUkX3KE56wumbF5omZo",
+      "text": "小 Lin 说\n\n关注\n抖音号: 9688047090659获赞339粉丝\n\n欢迎来到我的海市蜃楼谷市交易体系，估值体系，养鸡法则",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    },
+    {
+      "name": "小lin说",
+      "sec_uid": "MS4wLjABAAAAuGNijMJNe40RXSVXAkaVqu1BHlfPlHBdS-AUBtgjV6KoyDrRBuV7ND1R2OmhuVWN",
+      "text": "小lin说\n\n关注\n抖音号: 59825585472819获赞73粉丝\n\n此用户没有填写简介",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    }
+  ]
+}

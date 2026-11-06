@@ -1,0 +1,24 @@
+{
+  "author": "课代表立正",
+  "expected_douyin_id": "59763017623",
+  "searched_at": "2026-11-05T22:46:59",
+  "eligible_count": 1,
+  "candidates": [
+    {
+      "name": "课代表立正",
+      "sec_uid": "MS4wLjABAAAA27dF0DkaJXdzMuGB08JvxePbLrXeT4zttzcB6frfp_AZR0A04Hs0ZlYKqxXAh8Go",
+      "text": "课代表立正\n\n已关注\n抖音号: 5976301762315.6万获赞3.7万粉丝\n\n「超线性学院」创始人（一线AI从业者的中文社区App）康奈尔经济学博士｜OpenAI收购团队早期成员｜前腾讯总监·Meta·Amazon这里是我分享创业过程实践、思考、学习的地方。和你一起终身成长“不怕AI天天变，就来超线性学院”",
+      "followed": true,
+      "name_match": true,
+      "id_match": true
+    },
+    {
+      "name": "课代表立正",
+      "sec_uid": "MS4wLjABAAAAgKyAdKxZSodUJK3y0m02ouSFkDQA4PzfRjnOQSbQKKhRHxEQiv5QbIVrU1RXM7Zl",
+      "text": "课代表立正\n\n关注\n抖音号: 473951067313获赞1粉丝\n\n此用户没有填写简介",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    }
+  ]
+}

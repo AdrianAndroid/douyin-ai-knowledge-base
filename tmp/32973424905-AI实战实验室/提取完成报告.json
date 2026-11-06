@@ -1,0 +1,22 @@
+{
+  "author": "AI实战实验室",
+  "douyin_id": "32973424905",
+  "sec_uid": "MS4wLjABAAAADxXSIbxhzKgdzJkGp0brAsWsU6jYcxfnH5eMpMCIAjIb7aSGnxGkvA73emQ35DyL",
+  "profile_work_count": 61,
+  "accessible_author_items": 61,
+  "running": false,
+  "updated_at": "2026-11-05T23:50:34",
+  "counts": {
+    "saved": 61,
+    "no_ai": 0,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 61,
+    "unique_video_ids": 61,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示作品61；实际展开并核对61个本作者作品。保存61个AI文案，0个无AI总结，待补提0个。"
+}

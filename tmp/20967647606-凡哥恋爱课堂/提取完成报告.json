@@ -1,0 +1,22 @@
+{
+  "author": "凡哥恋爱课堂",
+  "douyin_id": "20967647606",
+  "sec_uid": "MS4wLjABAAAAqm2lJQpChoZ6-m8b-8y0A0WAjjO-5Zyet1XUZ01KKbY",
+  "profile_work_count": 435,
+  "accessible_author_items": 434,
+  "running": false,
+  "updated_at": "2026-11-06T22:17:03",
+  "counts": {
+    "saved": 434,
+    "no_ai": 0,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 434,
+    "unique_video_ids": 434,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示作品435；实际展开并核对434个本作者作品。保存434个AI文案，0个无AI总结，待补提0个。"
+}

@@ -1,0 +1,22 @@
+{
+  "author": "盘腿观天下",
+  "douyin_id": "78927509194",
+  "sec_uid": "MS4wLjABAAAAHb2VkKuHwVLuP0AipQ0z2xfLNFFychUkwc0sDCygZm1f_-VHCxEXgLTSZhm8_azK",
+  "profile_work_count": 593,
+  "accessible_author_items": 595,
+  "running": false,
+  "updated_at": "2026-11-05T22:37:18",
+  "counts": {
+    "saved": 589,
+    "no_ai": 6,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 589,
+    "unique_video_ids": 589,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示作品593；实际展开并核对595个本作者作品。保存589个AI文案，6个无AI总结，待补提0个。"
+}

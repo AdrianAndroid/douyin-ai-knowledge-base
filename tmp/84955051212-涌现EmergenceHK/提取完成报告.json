@@ -1,0 +1,22 @@
+{
+  "author": "涌现EmergenceHK",
+  "douyin_id": "84955051212",
+  "sec_uid": "MS4wLjABAAAA0pI5mTcao4YpP4MHmpwfEcieDK-Ia36CEttsKWUdqvudr044H_cy_JES67O9r2SZ",
+  "profile_work_count": 19,
+  "accessible_author_items": 19,
+  "running": false,
+  "updated_at": "2026-11-06T18:53:15",
+  "counts": {
+    "saved": 19,
+    "no_ai": 0,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 19,
+    "unique_video_ids": 19,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示作品19；实际展开并核对19个本作者作品。保存19个AI文案，0个无AI总结，待补提0个。"
+}

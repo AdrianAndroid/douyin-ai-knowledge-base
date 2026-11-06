@@ -1,0 +1,22 @@
+{
+  "author": "混子哥边画边讲",
+  "douyin_id": "hunzige1027",
+  "sec_uid": "MS4wLjABAAAAPnnxbLz0N2OHDocvlJr6dgYOSkMAKHzZh7gh-tnJv-Hym473AHwxavItEYIjSkmY",
+  "profile_work_count": 100,
+  "accessible_author_items": 102,
+  "running": false,
+  "updated_at": "2026-11-05T04:42:30",
+  "counts": {
+    "saved": 97,
+    "no_ai": 5,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 97,
+    "unique_video_ids": 97,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示作品100；实际展开并核对102个本作者作品。保存97个AI文案，5个无AI总结，待补提0个。"
+}

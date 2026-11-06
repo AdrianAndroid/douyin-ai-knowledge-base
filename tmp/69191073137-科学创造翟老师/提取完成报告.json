@@ -1,0 +1,22 @@
+{
+  "author": "科学创造翟老师",
+  "douyin_id": "69191073137",
+  "sec_uid": "MS4wLjABAAAAgDaUhYAHfV6r2De_lMhvwqP9WZPZRX4fqgNsR986PCCL_Mdt9Pc2iCnhrL35UlGJ",
+  "profile_work_count": 208,
+  "accessible_author_items": 209,
+  "running": false,
+  "updated_at": "2026-11-05T03:57:06",
+  "counts": {
+    "saved": 209,
+    "no_ai": 0,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 209,
+    "unique_video_ids": 209,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示作品208；实际展开并核对209个本作者作品。保存209个AI文案，0个无AI总结，待补提0个。"
+}

@@ -1,0 +1,24 @@
+{
+  "author": "上官益Eric",
+  "expected_douyin_id": "34218604906",
+  "searched_at": "2026-11-05T22:43:38",
+  "eligible_count": 1,
+  "candidates": [
+    {
+      "name": "上官益Eric",
+      "sec_uid": "MS4wLjABAAAAAhmbhSwrXHuVXd5NthVoS78oK2sOKOPsl9smwGipU-QI3lJ0kLJfNjgJNS2cxYrQ",
+      "text": "上官益Eric\n\n已关注\n抖音号: 3421860490667.7万获赞4.6万粉丝\n\nUDG终极梦想车库坡县回国卖车日常 瑕疵是生活常态 但完美是我们坚持的理念",
+      "followed": true,
+      "name_match": true,
+      "id_match": true
+    },
+    {
+      "name": "上官益Eric",
+      "sec_uid": "MS4wLjABAAAAsDblyW2g1_gmfkJLv0kwng-WmjxW0YpaU3-BRvtGYyBzyuXmsTtJ5VBDfBq8wHp4",
+      "text": "上官益Eric\n\n关注\n抖音号: 51431484319286获赞85粉丝\n\n女友之力 永远的神：@Stephen Curry｜史蒂芬·库里",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    }
+  ]
+}

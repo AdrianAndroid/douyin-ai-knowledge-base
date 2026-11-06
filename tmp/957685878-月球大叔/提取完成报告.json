@@ -1,0 +1,25 @@
+{
+  "author": "月球大叔",
+  "douyin_id": "957685878",
+  "sec_uid": "MS4wLjABAAAAo3TfoyJUntpg5uBV8GsSEeRIealqMmyekqUOGv32WjI",
+  "profile_work_count": 233,
+  "running": false,
+  "updated_at": "2026-11-03T14:26:50",
+  "counts": {
+    "saved": 232,
+    "no_ai": 1,
+    "error": 0
+  },
+  "accessible_author_items": 233,
+  "author_videos_with_ai": 232,
+  "items_without_ai": 1,
+  "pending": 0,
+  "validation": {
+    "markdown_files": 232,
+    "unique_video_ids": 232,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示的233个本作者作品已全部展开并核对；232个视频AI文案已保存并校验，1个作品无AI总结已记录跳过；无漏提、无其他作者作品混入。"
+}

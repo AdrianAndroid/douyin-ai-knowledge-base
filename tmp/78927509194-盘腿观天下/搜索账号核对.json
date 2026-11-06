@@ -1,0 +1,40 @@
+{
+  "author": "盘腿观天下",
+  "expected_douyin_id": "78927509194",
+  "searched_at": "2026-11-04T12:49:22",
+  "eligible_count": 1,
+  "candidates": [
+    {
+      "name": "盘腿观天下",
+      "sec_uid": "MS4wLjABAAAAHb2VkKuHwVLuP0AipQ0z2xfLNFFychUkwc0sDCygZm1f_-VHCxEXgLTSZhm8_azK",
+      "text": "盘腿观天下\n\n已关注\n抖音号: 7892750919470.0万获赞16.0万粉丝\n\n盘腿一坐，天下大事我都唠，聊全球风云，讲人间万象",
+      "followed": true,
+      "name_match": true,
+      "id_match": true
+    },
+    {
+      "name": "盘腿观天下",
+      "sec_uid": "MS4wLjABAAAAu5Vd71WcDc_usRS-PT77fN1uloxqeVO0BdT3v-lKKSHqRP7Cig0lB2fgODAKVvzf",
+      "text": "盘腿观天下\n\n关注\n抖音号: ming484066865获赞502粉丝\n\n此用户没有填写简介",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    },
+    {
+      "name": "盘腿观天下",
+      "sec_uid": "MS4wLjABAAAAcaKa8n3OZkhegDu4XGaTKzUmwiaxS_FMcxPB1imUVXM",
+      "text": "盘腿观天下\n\n关注\n抖音号: 11310087091042获赞432粉丝\n\n智商决定成绩，情商决定命运",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    },
+    {
+      "name": "盘腿观天下",
+      "sec_uid": "MS4wLjABAAAA6iSfGKeD9NVmXABEXNh8N0voNaA5kmWh4D9pLeWGSvc",
+      "text": "盘腿观天下\n\n关注\n抖音号: hy26922691632获赞96粉丝\n\n此用户没有填写简介",
+      "followed": false,
+      "name_match": true,
+      "id_match": false
+    }
+  ]
+}

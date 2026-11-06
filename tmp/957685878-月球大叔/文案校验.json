@@ -1,0 +1,25 @@
+{
+  "author": "月球大叔",
+  "douyin_id": "957685878",
+  "validated_at": "2026-11-03T14:26:50",
+  "markdown_files": 232,
+  "unique_video_ids": 232,
+  "duplicate_ids": [],
+  "invalid_files": [],
+  "bad_progress_lines": 0,
+  "progress": {
+    "unique_items": 233,
+    "saved": 232,
+    "no_ai": 1,
+    "error": 0,
+    "saved_without_file": [],
+    "file_without_saved_progress": []
+  },
+  "profile": {
+    "listed_items": 233,
+    "listed_saved": 232,
+    "listed_no_ai": 1,
+    "listed_pending": [],
+    "processed_not_in_profile_list": []
+  }
+}

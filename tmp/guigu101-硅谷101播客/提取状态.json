@@ -1,0 +1,21 @@
+{
+  "author": "硅谷101播客",
+  "douyin_id": "guigu101",
+  "profile_work_count": 182,
+  "running": false,
+  "updated_at": "2026-11-04T20:22:22",
+  "counts": {
+    "saved": 183,
+    "no_ai": 2
+  },
+  "pending": 0,
+  "note": "处理结束，待补提0个",
+  "last": {
+    "id": "7496470267569507621",
+    "title": "靠自学造火箭挑战SpaceX，Rocket Lab的太空版图",
+    "date": "2025-04-23",
+    "status": "saved",
+    "file": "20250423-7496470267569507621-靠自学造火箭挑战SpaceX，Rocket Lab的太空版图.md",
+    "ai_len": 776
+  }
+}
