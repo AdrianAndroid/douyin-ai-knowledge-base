@@ -97,6 +97,15 @@
 - 锁测试实际退出码 1，第二实例在浏览器操作和输出前因排他锁失败，测试后锁释放；缺环境变量及非法 max-items 也分别按预期失败。协调器据此只放行 E。
 - 首次较长回复被权限分类器拒绝，没有送达；改用简短的同授权回复后成功，消息 ID `msg_f6cb3e043c07`。授权内容仅为 `AUTHOR_EXTRACTION_GO slot=E douyin_id=54771197908`，并要求继续遵守自适应批次和验收闸门。队列 active_count 更新为 1，其他槽位未获放行。
 
+### 步骤 8：A 的 GO 前 2 项测试偏差、部分批次验收与重新预检
+
+- A 通过 `msg_0c297077d1db` 报告 `AUTHOR_PREFLIGHT_BLOCKED`：离线测试错误地用 runpy 字典替换函数全局并直接调用 `run(2)`，测试替身未生效且绕过 main 锁，导致未收到 GO 时真实处理 2 个作品。worker 随即停止，没有继续作者身份/登录预检。
+- 协调器独立核验：新增 ID `7693863248113732902`、`7664138045670591796` 均属于 737 个主页清单，正文作者/抖音号/作品 ID/日期/AI 标记完整；当前 109 个 Markdown、109 个唯一 ID、110 行进度、最新 saved=109、pending=628，状态 running=false、partial=true、author_completed=false，无完成报告，进程为 0，锁可重新排他获取。
+- 原 107 篇组合 SHA-256 仍为 `510d10968b606dcea7479c0b4e08d219d15e0744eea5f568bead962c5fdb7fce`，与主 checkout 原有文件一致；原 108 行进度前缀 SHA-256 仍为 `471ae61ced3d6d08a4b2e12f65e519a63ee1c2248ed275886c0d39a36218ee30`。没有删除或改写历史成果。
+- 将这次意外运行如实作为 2 项部分批次保留，而不是伪装成预检通过或作者完成。staged 仅凯哥 TMP/OUT 10 个文件，diff-check 通过；worker 提交 `b05aa84c752aa0f09351e1e88df1bdd023c7fd09`，本地 main 顺序合并 `7d0f3d0186b3339570e219db4e9da2f56e16ac9e`。合并后 109 篇组合哈希 `1c0986e45783fab1c81e22e3e46f7ba65817700327102c4bf14b448a34db9266` 完全一致，pending 仍为 628。
+- 首次合并长命令被权限分类器拒绝且未执行；拆成逐条 stage、检查、commit、merge 后成功，没有绕过文件边界。
+- 已在原 worktree 从合并后的 main 建立 `AdrianAndroid/orca-a-52327471915-preflight2`，回复 `msg_1a9672867979`：只允许重新预检，测试必须经 CLI 子进程，禁止直接调用 run/process_one 或真实处理；补齐身份、登录、JS 上下文和锁测试后再次 ask。A 仍未获得真实提取 GO。
+
 ## 四、复用与防冲突规则（后续任务必须执行）
 
 1. **固定浏览器资源**：复用上表 5 个 worktree/Profile/page。登录失效时只暂停对应槽位并让用户在原 Profile/page 重新扫码，不通过新建 Profile 绕过。

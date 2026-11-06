@@ -72,18 +72,34 @@
       "source_plan_status": "running",
       "status": "preflight_running",
       "slot": "A",
-      "branch": "AdrianAndroid/orca-a-52327471915",
+      "branch": "AdrianAndroid/orca-a-52327471915-preflight2",
       "dispatch": "ctx_b1f5e1508517",
-      "existing_markdown": 107,
+      "existing_markdown": 109,
       "progress_exists": true,
       "resume_audit_required": true,
       "adaptive_next_limit": null,
-      "worker_commit": null,
-      "merge_commit": null,
-      "last_error": null,
+      "worker_commit": "b05aa84c752aa0f09351e1e88df1bdd023c7fd09",
+      "merge_commit": "7d0f3d0186b3339570e219db4e9da2f56e16ac9e",
+      "last_error": "预检测试误调真实run(2)，已停止、验收保留2篇并改用仅CLI子进程重新预检",
       "task": "task_4ec80a8b1b81",
       "terminal": "term_b7115e09-4f03-4956-8b56-ecbee23d3b70",
-      "branch_base": "bd02f7d"
+      "branch_base": "7d0f3d0186b3339570e219db4e9da2f56e16ac9e",
+      "preflight_ask": "msg_0c297077d1db",
+      "coordinator_reply": "msg_1a9672867979",
+      "last_partial_batch": {
+        "attempted": 2,
+        "saved": 2,
+        "no_ai": 0,
+        "errors": 0,
+        "pending": 628,
+        "partial": true,
+        "author_completed": false,
+        "unintended_before_go": true,
+        "ids": [
+          "7693863248113732902",
+          "7664138045670591796"
+        ]
+      }
     },
     {
       "author": "王小浪不浪成都恋商情感文化传播有限公司",
