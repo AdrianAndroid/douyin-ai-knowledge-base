@@ -60,3 +60,24 @@
 - 错误 ID：`7675722470506171654`、`7704580351188617977`，均为 `AI text or metadata timeout`，仍保留在真实 pending，未误记 no_ai。
 - `提取状态.json` 与 `五worker运行状态.json` 均为 `running:false`、`partial:true`、`author_completed:false`；未生成 `文案校验.json` 或 `提取完成报告.json`。
 - 下一批建议：协调器验收后使用 `--max-items 5` 断点续提；本批停止后未继续提取，未执行任何 Git 写操作。
+
+## 7. TEST_ONLY：延后两个超时 ID（尚未续提）
+
+- 协调器指令消息：`msg_245bbc1adcba`；首批 worker=`725fcaf`，main merge=`6e83b5da418321f362fbf4c55abef7192e665418`。
+- 当前分支：`AdrianAndroid/orca-d-89017187607-batch2`。仅实现 `--skip-ids`，在选择作品时排除指定 ID，再应用 `--max-items`；这些 ID 不从 pending 删除，也不追加进度。
+- `五worker运行状态.json` 新增 `skip_ids` 和 `deferred_pending` 证据字段；非法、重复或非 15–25 位数字 ID 在启动锁和输出前由 CLI 拒绝。
+- 测试严格使用提取器 CLI 子进程，不使用 runpy 或直接内部函数调用。测试驱动为 `/tmp/orca-d-skip-test-task-df9665928b9c.py`，在自动清理的隔离临时副本中使用假 `ORCA_CLI_COMMAND`，没有访问真实 Orca/抖音，也没有写真实提取输出。
+- 混合场景：退出码 0，`--max-items 1` 且延后 `7675722470506171654`、`7704580351188617977`；attempted=1、saved=1、pending=3，只有非延后 ID `7704224779796736633` 新增一条 saved，两个延后 ID 各保留原有一行 error，fake Orca 调用 5 次且均不涉及延后 ID。
+- 仅剩延后 ID 场景：退出码 0，attempted=0、saved=0、pending=2，进度原文逐字不变，fake Orca 调用 0 次，无完成报告。
+- 非法参数场景：退出码 2，fake Orca 调用 0 次，隔离输出目录未创建。
+- 最终语法及 `git diff --check` 通过；真实首批仍保持进度 4 行、Markdown 2 篇、pending=108、ended_at=`2026-11-07T03:51:31`，真实运行状态和正文未被测试修改，锁空闲。尚未获得 `NEXT_BATCH_GO`，未续提、未执行 Git 写操作。
+
+## 8. 第二个真实部分批次（2 个新 ID，等待验收）
+
+- 协调器 GO：`msg_cc2dea57dee9`，将原拟 5 项主动缩为 2 项；仅运行一次正常 CLI：`extract_author.py --max-items 2 --skip-ids 7675722470506171654,7704580351188617977`。未修改代码、未做隔离或内部调用测试。
+- 起止时间：2026-11-07T04:26:25 至 2026-11-07T04:31:26；退出码 2，停止原因为约 5 分钟无实质作品进展。
+- 本批 attempted=2、saved=0、no_ai=0、errors=2、pending=108；全作者累计最新状态 saved=2、error=4，Markdown 仍为首批 2 篇。
+- 新错误 `7704224779796736633`：Orca 请求 `e4374a90-accd-49ad-bd1b-41a4dca2ef8c` 报 `Cannot find default execution context`；新错误 `7703395465718402340`：`AI text or metadata timeout`。二者均保留 pending，未误记 no_ai。
+- 延后的 `7675722470506171654`、`7704580351188617977` 仍各自只有首批一行 error，未新增进度；`deferred_pending` 同时包含二者。
+- 进度由 4 行变为 6 行，仅新增上述两个新 ID；pending 共 108 个唯一 ID，均属于 110 个唯一主页 ID。`五worker批次记录.jsonl` 已追加第 2 条真实记录。
+- 已确认本作者进程退出、锁释放；`running:false`、`partial:true`、`author_completed:false`，无完整校验或完成报告。批次结束后未继续提取，未执行 Git 写操作。

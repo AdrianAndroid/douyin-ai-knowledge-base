@@ -367,8 +367,8 @@ def write_summary(rows, all_ids, running, note="", partial=None, author_complete
     })
 
 
-def write_batch_status(started_at, batch_rows, all_ids, rows, max_items, stop_reason,
-                       partial, author_completed, validation=None):
+def write_batch_status(started_at, batch_rows, all_ids, rows, max_items, skip_ids,
+                       stop_reason, partial, author_completed, validation=None):
     latest_batch = {row["id"]: row for row in batch_rows if row.get("id")}
     counts = Counter(row.get("status", "unknown") for row in latest_batch.values())
     record = {
@@ -377,7 +377,10 @@ def write_batch_status(started_at, batch_rows, all_ids, rows, max_items, stop_re
         "started_at": started_at,
         "ended_at": dt.datetime.now().isoformat(timespec="seconds"),
         "running": False, "partial": partial, "author_completed": author_completed,
-        "max_items": max_items, "stop_reason": stop_reason or None,
+        "max_items": max_items, "skip_ids": skip_ids,
+        "deferred_pending": [video_id for video_id in pending_ids(all_ids, rows)
+                             if video_id in skip_ids],
+        "stop_reason": stop_reason or None,
         "attempted": len(latest_batch), "saved": counts.get("saved", 0),
         "no_ai": counts.get("no_ai", 0), "errors": counts.get("error", 0),
         "pending": len(pending_ids(all_ids, rows)),
@@ -612,7 +615,7 @@ def validate(all_ids, rows):
     return validation
 
 
-def run(max_items):
+def run(max_items, skip_ids):
     global LAST_PROGRESS
     started_at = dt.datetime.now().isoformat(timespec="seconds")
     LAST_PROGRESS = time.monotonic()
@@ -629,7 +632,12 @@ def run(max_items):
     else:
         all_ids = collect_profile_ids()
     write_summary(rows, all_ids, True)
-    selected_ids = pending_ids(all_ids, rows)
+    unknown_skip_ids = [video_id for video_id in skip_ids if video_id not in all_ids]
+    if unknown_skip_ids:
+        raise ValueError(f"skip IDs not in profile list: {unknown_skip_ids}")
+    selected_ids = [video_id for video_id in pending_ids(all_ids, rows)
+                    if video_id not in skip_ids]
+    print(f"DEFER skip_ids={skip_ids}", flush=True)
     if max_items is not None:
         selected_ids = selected_ids[:max_items]
         print(f"BATCH_LIMIT max_items={max_items} selected={len(selected_ids)}", flush=True)
@@ -683,10 +691,10 @@ def run(max_items):
     pending = pending_ids(all_ids, rows)
     write_json(PENDING_FILE, pending)
     partial = bool(pending) or bool(stop_reason)
-    note = stop_reason or f"处理结束，待补提{len(pending)}个"
+    note = stop_reason or f"处理结束，待补提{len(pending)}个；本批延后{len(skip_ids)}个指定ID"
     if partial:
         write_summary(rows, all_ids, False, note, partial=True, author_completed=False)
-        write_batch_status(started_at, batch_rows, all_ids, rows, max_items,
+        write_batch_status(started_at, batch_rows, all_ids, rows, max_items, skip_ids,
                            stop_reason, True, False)
         print(f"DONE partial=true pending={len(pending)} stop_reason={stop_reason or '-'}", flush=True)
         latest_batch = {row["id"]: row for row in batch_rows if row.get("id")}
@@ -696,7 +704,7 @@ def run(max_items):
     author_completed = bool(validation["ok"])
     write_summary(rows, all_ids, False, note,
                   partial=not author_completed, author_completed=author_completed)
-    write_batch_status(started_at, batch_rows, all_ids, rows, max_items,
+    write_batch_status(started_at, batch_rows, all_ids, rows, max_items, skip_ids,
                        stop_reason, not author_completed, author_completed, validation)
     print("VALIDATION " + json.dumps(validation, ensure_ascii=False), flush=True)
     print(f"DONE partial={not author_completed} pending=0", flush=True)
@@ -706,6 +714,8 @@ def run(max_items):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--max-items", type=int)
+    parser.add_argument("--skip-ids", default="",
+                        help="comma-separated profile video IDs to leave pending this batch")
     parser.add_argument("--lock-only", action="store_true",
                         help="acquire the author lock without browser access or repository writes")
     parser.add_argument("--lock-hold-seconds", type=float, default=0,
@@ -715,13 +725,17 @@ def main():
         parser.error("--max-items must be at least 1")
     if args.lock_hold_seconds < 0:
         parser.error("--lock-hold-seconds must not be negative")
+    skip_ids = [video_id.strip() for video_id in args.skip_ids.split(",") if video_id.strip()]
+    if (len(skip_ids) != len(set(skip_ids))
+            or any(not re.fullmatch(r"\d{15,25}", video_id) for video_id in skip_ids)):
+        parser.error("--skip-ids must be unique comma-separated video IDs")
     with exclusive_lock():
         if args.lock_only:
             print(f"LOCK_ONLY acquired path={LOCK_PATH} pid={os.getpid()}", flush=True)
             if args.lock_hold_seconds:
                 time.sleep(args.lock_hold_seconds)
             return 0
-        return run(args.max_items)
+        return run(args.max_items, skip_ids)
 
 
 if __name__ == "__main__":
