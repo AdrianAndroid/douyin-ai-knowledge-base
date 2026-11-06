@@ -2,20 +2,27 @@
   "author": "凯哥恋爱说",
   "douyin_id": "52327471915",
   "profile_work_count": 737,
-  "running": true,
-  "updated_at": "2026-11-07T00:40:25",
+  "running": false,
+  "partial": true,
+  "author_completed": false,
+  "updated_at": "2026-11-07T03:29:56",
   "counts": {
-    "saved": 107,
-    "error": 1
+    "saved": 109
   },
-  "pending": 630,
-  "note": "",
+  "pending": 628,
+  "note": "批次结束，真实待补提628个；未生成完整校验或完成报告",
+  "batch": {
+    "attempted": 2,
+    "saved": 2,
+    "no_ai": 0,
+    "error": 0
+  },
   "last": {
-    "id": "7664526741725072674",
-    "title": "一个女人的心里只要没有你，她就一定会露出这6大破绽",
-    "date": "2026-07-20",
+    "id": "7664138045670591796",
+    "title": "男人必备的九个顶级本领",
+    "date": "2026-07-19",
     "status": "saved",
-    "file": "20260720-7664526741725072674-一个女人的心里只要没有你，她就一定会露出这6大破绽.md",
-    "ai_len": 789
+    "file": "20260719-7664138045670591796-男人必备的九个顶级本领.md",
+    "ai_len": 954
   }
 }

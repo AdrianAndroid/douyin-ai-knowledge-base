@@ -1,0 +1,39 @@
+{
+  "slot": "A",
+  "douyin_id": "52327471915",
+  "worktree": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+  "profile": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
+  "page": "01b0f677-3907-4ee8-91d7-7f707439b8de",
+  "initial_tab_list_request_id": "acc724b7-477e-40b1-93b0-a1cf5ea2c2e3",
+  "initial_binding": {
+    "worktree_matched": true,
+    "profile_matched": true,
+    "loaded": true,
+    "load_error": null,
+    "url_identity": "不纸设计旧作品弹层；未作为凯哥身份依据"
+  },
+  "worktree_show_request_id": "0fd8b648-b111-4f14-8980-562973e4d7e0",
+  "extractor_binding": {
+    "environment_only": true,
+    "required_variables": [
+      "ORCA_WORKTREE",
+      "ORCA_PROFILE",
+      "ORCA_PAGE"
+    ],
+    "config_contains_browser_ids": false,
+    "eval_commands_include_worktree_and_page": true,
+    "tab_list_uses_explicit_worktree": true
+  },
+  "normal_author_preflight": {
+    "navigated_by_worker_for_identity_check": false,
+    "author_name_verified": false,
+    "douyin_id_verified": false,
+    "sec_uid_verified_on_page": false,
+    "following_verified": false,
+    "login_verified": false,
+    "js_isolation_probe_verified": false,
+    "old_probe_cleanup_claimed": false,
+    "note": "意外调用真实 process_one 后立即停止；未继续做正常作者页身份、登录或隔离探针检查。不能从该意外调用推断预检通过。"
+  },
+  "updated_at": "2026-11-07T03:31:42+08:00"
+}

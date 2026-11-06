@@ -1,21 +1,47 @@
 #!/usr/bin/env python3
+import argparse
 import datetime as dt
+import fcntl
 import json
 import os
 import re
 import subprocess
+import sys
 import time
 from collections import Counter
 from pathlib import Path
 
 TMP = Path(__file__).resolve().parent
+ROOT = TMP.parent.parent.resolve()
 CONFIG = json.loads((TMP / "配置.json").read_text(encoding="utf-8"))
 AUTHOR = CONFIG["author"]
 DOUYIN_ID = CONFIG["douyin_id"]
 SEC_UID = CONFIG["sec_uid"]
-PAGE = CONFIG["page"]
 EXPECTED_COUNT = CONFIG["profile_work_count"]
-OUT = Path(CONFIG["output"])
+OUT = (ROOT / CONFIG["output"]).resolve()
+EXPECTED_OUT = (ROOT / "抖音关注" / f"{DOUYIN_ID}-{AUTHOR}").resolve()
+if OUT != EXPECTED_OUT:
+    raise RuntimeError(f"output must resolve to {EXPECTED_OUT}, got {OUT}")
+TMP.relative_to(ROOT)
+OUT.relative_to(ROOT)
+
+
+def required_env(name):
+    value = os.environ.get(name, "").strip()
+    if not value:
+        raise RuntimeError(f"missing required environment variable: {name}")
+    return value
+
+
+WORKTREE = required_env("ORCA_WORKTREE")
+PROFILE_ID = required_env("ORCA_PROFILE")
+PAGE = required_env("ORCA_PAGE")
+worktree_match = re.fullmatch(r"id:([^:]+)::(.+)", WORKTREE)
+if not worktree_match or Path(worktree_match.group(2)).resolve() != ROOT:
+    raise RuntimeError(f"ORCA_WORKTREE must be the full selector for {ROOT}")
+REPO_ID = worktree_match.group(1)
+LOCK_PATH = Path("/tmp") / f"orca-author-extract-{REPO_ID}-{DOUYIN_ID}.lock"
+ORCA_CLI = os.environ.get("ORCA_CLI_COMMAND", "orca")
 PROFILE = f"https://www.douyin.com/user/{SEC_UID}?from_tab_name=main"
 PROGRESS = TMP / "提取进度.jsonl"
 SUMMARY = TMP / "提取状态.json"
@@ -103,8 +129,18 @@ STATE_JS = r'''
 '''
 
 
+def acquire_lock():
+    lock_file = LOCK_PATH.open("a+")
+    try:
+        fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except Exception:
+        lock_file.close()
+        raise
+    return lock_file
+
+
 def orca(args, timeout=60):
-    cp = subprocess.run(["orca", *args], text=True, capture_output=True, timeout=timeout)
+    cp = subprocess.run([ORCA_CLI, *args], text=True, capture_output=True, timeout=timeout)
     if cp.returncode != 0:
         raise RuntimeError((cp.stderr or cp.stdout).strip())
     data = json.loads(cp.stdout)
@@ -113,8 +149,19 @@ def orca(args, timeout=60):
     return data.get("result", {})
 
 
+def verify_browser_binding():
+    result = orca(["tab", "list", "--worktree", WORKTREE, "--json"])
+    tabs = result.get("tabs", [])
+    tab = next((item for item in tabs if item.get("browserPageId") == PAGE), None)
+    if not tab:
+        raise RuntimeError(f"fixed page not found in worktree: {PAGE}")
+    if tab.get("worktreeId") != WORKTREE or tab.get("profileId") != PROFILE_ID:
+        raise RuntimeError(f"browser binding mismatch: {tab}")
+
+
 def eval_js(expression, timeout=60):
-    result = orca(["eval", "--page", PAGE, "--expression", expression, "--json"], timeout)
+    result = orca(["eval", "--worktree", WORKTREE, "--page", PAGE,
+                   "--expression", expression, "--json"], timeout)
     value = result.get("result")
     if isinstance(value, str):
         try:
@@ -205,9 +252,12 @@ def save_markdown(s):
     content = (f"# {title}\n\n> 作者：{AUTHOR}\n> 抖音号：{DOUYIN_ID}\n"
                f"> 作品ID：{s['id']}\n> 创作时间：{date_iso}\n> 标签：{tags}\n\n"
                f"---\n\n{ai}\n\n---\n\n> 以上内容由AI生成，仅供参考\n")
+    destination = OUT / name
+    if destination.exists():
+        raise FileExistsError(f"refusing to overwrite existing Markdown: {destination}")
     temp = OUT / f".{name}.{os.getpid()}.tmp"
     temp.write_text(content, encoding="utf-8")
-    os.replace(temp, OUT / name)
+    os.replace(temp, destination)
     return name, len(ai)
 
 
@@ -268,15 +318,18 @@ def pending_ids(all_ids, rows):
     return [video_id for video_id in all_ids if video_id not in done]
 
 
-def write_summary(rows, all_ids, running, note=""):
+def write_summary(rows, all_ids, running, note="", partial=True,
+                  author_completed=False, batch=None):
     latest = latest_rows(rows)
     counts = Counter(row.get("status", "unknown") for row in latest.values())
     pending = pending_ids(all_ids, rows)
     write_json(SUMMARY, {
         "author": AUTHOR, "douyin_id": DOUYIN_ID,
         "profile_work_count": EXPECTED_COUNT, "running": running,
+        "partial": partial, "author_completed": author_completed,
         "updated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "counts": dict(counts), "pending": len(pending), "note": note,
+        "batch": batch or {"attempted": 0, "saved": 0, "no_ai": 0, "error": 0},
         "last": rows[-1] if rows else None,
     })
 
@@ -464,42 +517,67 @@ def validate(all_ids, rows):
     no_ai_ids = {video_id for video_id, row in latest.items() if row.get("status") == "no_ai"}
     pending = sorted(set(all_ids) - file_ids - no_ai_ids)
     extra = sorted((file_ids | no_ai_ids) - set(all_ids))
+    passed = (not pending and not invalid and not duplicates and not extra
+              and len(all_ids) == EXPECTED_COUNT and len(set(all_ids)) == len(all_ids))
     validation = {
         "author": AUTHOR, "douyin_id": DOUYIN_ID,
         "validated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "passed": passed,
         "markdown_files": len(files), "unique_video_ids": len(file_ids),
         "duplicate_ids": duplicates, "invalid_files": invalid,
         "profile_listed_items": len(all_ids), "no_ai": len(no_ai_ids),
         "listed_pending": pending, "processed_not_in_profile_list": extra,
     }
     write_json(TMP / "文案校验.json", validation)
-    report = {
-        "author": AUTHOR, "douyin_id": DOUYIN_ID, "sec_uid": SEC_UID,
-        "profile_work_count": EXPECTED_COUNT, "accessible_author_items": len(all_ids),
-        "running": False, "updated_at": dt.datetime.now().isoformat(timespec="seconds"),
-        "counts": {"saved": len(file_ids), "no_ai": len(no_ai_ids),
-                   "error": len(pending)},
-        "validation": {"markdown_files": len(files), "unique_video_ids": len(file_ids),
-                       "invalid_files": len(invalid), "duplicate_ids": len(duplicates),
-                       "processed_not_in_profile_list": len(extra)},
-        "coverage_note": (f"主页显示作品{EXPECTED_COUNT}；实际展开并核对{len(all_ids)}个本作者作品。"
-                          f"保存{len(file_ids)}个AI文案，{len(no_ai_ids)}个无AI总结，待补提{len(pending)}个。"),
-    }
-    write_json(TMP / "提取完成报告.json", report)
+    if passed:
+        report = {
+            "author": AUTHOR, "douyin_id": DOUYIN_ID, "sec_uid": SEC_UID,
+            "profile_work_count": EXPECTED_COUNT, "accessible_author_items": len(all_ids),
+            "running": False, "partial": False, "author_completed": True,
+            "updated_at": dt.datetime.now().isoformat(timespec="seconds"),
+            "counts": {"saved": len(file_ids), "no_ai": len(no_ai_ids), "error": 0},
+            "validation": {"markdown_files": len(files), "unique_video_ids": len(file_ids),
+                           "invalid_files": 0, "duplicate_ids": 0,
+                           "processed_not_in_profile_list": 0},
+            "coverage_note": (f"主页显示作品{EXPECTED_COUNT}；实际展开并核对{len(all_ids)}个本作者作品。"
+                              f"保存{len(file_ids)}个AI文案，{len(no_ai_ids)}个无AI总结，待补提0个。"),
+        }
+        write_json(TMP / "提取完成报告.json", report)
     return validation
 
 
-def main():
-    OUT.mkdir(parents=True, exist_ok=True)
-    TMP.mkdir(parents=True, exist_ok=True)
+def is_fatal_error(exc):
+    text = str(exc).lower()
+    return any(marker in text for marker in (
+        "browser_tab_not_found", "browser_host_unavailable", "登录失效",
+        "验证码", "限流", "页面失效", "login required", "captcha", "rate limit",
+        "too many requests",
+    ))
+
+
+def batch_payload(attempted, counts):
+    return {"attempted": attempted, "saved": counts["saved"],
+            "no_ai": counts["no_ai"], "error": counts["error"]}
+
+
+def run(max_items):
     rows = load_rows()
-    bootstrap_existing(rows)
     if IDS_FILE.exists():
         all_ids = json.loads(IDS_FILE.read_text(encoding="utf-8"))
+        if len(all_ids) != EXPECTED_COUNT or len(set(all_ids)) != len(all_ids):
+            raise RuntimeError(
+                f"resume ID protection failed: expected {EXPECTED_COUNT} unique IDs, "
+                f"got {len(all_ids)} rows and {len(set(all_ids))} unique IDs")
         print(f"RESUME_IDS count={len(all_ids)}", flush=True)
     else:
         all_ids = collect_profile_ids()
-    write_summary(rows, all_ids, True)
+    OUT.mkdir(parents=True, exist_ok=True)
+    TMP.mkdir(parents=True, exist_ok=True)
+    bootstrap_existing(rows)
+    attempted = 0
+    batch_counts = Counter()
+    write_summary(rows, all_ids, True, batch=batch_payload(attempted, batch_counts))
+    limit_reached = False
     for attempt in range(1, 4):
         pending = pending_ids(all_ids, rows)
         write_json(PENDING_FILE, pending)
@@ -507,6 +585,9 @@ def main():
         if not pending:
             break
         for video_id in pending:
+            if max_items is not None and attempted >= max_items:
+                limit_reached = True
+                break
             latest = latest_rows(rows)
             if latest.get(video_id, {}).get("status") in {"saved", "no_ai"}:
                 continue
@@ -517,30 +598,71 @@ def main():
                 append_progress(row)
                 rows.append(row)
                 print(f"SKIP_FILE id={video_id}", flush=True)
-                write_summary(rows, all_ids, True)
+                write_summary(rows, all_ids, True,
+                              batch=batch_payload(attempted, batch_counts))
                 continue
+            attempted += 1
             try:
                 row = process_one(video_id)
             except Exception as exc:
-                if "browser_tab_not_found" in str(exc):
-                    write_summary(rows, all_ids, False, "内置浏览器标签页失效，已停止；修复页面后可从断点续提")
+                if is_fatal_error(exc):
+                    batch_counts["error"] += 1
+                    pending = pending_ids(all_ids, rows)
+                    write_json(PENDING_FILE, pending)
+                    write_summary(rows, all_ids, False,
+                                  f"fatal：{exc}；已保留断点并停止本批",
+                                  partial=True, author_completed=False,
+                                  batch=batch_payload(attempted, batch_counts))
                     raise
                 row = {"id": video_id, "status": "error", "error": str(exc)}
                 print(f"ERROR id={video_id} {exc}", flush=True)
                 time.sleep(1)
+            batch_counts[row["status"]] += 1
             append_progress(row)
             rows.append(row)
             print(f"{row['status'].upper()} id={video_id} title={row.get('title', '')}", flush=True)
-            write_summary(rows, all_ids, True)
+            write_summary(rows, all_ids, True,
+                          batch=batch_payload(attempted, batch_counts))
+        if limit_reached:
+            break
     pending = pending_ids(all_ids, rows)
     write_json(PENDING_FILE, pending)
-    write_summary(rows, all_ids, False, f"处理结束，待补提{len(pending)}个")
+    batch = batch_payload(attempted, batch_counts)
+    if pending:
+        write_summary(rows, all_ids, False,
+                      f"批次结束，真实待补提{len(pending)}个；未生成完整校验或完成报告",
+                      partial=True, author_completed=False, batch=batch)
+        print(f"BATCH_DONE pending={len(pending)} batch={batch}", flush=True)
+        return 0 if max_items is not None else 2
     validation = validate(all_ids, rows)
+    passed = validation["passed"]
+    write_summary(rows, all_ids, False,
+                  "全作者校验通过" if passed else "全作者校验未通过",
+                  partial=not passed, author_completed=passed, batch=batch)
     print("VALIDATION " + json.dumps(validation, ensure_ascii=False), flush=True)
     print(f"DONE pending={len(pending)}", flush=True)
-    if pending or validation["invalid_files"] or validation["duplicate_ids"]:
-        raise SystemExit(2)
+    return 0 if passed else 2
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--max-items", type=int,
+                        help="本批最多实际尝试的作品数；省略则正常全量断点续提")
+    args = parser.parse_args()
+    if args.max_items is not None and args.max_items < 1:
+        parser.error("--max-items must be a positive integer")
+    try:
+        lock_file = acquire_lock()
+    except BlockingIOError:
+        print(f"ERROR: author extraction lock is already held: {LOCK_PATH}", file=sys.stderr)
+        return 73
+    try:
+        verify_browser_binding()
+        return run(args.max_items)
+    finally:
+        fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
+        lock_file.close()
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
