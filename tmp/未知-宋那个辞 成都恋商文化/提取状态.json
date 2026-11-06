@@ -5,15 +5,15 @@
   "running": false,
   "partial": true,
   "author_completed": false,
-  "updated_at": "2026-11-07T04:20:35",
+  "updated_at": "2026-11-07T04:58:03",
   "counts": {
-    "error": 2
+    "error": 4
   },
   "pending": 409,
   "pending_known": true,
-  "note": "fatal: browser binding verification failed: {'worktree_root': True, 'worktree_id': True, 'page': True, 'page_worktree': True, 'tab_profile': True, 'tab_loaded': True, 'profile_page': True, 'profile_worktree': True, 'profile_id': True, 'author_url': False}",
+  "note": "partial_errors，待补提409个",
   "last": {
-    "id": "7602272401598024987",
+    "id": "7680121778726784297",
     "status": "error",
     "error": "AI text or metadata timeout"
   }
