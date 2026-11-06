@@ -7,7 +7,7 @@
   "status": "extracting",
   "total_remaining": 24,
   "completed_this_run": 0,
-  "active_count": 3,
+  "active_count": 4,
   "login_verified": true,
   "isolation_probe": {
     "slots_verified": [
@@ -70,7 +70,7 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main",
       "profile_work_count": 737,
       "source_plan_status": "running",
-      "status": "preflight_running",
+      "status": "id_refresh_fix_required",
       "slot": "A",
       "branch": "AdrianAndroid/orca-a-52327471915-preflight2",
       "dispatch": "ctx_b1f5e1508517",
@@ -80,12 +80,12 @@
       "adaptive_next_limit": null,
       "worker_commit": "b05aa84c752aa0f09351e1e88df1bdd023c7fd09",
       "merge_commit": "7d0f3d0186b3339570e219db4e9da2f56e16ac9e",
-      "last_error": "预检测试误调真实run(2)，已停止、验收保留2篇并改用仅CLI子进程重新预检",
+      "last_error": "页面当前738，固定断点清单737；仅允许实现并申请ID刷新，不得漏掉新增作品",
       "task": "task_4ec80a8b1b81",
       "terminal": "term_b7115e09-4f03-4956-8b56-ecbee23d3b70",
       "branch_base": "7d0f3d0186b3339570e219db4e9da2f56e16ac9e",
-      "preflight_ask": "msg_0c297077d1db",
-      "coordinator_reply": "msg_1a9672867979",
+      "preflight_ask": "msg_b9175c3c4df2",
+      "coordinator_reply": "msg_9d2096fe6a3a",
       "last_partial_batch": {
         "attempted": 2,
         "saved": 2,
@@ -99,7 +99,9 @@
           "7693863248113732902",
           "7664138045670591796"
         ]
-      }
+      },
+      "observed_profile_work_count": 738,
+      "coordinator_tab_show_request": "c2826337-597d-4d86-a26b-8a696f2cf0bb"
     },
     {
       "author": "王小浪不浪成都恋商情感文化传播有限公司",
@@ -107,9 +109,9 @@
       "folder": "wangxiaolangk-王小浪不浪成都恋商情感文化传播有限公司",
       "sec_uid": "MS4wLjABAAAArdqNGZ5-cnvTgxNaN0jB38Kz6ZTeUqtWiuXsodLOEQgfcgK_vQ_D-kcOcmhQGyHk",
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAArdqNGZ5-cnvTgxNaN0jB38Kz6ZTeUqtWiuXsodLOEQgfcgK_vQ_D-kcOcmhQGyHk?from_tab_name=main",
-      "profile_work_count": 490,
+      "profile_work_count": 491,
       "source_plan_status": "ready",
-      "status": "preflight_fix_required",
+      "status": "extracting",
       "slot": "B",
       "branch": "AdrianAndroid/orca-b-wangxiaolangk",
       "dispatch": "ctx_505ffd5a8c58",
@@ -119,14 +121,17 @@
       "adaptive_next_limit": null,
       "worker_commit": null,
       "merge_commit": null,
-      "last_error": "页面当前491，配置/计划快照490；需仅更新作者配置及证据后再放行",
+      "last_error": null,
       "task": "task_64b819ccc5db",
       "terminal": "term_8b6e06ff-8368-4d81-a799-e36bfc876397",
       "branch_base": "bd02f7d",
-      "preflight_ask": "msg_01f0cd750d62",
+      "preflight_ask": "msg_1694b6567cd9",
       "coordinator_reply": "msg_0f1d36b1a172",
       "coordinator_tab_show_request": "2129f400-3e9c-4f68-b4ab-1bdbcbe918e5",
-      "observed_profile_work_count": 491
+      "observed_profile_work_count": 491,
+      "preflight_verified_at": "2026-11-07T03:49:53.336312+08:00",
+      "extraction_authorized_at": "2026-11-07T03:49:53.336312+08:00",
+      "extraction_go_reply": "msg_48834b2e1a6f"
     },
     {
       "author": "宋那个辞 成都恋商文化",
