@@ -1,0 +1,121 @@
+{
+  "run": "run_573b10a4429c",
+  "slot": "D",
+  "task_id": "task_df9665928b9c",
+  "dispatch_id": "ctx_9e33cb20e7dd",
+  "status": "AUTHOR_PREFLIGHT_READY",
+  "ready_for_go": true,
+  "required_go": "AUTHOR_EXTRACTION_GO slot=D douyin_id=89017187607",
+  "real_extraction_started": false,
+  "checked_at": "2026-11-07T03:33:17+08:00",
+  "identity": {
+    "cwd": "/Users/zhaojian/orca/workspaces/ai-learn/dugong",
+    "worktree": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/dugong",
+    "branch": "AdrianAndroid/orca-d-89017187607",
+    "head": "bd02f7db94d3ce5ce2af1094a1a12b60e9abfb06",
+    "profile": "a3385429-07ca-4470-ade7-241ede7f5697",
+    "page": "a09cac76-e55d-450b-9333-8b3ab59a485a",
+    "author": "做性教育的苏南",
+    "douyin_id": "89017187607",
+    "sec_uid": "MS4wLjABAAAACiiwHj4HX6RJRRkxnMk5bLJv2wKaI2Z_2GdqGWanwEo",
+    "profile_work_count": 110,
+    "worktree_current_request_id": "4e9f79cd-0d5f-4d2f-9374-556a5635d042",
+    "worktree_show_request_id": "0671c590-594a-4442-95a2-273ef9e46412"
+  },
+  "startup": {
+    "git_clean": true,
+    "existing_markdown": 0,
+    "progress_exists": false,
+    "output_directory_existed": false,
+    "unexpected_author_processes": 0,
+    "existing_author_lock": false,
+    "old_output": "/Volumes/wd/ai-learn/抖音关注/89017187607-做性教育的苏南",
+    "old_shared_page_removed_from_config": "6c482e4f-531e-453d-bf33-1518b3fa88fe"
+  },
+  "paths": {
+    "tmp": "/Users/zhaojian/orca/workspaces/ai-learn/dugong/tmp/89017187607-做性教育的苏南",
+    "output": "/Users/zhaojian/orca/workspaces/ai-learn/dugong/抖音关注/89017187607-做性教育的苏南",
+    "configured_output": "抖音关注/89017187607-做性教育的苏南",
+    "root_derivation": "TMP.parent.parent",
+    "strict_assertions": true,
+    "lock": "/tmp/orca-da2e8721-3aa8-432b-8a51-fb648a32632c-89017187607-extract.lock"
+  },
+  "extractor": {
+    "environment_only_binding": [
+      "ORCA_WORKTREE",
+      "ORCA_PROFILE",
+      "ORCA_PAGE"
+    ],
+    "missing_environment_fails": true,
+    "all_browser_calls_include_worktree_and_page": true,
+    "max_items_supported": true,
+    "resume_supported": true,
+    "partial_fields_supported": true,
+    "completion_report_blocked_for_partial": true,
+    "consecutive_browser_timeout_stop": 2,
+    "no_substantial_progress_stop_seconds": 300
+  },
+  "tests": {
+    "syntax": {
+      "exit_code": 0,
+      "result": "SYNTAX_OK"
+    },
+    "config_path": {
+      "exit_code": 0,
+      "result": "CONFIG_PATH_OK"
+    },
+    "git_diff_check": {
+      "exit_code": 0
+    },
+    "duplicate_start": {
+      "browser_access": false,
+      "repository_output_writes": false,
+      "holder_pid": 93517,
+      "holder_mode": "--lock-only --lock-hold-seconds 3",
+      "holder_exit_code": 0,
+      "second_mode": "normal extraction entry with --max-items 1",
+      "second_exit_code": 73,
+      "second_stdout": "",
+      "second_stderr": "LOCK_BUSY path=/tmp/orca-da2e8721-3aa8-432b-8a51-fb648a32632c-89017187607-extract.lock",
+      "lock_released_after_test": true,
+      "output_directory_still_absent": true,
+      "progress_or_summary_created": false
+    },
+    "missing_env": {
+      "ORCA_WORKTREE": {
+        "exit_code": 1,
+        "stderr_last_line": "KeyError: 'ORCA_WORKTREE'"
+      },
+      "ORCA_PROFILE": {
+        "exit_code": 1,
+        "stderr_last_line": "KeyError: 'ORCA_PROFILE'"
+      },
+      "ORCA_PAGE": {
+        "exit_code": 1,
+        "stderr_last_line": "KeyError: 'ORCA_PAGE'"
+      }
+    }
+  },
+  "browser_preflight": {
+    "evidence_file": "浏览器绑定.json",
+    "execution_context_normal": true,
+    "sec_uid_matches": true,
+    "author_matches": true,
+    "douyin_id_matches": true,
+    "works_count_matches": true,
+    "followed": true,
+    "logged_in": true,
+    "captcha": false,
+    "rate_limit": false,
+    "page_invalid": false,
+    "new_profile_or_page_created": false
+  },
+  "file_boundary": {
+    "allowed_tmp_only": true,
+    "allowed_output_only": true,
+    "shared_queue_or_plan_modified": false,
+    "other_author_or_worktree_modified": false,
+    "readme_or_master_record_modified": false,
+    "git_write_operations": false
+  }
+}
