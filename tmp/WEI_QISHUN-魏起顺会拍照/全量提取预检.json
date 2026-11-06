@@ -1,0 +1,44 @@
+{
+  "recorded_at": "2026-11-07T02:22:14+08:00",
+  "status": "FULL_AUTHOR_READY_PENDING_SECOND_GATE",
+  "operator": "Orca supervised worker B",
+  "scope": {
+    "author": "魏起顺会拍照",
+    "douyin_id": "WEI_QISHUN",
+    "full_author": true,
+    "formal_command_uses_max_items": false,
+    "other_authors_or_queues": false,
+    "extraction_started": false
+  },
+  "binding": {
+    "worktree": "da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+    "worktree_selector": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+    "root": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+    "branch": "AdrianAndroid/pilot-wei-qishun",
+    "profile": "2bd87da7-ccc5-4110-b058-691269a45eef",
+    "profile_label": "douyin-pilot-WEI_QISHUN",
+    "page": "eb12641b-ca19-470e-8bc2-8e9bce2aed98",
+    "worktree_show_request_id": "42702a21-1df5-456a-ba8b-6c1d9dc498eb",
+    "tab_show_request_id": "bb70fc45-4c0e-4bf0-8a55-669275edd5d2",
+    "tab_profile_show_request_id": "336ca8f6-13af-4433-98cb-bef8ea2e04ae",
+    "all_exact_match": true
+  },
+  "author_precheck": {
+    "eval_request_id": "9b4cec2c-a5c2-4682-818a-cd8c4f4e1247",
+    "url": "https://www.douyin.com/user/MS4wLjABAAAA4D1e4w14lf6_E9RTclnaiebfQJnxGqQtB6U9K4vrNI4?from_tab_name=main",
+    "sec_uid_path_exact_match": true,
+    "name": "魏起顺会拍照",
+    "name_match": true,
+    "has_expected_douyin_id": true,
+    "works_heading": "作品\n41",
+    "login_button": false,
+    "followed": true,
+    "private_message_button": true,
+    "verification_or_rate_limit_marker": "",
+    "coordinator_independent_recheck_message": "msg_4b5e30071c20"
+  },
+  "output": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/抖音关注/WEI_QISHUN-魏起顺会拍照",
+  "formal_command": "ORCA_WORKTREE=<full-id> ORCA_PROFILE=2bd87da7-ccc5-4110-b058-691269a45eef ORCA_PAGE=eb12641b-ca19-470e-8bc2-8e9bce2aed98 python3 -I -u <worktree>/tmp/WEI_QISHUN-魏起顺会拍照/extract_author.py",
+  "credentials_or_qr_saved": false,
+  "awaiting_second_gate": true
+}

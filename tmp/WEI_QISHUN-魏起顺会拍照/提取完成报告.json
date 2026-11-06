@@ -1,0 +1,22 @@
+{
+  "author": "魏起顺会拍照",
+  "douyin_id": "WEI_QISHUN",
+  "sec_uid": "MS4wLjABAAAA4D1e4w14lf6_E9RTclnaiebfQJnxGqQtB6U9K4vrNI4",
+  "profile_work_count": 41,
+  "accessible_author_items": 41,
+  "running": false,
+  "updated_at": "2026-11-07T02:40:27",
+  "counts": {
+    "saved": 0,
+    "no_ai": 41,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 0,
+    "unique_video_ids": 0,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示作品41；实际展开并核对41个本作者作品。保存0个AI文案，41个无AI总结，待补提0个。"
+}

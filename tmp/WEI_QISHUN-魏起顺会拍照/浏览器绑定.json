@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-11-07T02:00:50+08:00",
+  "author": "魏起顺会拍照",
+  "douyin_id": "WEI_QISHUN",
+  "worktree": "da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+  "worktree_selector": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+  "worktree_root": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+  "branch": "AdrianAndroid/pilot-wei-qishun",
+  "repo_id": "da2e8721-3aa8-432b-8a51-fb648a32632c",
+  "profile": "2bd87da7-ccc5-4110-b058-691269a45eef",
+  "profile_label": "douyin-pilot-WEI_QISHUN",
+  "profile_scope": "isolated",
+  "page": "eb12641b-ca19-470e-8bc2-8e9bce2aed98",
+  "harmless_url": "https://example.com/",
+  "douyin_navigation_performed": false,
+  "command_results": {
+    "profile_create": {
+      "ok": true,
+      "request_id": "353765e0-ce55-49e2-85fa-9ba9d1045be1",
+      "summary": "scope=isolated; label=douyin-pilot-WEI_QISHUN; profile=2bd87da7-ccc5-4110-b058-691269a45eef"
+    },
+    "tab_create": {
+      "ok": true,
+      "request_id": "85e8d9b6-6d3c-4967-bb80-89c148132a6d",
+      "summary": "created fixed page eb12641b-ca19-470e-8bc2-8e9bce2aed98 with explicit worktree, isolated profile, and https://example.com/"
+    },
+    "worktree_show": {
+      "ok": true,
+      "request_id": "6c11c794-13ea-47ff-bd97-289dd9fb1f49",
+      "summary": "root and branch match this pilot worktree; isMainWorktree=false"
+    },
+    "tab_show": {
+      "ok": true,
+      "request_id": "bba5e692-56f9-4260-b45f-557e5a7fa3df",
+      "summary": "page belongs to the exact pilot worktree and profile; url=https://example.com/; title=Example Domain; loadError=null"
+    },
+    "tab_profile_show": {
+      "ok": true,
+      "request_id": "53304de7-e333-4a69-a9ec-038ea55a9bee",
+      "summary": "page/worktree/profile triple exactly matches the recorded binding"
+    }
+  }
+}

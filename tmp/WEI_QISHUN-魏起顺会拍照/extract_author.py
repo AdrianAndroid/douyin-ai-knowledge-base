@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
+import argparse
 import datetime as dt
+import fcntl
+import hashlib
 import json
 import os
 import re
@@ -7,21 +10,71 @@ import subprocess
 import time
 from collections import Counter
 from pathlib import Path
+from urllib.parse import urlsplit
 
 TMP = Path(__file__).resolve().parent
 CONFIG = json.loads((TMP / "配置.json").read_text(encoding="utf-8"))
 AUTHOR = CONFIG["author"]
 DOUYIN_ID = CONFIG["douyin_id"]
 SEC_UID = CONFIG["sec_uid"]
-PAGE = CONFIG["page"]
 EXPECTED_COUNT = CONFIG["profile_work_count"]
-OUT = Path(CONFIG["output"])
+ROOT = TMP.parent.parent.resolve()
+assert TMP.is_relative_to(ROOT), "TMP must belong to this worktree"
+configured_output = Path(CONFIG["output"])
+assert not configured_output.is_absolute(), "output must be worktree-relative"
+OUT = (ROOT / configured_output).resolve()
+EXPECTED_OUT = (ROOT / "抖音关注" / "WEI_QISHUN-魏起顺会拍照").resolve()
+assert OUT.is_relative_to(ROOT), "OUT must belong to this worktree"
+assert OUT == EXPECTED_OUT, f"unexpected output path: {OUT}"
+
+ORCA_WORKTREE = os.environ.get("ORCA_WORKTREE", "").strip()
+ORCA_PROFILE = os.environ.get("ORCA_PROFILE", "").strip()
+ORCA_PAGE = os.environ.get("ORCA_PAGE", "").strip()
+missing_env = [name for name, value in {
+    "ORCA_WORKTREE": ORCA_WORKTREE,
+    "ORCA_PROFILE": ORCA_PROFILE,
+    "ORCA_PAGE": ORCA_PAGE,
+}.items() if not value]
+if missing_env:
+    raise SystemExit("missing required environment: " + ", ".join(missing_env))
+FULL_WORKTREE_ID = ORCA_WORKTREE.removeprefix("id:")
+REPO_ID, separator, worktree_root = FULL_WORKTREE_ID.partition("::")
+if not separator or not REPO_ID or not worktree_root:
+    raise SystemExit("ORCA_WORKTREE must be the full <repoId>::<worktreePath> ID")
+assert Path(worktree_root).resolve() == ROOT, "ORCA_WORKTREE does not match this script's worktree"
+WORKTREE_SELECTOR = "id:" + FULL_WORKTREE_ID
+PAGE = ORCA_PAGE
 PROFILE = f"https://www.douyin.com/user/{SEC_UID}?from_tab_name=main"
 PROGRESS = TMP / "提取进度.jsonl"
 SUMMARY = TMP / "提取状态.json"
 IDS_FILE = TMP / "主页作品ID.json"
 PENDING_FILE = TMP / "待补提作品.json"
+PILOT_STATUS = TMP / "试点运行状态.json"
+ORCA_BIN = "/Applications/Orca.app/Contents/Resources/bin/orca"
+lock_digest = hashlib.sha256(f"{REPO_ID}:{DOUYIN_ID}".encode()).hexdigest()[:16]
+LOCK_PATH = Path("/tmp") / f"orca-douyin-{REPO_ID}-{DOUYIN_ID}-{lock_digest}.lock"
 CURRENT_YEAR = 2026
+
+
+class LockBusy(RuntimeError):
+    pass
+
+
+class FatalPilotError(RuntimeError):
+    pass
+
+
+BLOCK_REASON_JS = r'''
+(() => {
+  const text = document.body?.innerText || '';
+  if (/passport|\/login(?:[/?#]|$)/i.test(location.href)) return '登录页面或登录跳转';
+  if (text.includes('扫码登录') && text.includes('验证码登录')) return '登录弹窗';
+  const markers = ['登录后查看', '安全验证', '拖动滑块', '请完成验证', '验证码错误',
+    '访问过于频繁', '操作过于频繁', '请求过于频繁', '当前访问受限'];
+  const marker = markers.find(item => text.includes(item));
+  return marker || '';
+})()
+'''
 
 STATE_JS = r'''
 (() => {
@@ -39,7 +92,7 @@ STATE_JS = r'''
   const id = (location.href.match(/[?&]modal_id=(\d+)/) || [])[1] || '';
   const out = {id, url: location.href, slide: false, author: '', title: '', date: '',
     tags: [], ai: '', hasAiButton: false, aiClicked: false, aiFailed: false,
-    coauthorVerified: false,
+    blockReason: __BLOCK_REASON__, coauthorVerified: false,
     paused: Array.from(document.querySelectorAll('video')).every(v => v.paused)};
   if (!id) return JSON.stringify(out);
   const slide = document.querySelector('.sliderVideo.video_' + id);
@@ -103,8 +156,34 @@ STATE_JS = r'''
 '''
 
 
+def acquire_author_lock():
+    file = LOCK_PATH.open("a+", encoding="utf-8")
+    try:
+        fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError as exc:
+        file.close()
+        raise LockBusy(
+            f"LOCK_BUSY {LOCK_PATH}; exiting before any browser operation or directory write"
+        ) from exc
+    return file
+
+
+def is_fatal_error(exc):
+    message = str(exc).lower()
+    markers = ["browser_tab_not_found", "browser_host_unavailable", "登录", "验证码",
+               "安全验证", "拖动滑块", "请完成验证", "访问受限", "过于频繁", "限流",
+               "captcha", "rate limit", "login"]
+    return isinstance(exc, FatalPilotError) or any(marker in message for marker in markers)
+
+
+def raise_if_blocked(payload):
+    reason = payload.get("blockReason", "") if isinstance(payload, dict) else payload
+    if reason:
+        raise FatalPilotError(f"page requires immediate stop: {reason}")
+
+
 def orca(args, timeout=60):
-    cp = subprocess.run(["orca", *args], text=True, capture_output=True, timeout=timeout)
+    cp = subprocess.run([ORCA_BIN, *args], text=True, capture_output=True, timeout=timeout)
     if cp.returncode != 0:
         raise RuntimeError((cp.stderr or cp.stdout).strip())
     data = json.loads(cp.stdout)
@@ -114,7 +193,8 @@ def orca(args, timeout=60):
 
 
 def eval_js(expression, timeout=60):
-    result = orca(["eval", "--page", PAGE, "--expression", expression, "--json"], timeout)
+    result = orca(["eval", "--worktree", WORKTREE_SELECTOR, "--page", PAGE,
+                   "--expression", expression, "--json"], timeout)
     value = result.get("result")
     if isinstance(value, str):
         try:
@@ -124,10 +204,38 @@ def eval_js(expression, timeout=60):
     return value
 
 
+def verify_browser_binding():
+    worktree = orca(["worktree", "show", "--worktree", WORKTREE_SELECTOR, "--json"]).get("worktree", {})
+    tab = orca(["tab", "show", "--worktree", WORKTREE_SELECTOR, "--page", PAGE, "--json"]).get("tab", {})
+    profile = orca(["tab", "profile", "show", "--worktree", WORKTREE_SELECTOR,
+                    "--page", PAGE, "--json"])
+    checks = {
+        "worktree_root": Path(worktree.get("path", "")).resolve() == ROOT,
+        "worktree_id": worktree.get("id") == FULL_WORKTREE_ID,
+        "page_worktree": tab.get("worktreeId") == FULL_WORKTREE_ID,
+        "tab_profile": tab.get("profileId") == ORCA_PROFILE,
+        "profile_page": profile.get("browserPageId") == PAGE,
+        "profile_worktree": profile.get("worktreeId") == FULL_WORKTREE_ID,
+        "profile_id": profile.get("profileId") == ORCA_PROFILE,
+    }
+    if not all(checks.values()):
+        raise FatalPilotError(f"browser binding verification failed: {checks}")
+    current = urlsplit(tab.get("url", ""))
+    if (current.hostname not in {"douyin.com", "www.douyin.com"}
+            or current.path.rstrip("/") != f"/user/{SEC_UID}"):
+        raise FatalPilotError(f"current page is not the configured author URL: {tab.get('url', '')}")
+    raise_if_blocked(eval_js(BLOCK_REASON_JS))
+    print(f"BINDING_OK worktree={FULL_WORKTREE_ID} profile={ORCA_PROFILE} page={PAGE}", flush=True)
+    return {"worktree": worktree, "tab": tab, "profile": profile}
+
+
 def state(expected_video_id):
     script = STATE_JS.replace("__EXPECTED_AUTHOR__", json.dumps(AUTHOR))
     script = script.replace("__EXPECTED_VIDEO_ID__", json.dumps(expected_video_id))
-    return eval_js(script)
+    script = script.replace("__BLOCK_REASON__", BLOCK_REASON_JS)
+    result = eval_js(script)
+    raise_if_blocked(result)
+    return result
 
 
 def navigate(url):
@@ -268,15 +376,16 @@ def pending_ids(all_ids, rows):
     return [video_id for video_id in all_ids if video_id not in done]
 
 
-def write_summary(rows, all_ids, running, note=""):
+def write_summary(rows, all_ids, running, note="", partial=False, pending_known=True):
     latest = latest_rows(rows)
     counts = Counter(row.get("status", "unknown") for row in latest.values())
     pending = pending_ids(all_ids, rows)
     write_json(SUMMARY, {
         "author": AUTHOR, "douyin_id": DOUYIN_ID,
-        "profile_work_count": EXPECTED_COUNT, "running": running,
+        "profile_work_count": EXPECTED_COUNT, "running": running, "partial": partial,
         "updated_at": dt.datetime.now().isoformat(timespec="seconds"),
-        "counts": dict(counts), "pending": len(pending), "note": note,
+        "counts": dict(counts), "pending": len(pending) if pending_known else None,
+        "pending_known": pending_known, "note": note,
         "last": rows[-1] if rows else None,
     })
 
@@ -291,9 +400,11 @@ JSON.stringify({
   name: (document.querySelector('h1')?.innerText || '').trim(),
   works: Array.from(document.querySelectorAll('h2')).map(e => e.innerText),
   hasId: (document.body?.innerText || '').includes(%s),
-  followed: Array.from(document.querySelectorAll('button')).some(b => b.innerText.trim() === '已关注')
+  followed: Array.from(document.querySelectorAll('button')).some(b => b.innerText.trim() === '已关注'),
+  blockReason: %s
 })
-''' % json.dumps(DOUYIN_ID))
+''' % (json.dumps(DOUYIN_ID), BLOCK_REASON_JS))
+        raise_if_blocked(profile)
         if profile.get("name") == AUTHOR and profile.get("hasId"):
             break
     if (profile.get("name") != AUTHOR or not profile.get("hasId")
@@ -386,8 +497,8 @@ def process_one(video_id):
         elapsed = time.time() - started
         try:
             s = state(video_id)
-        except Exception:
-            if elapsed > 150:
+        except Exception as exc:
+            if is_fatal_error(exc) or elapsed > 150:
                 raise
             time.sleep(1)
             continue
@@ -426,7 +537,7 @@ def process_one(video_id):
                 row["note"] = "本作者主页共创作品；页面明确列出本作者为共创者"
             return row
         no_ai_ready = not s.get("hasAiButton") or (s.get("aiFailed") and elapsed > 60)
-        if elapsed > 15 and no_ai_ready and author:
+        if elapsed > 15 and no_ai_ready and s.get("slide"):
             return {"id": video_id, "title": s.get("title", ""),
                     "date": parse_date(s.get("date", ""), video_id)[0], "status": "no_ai",
                     "note": "AI面板返回失败提示" if s.get("aiFailed") else "无AI入口"}
@@ -489,58 +600,167 @@ def validate(all_ids, rows):
     return validation
 
 
+def now_iso():
+    return dt.datetime.now().astimezone().isoformat(timespec="seconds")
+
+
+def write_run_status(started_at, max_items, attempted_ids, run_rows, all_ids, rows,
+                     result, validation=None, fatal="", pending_known=True):
+    pending = pending_ids(all_ids, rows) if pending_known else []
+    latest = latest_rows(rows)
+    saved = sorted(video_id for video_id, row in latest.items() if row.get("status") == "saved")
+    no_ai = sorted(video_id for video_id, row in latest.items() if row.get("status") == "no_ai")
+    errors = [{"id": video_id, "error": row.get("error", "")}
+              for video_id, row in latest.items() if row.get("status") == "error"]
+    run_saved = list(dict.fromkeys(row["id"] for row in run_rows if row.get("status") == "saved"))
+    run_no_ai = list(dict.fromkeys(row["id"] for row in run_rows if row.get("status") == "no_ai"))
+    run_errors = [{"id": row.get("id"), "error": row.get("error", "")}
+                  for row in run_rows if row.get("status") == "error"]
+    latest_counts = Counter(row.get("status", "unknown") for row in latest.values())
+    history_attempted = [row["id"] for row in rows if row.get("id") and not row.get("existing")
+                         and not str(row.get("source", "")).startswith("user_")]
+    reported_attempted = history_attempted if max_items is None else attempted_ids
+    validation_ok = (validation is not None and not pending
+                     and not validation["invalid_files"] and not validation["duplicate_ids"])
+    author_completed = max_items is None and validation_ok and not fatal
+    write_json(PILOT_STATUS, {
+        "author": AUTHOR, "douyin_id": DOUYIN_ID, "full_author": max_items is None,
+        "max_items": max_items, "attempted_ids": reported_attempted,
+        "attempted_count": len(reported_attempted),
+        "attempted_unique_count": len(set(reported_attempted)),
+        "run_attempted_ids": attempted_ids, "run_attempted_count": len(attempted_ids),
+        "saved": saved, "saved_count": len(saved),
+        "no_ai": no_ai, "no_ai_count": len(no_ai),
+        "errors": errors, "error_count": len(errors),
+        "run_saved": run_saved, "run_no_ai": run_no_ai, "run_errors": run_errors,
+        "latest_counts": dict(latest_counts),
+        "pending": pending, "pending_count": len(pending), "pending_known": pending_known,
+        "started_at": started_at, "finished_at": now_iso(),
+        "author_completed": author_completed, "运行结果": result,
+        "fatal": fatal or None, "validation": validation,
+        "output": str(OUT),
+    })
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--max-items", type=int, choices=[2], default=None,
+                        help="isolated two-item pilot; omit for the full three-round author run")
+    return parser.parse_args()
+
+
 def main():
-    OUT.mkdir(parents=True, exist_ok=True)
-    TMP.mkdir(parents=True, exist_ok=True)
-    rows = load_rows()
-    bootstrap_existing(rows)
-    if IDS_FILE.exists():
-        all_ids = json.loads(IDS_FILE.read_text(encoding="utf-8"))
-        print(f"RESUME_IDS count={len(all_ids)}", flush=True)
-    else:
-        all_ids = collect_profile_ids()
-    write_summary(rows, all_ids, True)
-    for attempt in range(1, 4):
-        pending = pending_ids(all_ids, rows)
-        write_json(PENDING_FILE, pending)
-        print(f"ROUND {attempt} pending={len(pending)}", flush=True)
-        if not pending:
-            break
-        for video_id in pending:
-            latest = latest_rows(rows)
-            if latest.get(video_id, {}).get("status") in {"saved", "no_ai"}:
-                continue
-            existing_files = sorted(OUT.glob(f"*-{video_id}-*.md"))
-            if existing_files:
-                row = {"id": video_id, "status": "saved",
-                       "file": existing_files[0].name, "existing": True}
-                append_progress(row)
-                rows.append(row)
-                print(f"SKIP_FILE id={video_id}", flush=True)
-                write_summary(rows, all_ids, True)
-                continue
-            try:
-                row = process_one(video_id)
-            except Exception as exc:
-                if "browser_tab_not_found" in str(exc):
-                    write_summary(rows, all_ids, False, "内置浏览器标签页失效，已停止；修复页面后可从断点续提")
-                    raise
-                row = {"id": video_id, "status": "error", "error": str(exc)}
-                print(f"ERROR id={video_id} {exc}", flush=True)
-                time.sleep(1)
-            append_progress(row)
-            rows.append(row)
-            print(f"{row['status'].upper()} id={video_id} title={row.get('title', '')}", flush=True)
-            write_summary(rows, all_ids, True)
-    pending = pending_ids(all_ids, rows)
-    write_json(PENDING_FILE, pending)
-    write_summary(rows, all_ids, False, f"处理结束，待补提{len(pending)}个")
-    validation = validate(all_ids, rows)
-    print("VALIDATION " + json.dumps(validation, ensure_ascii=False), flush=True)
-    print(f"DONE pending={len(pending)}", flush=True)
-    if pending or validation["invalid_files"] or validation["duplicate_ids"]:
-        raise SystemExit(2)
+    args = parse_args()
+    try:
+        lock_file = acquire_author_lock()
+    except LockBusy as exc:
+        print(str(exc), file=os.sys.stderr, flush=True)
+        return 73
+
+    partial = args.max_items is not None
+    started_at = now_iso()
+    rows = []
+    run_rows = []
+    all_ids = []
+    ids_known = False
+    attempted_ids = []
+    validation = None
+    fatal = ""
+    result = "incomplete"
+    try:
+        try:
+            verify_browser_binding()
+            OUT.mkdir(parents=True, exist_ok=True)
+            TMP.mkdir(parents=True, exist_ok=True)
+            rows = load_rows()
+            bootstrap_existing(rows)
+            if IDS_FILE.exists():
+                all_ids = json.loads(IDS_FILE.read_text(encoding="utf-8"))
+                if not all_ids:
+                    raise FatalPilotError("主页作品ID.json is empty")
+                print(f"RESUME_IDS count={len(all_ids)}", flush=True)
+            else:
+                all_ids = collect_profile_ids()
+            ids_known = True
+            write_summary(rows, all_ids, True, "试点运行中" if partial else "完整作者提取运行中",
+                          partial=partial)
+            for attempt in range(1, 2 if partial else 4):
+                pending = pending_ids(all_ids, rows)
+                batch = pending[:args.max_items] if partial else pending
+                write_json(PENDING_FILE, pending)
+                print(f"ROUND {attempt} pending={len(pending)} batch={len(batch)}", flush=True)
+                if not batch:
+                    break
+                for video_id in batch:
+                    latest = latest_rows(rows)
+                    if latest.get(video_id, {}).get("status") in {"saved", "no_ai"}:
+                        continue
+                    attempted_ids.append(video_id)
+                    existing_files = sorted(OUT.glob(f"*-{video_id}-*.md"))
+                    if existing_files:
+                        row = {"id": video_id, "status": "saved",
+                               "file": existing_files[0].name, "existing": True}
+                        append_progress(row)
+                        rows.append(row)
+                        run_rows.append(row)
+                        print(f"SKIP_FILE id={video_id}", flush=True)
+                        write_summary(rows, all_ids, True, partial=partial)
+                        continue
+                    try:
+                        row = process_one(video_id)
+                    except Exception as exc:
+                        row = {"id": video_id, "status": "error", "error": str(exc)}
+                        print(f"ERROR id={video_id} {exc}", flush=True)
+                        if is_fatal_error(exc):
+                            fatal = f"id={video_id}: {exc}"
+                        elif not partial:
+                            time.sleep(1)
+                    append_progress(row)
+                    rows.append(row)
+                    run_rows.append(row)
+                    print(f"{row['status'].upper()} id={video_id} title={row.get('title', '')}", flush=True)
+                    write_summary(rows, all_ids, True, partial=partial)
+                    if fatal:
+                        print(f"FATAL_STOP {fatal}", flush=True)
+                        break
+                if fatal:
+                    break
+            if not fatal:
+                if partial:
+                    result = ("partial_errors" if any(row.get("status") == "error" for row in run_rows)
+                              else "partial_completed")
+                else:
+                    validation = validate(all_ids, rows)
+                    print("VALIDATION " + json.dumps(validation, ensure_ascii=False), flush=True)
+                    pending = pending_ids(all_ids, rows)
+                    if not pending and not validation["invalid_files"] and not validation["duplicate_ids"]:
+                        result = "completed"
+        except Exception as exc:
+            fatal = str(exc)
+            print(f"FATAL_STOP {fatal}", flush=True)
+        finally:
+            if fatal:
+                result = "fatal"
+            pending = pending_ids(all_ids, rows) if ids_known else []
+            if ids_known:
+                write_json(PENDING_FILE, pending)
+            note = (f"fatal: {fatal}" if fatal else
+                    f"{result}，待补提{len(pending)}个" if ids_known else result)
+            write_summary(rows, all_ids, False, note, partial=partial, pending_known=ids_known)
+            write_run_status(started_at, args.max_items, attempted_ids, run_rows, all_ids, rows,
+                             result, validation, fatal, pending_known=ids_known)
+            print(f"DONE result={result} pending={len(pending) if ids_known else 'unknown'}", flush=True)
+    finally:
+        lock_file.close()
+
+    if fatal:
+        return 3
+    if partial and any(row.get("status") == "error" for row in run_rows):
+        return 2
+    if not partial and result != "completed":
+        return 2
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

@@ -1,0 +1,21 @@
+{
+  "author": "魏起顺会拍照",
+  "douyin_id": "WEI_QISHUN",
+  "profile_work_count": 41,
+  "running": false,
+  "partial": false,
+  "updated_at": "2026-11-07T02:40:27",
+  "counts": {
+    "no_ai": 41
+  },
+  "pending": 0,
+  "pending_known": true,
+  "note": "completed，待补提0个",
+  "last": {
+    "id": "7538401805022842121",
+    "status": "no_ai",
+    "note": "用户现场确认该作者所有视频均无AI文案，记录并跳过",
+    "source": "user_direct_instruction_all_author_no_ai",
+    "recorded_at": "2026-11-07T02:37:47+08:00"
+  }
+}

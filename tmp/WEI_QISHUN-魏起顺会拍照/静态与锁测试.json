@@ -1,0 +1,42 @@
+{
+  "recorded_at": "2026-11-07T02:11:40+08:00",
+  "operator": "Orca supervised worker B",
+  "douyin_accessed": false,
+  "syntax_and_paths": {
+    "result": "passed",
+    "command": "ORCA_WORKTREE=<full-id> ORCA_PROFILE=<isolated-profile> ORCA_PAGE=<fixed-page> python3 -I <inline ast/runpy assertions>",
+    "root": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+    "tmp": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/tmp/WEI_QISHUN-魏起顺会拍照",
+    "out": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/抖音关注/WEI_QISHUN-魏起顺会拍照",
+    "config_output": "抖音关注/WEI_QISHUN-魏起顺会拍照",
+    "config_page_present": false,
+    "worktree_selector": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+    "lock_path": "/tmp/orca-douyin-da2e8721-3aa8-432b-8a51-fb648a32632c-WEI_QISHUN-3c69e9286b3eed98.lock"
+  },
+  "lock_exclusion": {
+    "result": "passed",
+    "holder_pid": 47660,
+    "second_process_returncode": 73,
+    "elapsed_seconds": 0.089,
+    "stdout": "",
+    "stderr": "LOCK_BUSY /tmp/orca-douyin-da2e8721-3aa8-432b-8a51-fb648a32632c-WEI_QISHUN-3c69e9286b3eed98.lock; exiting before any browser operation or directory write\n",
+    "tmp_files_unchanged": true,
+    "output_directory_created": false,
+    "browser_call_proof": "main() returns 73 from the LockBusy branch before verify_browser_binding(); every Orca browser call is inside verify_browser_binding() or later. The actual second process took that branch, wrote no TMP/OUT files, and did not access Douyin.",
+    "lock_file_content_used_as_liveness": false,
+    "test_invocation_used_max_items_2_only_for_lock_test": true,
+    "formal_run_will_use_full_mode_without_max_items": true
+  },
+  "diff_check": {
+    "result": "passed",
+    "command": "git diff --check -- tmp/WEI_QISHUN-魏起顺会拍照/extract_author.py tmp/WEI_QISHUN-魏起顺会拍照/配置.json"
+  },
+  "page_after_tests": {
+    "tab_show_request_id": "8b947031-5246-4393-8838-9795b35bdf81",
+    "url": "https://example.com/",
+    "title": "Example Domain",
+    "worktree_id": "da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+    "profile_id": "2bd87da7-ccc5-4110-b058-691269a45eef",
+    "load_error": null
+  }
+}

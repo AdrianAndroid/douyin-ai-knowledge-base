@@ -1,0 +1,83 @@
+{
+  "recorded_at": "2026-11-07T02:37:47+08:00",
+  "user_instruction": "我看了一下，这个作者所有的视频都没有AI文案，记录",
+  "author": "魏起顺会拍照",
+  "douyin_id": "WEI_QISHUN",
+  "profile_ids_count": 41,
+  "final_no_ai_ids": [
+    "7661218624531886577",
+    "7634107759310623857",
+    "7601472183589002097",
+    "7701669983253040315",
+    "7699840869944024817",
+    "7698690168576387515",
+    "7697190874032375035",
+    "7695012571548121457",
+    "7692765898649834675",
+    "7690919865859298149",
+    "7690471477997554097",
+    "7687568196689253553",
+    "7682371693021459569",
+    "7680510108710936241",
+    "7674173114330394801",
+    "7673089454281896569",
+    "7671914171654770545",
+    "7670852989926578609",
+    "7669010581102030449",
+    "7666044978150808250",
+    "7664554688289897137",
+    "7655658726401670065",
+    "7654161085306542833",
+    "7650831543283682225",
+    "7647112820768811505",
+    "7641057881971178617",
+    "7636741547165415909",
+    "7631139025701538033",
+    "7627068380285286833",
+    "7626672476748322033",
+    "7623699021597143242",
+    "7617754665367059129",
+    "7613324564508509658",
+    "7607774804469711729",
+    "7602924036871748849",
+    "7600689437546783665",
+    "7569556731312147301",
+    "7542834333317532987",
+    "7541709503944641851",
+    "7538765115031637299",
+    "7538401805022842121"
+  ],
+  "all_previous_progress_preserved": true,
+  "generated_markdown_quarantined_not_deleted": [
+    {
+      "from": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/抖音关注/WEI_QISHUN-魏起顺会拍照/20260711-7661218624531886577-第1集：快来学！！我终于找到了大斜坡拍照技巧啦！！.md",
+      "to": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/tmp/WEI_QISHUN-魏起顺会拍照/用户确认无AI-误提取隔离/20260711-7661218624531886577-第1集：快来学！！我终于找到了大斜坡拍照技巧啦！！.md",
+      "bytes": 988
+    },
+    {
+      "from": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/抖音关注/WEI_QISHUN-魏起顺会拍照/20261016-7697190874032375035-第4集：快来学！！我终于找到啦情侣栾花拍照技巧啦.md",
+      "to": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/tmp/WEI_QISHUN-魏起顺会拍照/用户确认无AI-误提取隔离/20261016-7697190874032375035-第4集：快来学！！我终于找到啦情侣栾花拍照技巧啦.md",
+      "bytes": 1126
+    },
+    {
+      "from": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/抖音关注/WEI_QISHUN-魏起顺会拍照/20261020-7698690168576387515-快来学！！我终于找到了秋季落叶拍照技巧啦.md",
+      "to": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/tmp/WEI_QISHUN-魏起顺会拍照/用户确认无AI-误提取隔离/20261020-7698690168576387515-快来学！！我终于找到了秋季落叶拍照技巧啦.md",
+      "bytes": 714
+    },
+    {
+      "from": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/抖音关注/WEI_QISHUN-魏起顺会拍照/20261023-7699840869944024817-快来学！！我终于找到啦落叶拍照技巧啦.md",
+      "to": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/tmp/WEI_QISHUN-魏起顺会拍照/用户确认无AI-误提取隔离/20261023-7699840869944024817-快来学！！我终于找到啦落叶拍照技巧啦.md",
+      "bytes": 809
+    },
+    {
+      "from": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/抖音关注/WEI_QISHUN-魏起顺会拍照/20261028-7701669983253040315-快来学！！我终于找到了草垛拍照技巧啦！！.md",
+      "to": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/tmp/WEI_QISHUN-魏起顺会拍照/用户确认无AI-误提取隔离/20261028-7701669983253040315-快来学！！我终于找到了草垛拍照技巧啦！！.md",
+      "bytes": 822
+    }
+  ],
+  "quarantine_directory": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/tmp/WEI_QISHUN-魏起顺会拍照/用户确认无AI-误提取隔离",
+  "output_markdown_remaining": 0,
+  "interrupted_task_id": "bg3x4xv8b",
+  "process_absent_after_stop": true,
+  "next_step": "Run full mode without --max-items to write truthful pending/summary/validation/completion status; no items should be attempted."
+}
