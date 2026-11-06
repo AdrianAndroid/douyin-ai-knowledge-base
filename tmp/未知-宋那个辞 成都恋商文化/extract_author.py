@@ -631,7 +631,7 @@ def validate(all_ids, rows):
     return validation
 
 
-def write_run_status(started_at, max_items, attempted_ids, run_rows, all_ids, rows,
+def write_run_status(started_at, max_items, skip_ids, attempted_ids, run_rows, all_ids, rows,
                      result, validation, fatal, pending_known):
     latest = latest_rows(rows)
     pending = pending_ids(all_ids, rows) if pending_known else None
@@ -645,6 +645,7 @@ def write_run_status(started_at, max_items, attempted_ids, run_rows, all_ids, ro
         "author": AUTHOR, "douyin_id": DOUYIN_ID,
         "running": False, "partial": not author_completed,
         "author_completed": author_completed, "max_items": max_items,
+        "skip_ids": sorted(skip_ids),
         "attempted_ids": attempted_ids, "attempted_count": len(attempted_ids),
         "run_saved": [row["id"] for row in run_rows if row.get("status") == "saved"],
         "run_no_ai": [row["id"] for row in run_rows if row.get("status") == "no_ai"],
@@ -664,6 +665,8 @@ def parse_args():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--max-items", type=int, default=None,
                         help="只处理本批最多N个待提作品；省略则完整作者三轮断点续提")
+    parser.add_argument("--skip-ids", nargs="+", default=[], metavar="ID",
+                        help="本批延后这些作品；仍保留pending且不新增其进度")
     args = parser.parse_args()
     if args.max_items is not None and args.max_items < 1:
         parser.error("--max-items must be a positive integer")
@@ -675,6 +678,7 @@ def main():
     args = parse_args()
     lock_file = acquire_author_lock()
     partial_batch = args.max_items is not None
+    skip_ids = set(args.skip_ids)
     started_at = dt.datetime.now().isoformat(timespec="seconds")
     rows, run_rows, all_ids, attempted_ids = [], [], [], []
     ids_known = False
@@ -701,9 +705,11 @@ def main():
             for attempt in range(1, 2 if partial_batch else 4):
                 check_stall()
                 pending = pending_ids(all_ids, rows)
-                batch = pending[:args.max_items] if partial_batch else pending
+                eligible = [video_id for video_id in pending if video_id not in skip_ids]
+                batch = eligible[:args.max_items] if partial_batch else eligible
                 write_json(PENDING_FILE, pending)
-                print(f"ROUND {attempt} pending={len(pending)} batch={len(batch)}", flush=True)
+                print(f"ROUND {attempt} pending={len(pending)} deferred={len(pending)-len(eligible)} "
+                      f"batch={len(batch)}", flush=True)
                 if not batch:
                     break
                 for video_id in batch:
@@ -771,8 +777,8 @@ def main():
                     f"{result}，待补提{len(pending)}个" if pending is not None else result)
             write_summary(rows, all_ids, False, note, partial=not author_completed,
                           pending_known=ids_known, author_completed=author_completed)
-            write_run_status(started_at, args.max_items, attempted_ids, run_rows, all_ids, rows,
-                             result, validation, fatal, pending_known=ids_known)
+            write_run_status(started_at, args.max_items, skip_ids, attempted_ids, run_rows, all_ids,
+                             rows, result, validation, fatal, pending_known=ids_known)
             print(f"DONE result={result} pending={len(pending) if pending is not None else 'unknown'}",
                   flush=True)
     finally:
