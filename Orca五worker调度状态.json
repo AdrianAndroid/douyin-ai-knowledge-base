@@ -7,7 +7,7 @@
   "status": "extracting",
   "total_remaining": 24,
   "completed_this_run": 0,
-  "active_count": 1,
+  "active_count": 2,
   "login_verified": true,
   "isolation_probe": {
     "slots_verified": [
@@ -70,22 +70,22 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main",
       "profile_work_count": 737,
       "source_plan_status": "running",
-      "status": "id_refresh_failed_validation_pending_reconciliation",
+      "status": "known737_partial_batch_max2_authorized",
       "slot": "A",
-      "branch": "AdrianAndroid/orca-a-52327471915-refresh2",
+      "branch": "AdrianAndroid/orca-a-52327471915-known737-batch1",
       "dispatch": "ctx_b1f5e1508517",
       "existing_markdown": 109,
       "progress_exists": true,
       "resume_audit_required": true,
-      "adaptive_next_limit": null,
+      "adaptive_next_limit": 2,
       "worker_commit": "ded499704773b50f66f17169868b7cd053150bc9",
       "merge_commit": "13da044baa65296ed0f595e7f7d6135078eac81f",
       "last_error": "refresh2目标738但44轮实际仍737，最后25轮稳定，added=0/missing=0；严格校验拒绝覆盖，旧737/628/109完整保留，真实提取未授权",
       "task": "task_4ec80a8b1b81",
       "terminal": "term_b7115e09-4f03-4956-8b56-ecbee23d3b70",
-      "branch_base": "8bd6b7ceb416f534497888421bbd3aa87bb4ffe0",
+      "branch_base": "691c9e8",
       "preflight_ask": "msg_b9175c3c4df2",
-      "coordinator_reply": "msg_9f7ba0af46cf",
+      "coordinator_reply": "msg_5bbbbed025a7",
       "last_partial_batch": {
         "attempted": 2,
         "saved": 2,
@@ -133,6 +133,18 @@
         "real_extraction_invoked": false,
         "worker_commit": "ded499704773b50f66f17169868b7cd053150bc9",
         "merge_commit": "13da044baa65296ed0f595e7f7d6135078eac81f"
+      },
+      "known737_partial_batch_go": {
+        "message": "msg_5bbbbed025a7",
+        "max_items": 2,
+        "expected_unattempted_ids": [
+          "7663790068393430312",
+          "7663391157749157174"
+        ],
+        "refresh_authorized": false,
+        "author_completion_authorized": false,
+        "profile_count_discrepancy": "previous_page_display_738_vs_expanded_unique_ids_737",
+        "settled": false
       }
     },
     {
@@ -727,5 +739,5 @@
     }
   ],
   "real_extraction_concurrency_limit": 2,
-  "updated_at": "2026-11-07T04:51:47+08:00"
+  "updated_at": "2026-11-07T04:55:59+08:00"
 }
