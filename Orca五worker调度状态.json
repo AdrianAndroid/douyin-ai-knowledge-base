@@ -7,7 +7,7 @@
   "status": "extracting",
   "total_remaining": 24,
   "completed_this_run": 0,
-  "active_count": 2,
+  "active_count": 1,
   "login_verified": true,
   "isolation_probe": {
     "slots_verified": [
@@ -70,7 +70,7 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main",
       "profile_work_count": 737,
       "source_plan_status": "running",
-      "status": "binding_fix_test_only",
+      "status": "id_refresh_in_progress",
       "slot": "A",
       "branch": "AdrianAndroid/orca-a-52327471915-refresh2",
       "dispatch": "ctx_b1f5e1508517",
@@ -80,12 +80,12 @@
       "adaptive_next_limit": null,
       "worker_commit": "c723e30",
       "merge_commit": "8bd6b7ceb416f534497888421bbd3aa87bb4ffe0",
-      "last_error": "仅ID刷新在绑定校验退出1：tab worktreeId无id:前缀；737 ID、628 pending、109篇及进度未变；真实刷新和提取未授权",
+      "last_error": "绑定比较已修正并通过正反向假CLI测试；仅授权一次738 ID刷新，真实作品提取未授权",
       "task": "task_4ec80a8b1b81",
       "terminal": "term_b7115e09-4f03-4956-8b56-ecbee23d3b70",
       "branch_base": "8bd6b7ceb416f534497888421bbd3aa87bb4ffe0",
       "preflight_ask": "msg_b9175c3c4df2",
-      "coordinator_reply": "msg_d65a26b15e38",
+      "coordinator_reply": "msg_3d9f268cb1ae",
       "last_partial_batch": {
         "attempted": 2,
         "saved": 2,
@@ -110,6 +110,11 @@
         "markdown": 109,
         "worker_commit": "c723e30",
         "merge_commit": "8bd6b7ceb416f534497888421bbd3aa87bb4ffe0"
+      },
+      "id_refresh_go": {
+        "message": "msg_3d9f268cb1ae",
+        "expected_count": 738,
+        "extraction_authorized": false
       }
     },
     {
@@ -160,7 +165,7 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAAk60tAmbWm0U1voip4VgEycfrn75m_iFdYDdXAhi73AmAcsqD0GGnzEYBayDSitMu?from_tab_name=main",
       "profile_work_count": 407,
       "source_plan_status": "ready",
-      "status": "extracting_next_batch_max5",
+      "status": "profile_restore_queued",
       "slot": "C",
       "branch": "AdrianAndroid/orca-c-81957333169-batch2",
       "dispatch": "ctx_f78f85235fd4",
@@ -168,9 +173,9 @@
       "progress_exists": true,
       "resume_audit_required": false,
       "adaptive_next_limit": 5,
-      "worker_commit": "5070195",
-      "merge_commit": "2bfe84e2382704bd8041ee8c6ee7b6fa113e3af4",
-      "last_error": "页面407与实际展开409唯一ID双重量保留；2个超时仍pending；下一批须延后旧错误且真实GO未授权",
+      "worker_commit": "9427038",
+      "merge_commit": "29d9776eca3e686ff39cde636ce68ee59348cd71",
+      "last_error": "第二批author_url=false，在任何新作品前退出；409 ID/409 pending/2行进度不变；须先恢复精确作者主页，当前未授权导航或续提",
       "task": "task_0d58aeec79d0",
       "terminal": "term_7063e895-d363-4c0f-92e1-8fcb63d5fbb7",
       "branch_base": "8fc8c65dfed9ff491d77f6108a39fd9b60002f39",
@@ -179,7 +184,7 @@
       "preflight_ask": "msg_3e01798c6d80",
       "extraction_go_reply": "msg_8e66ccef04d4",
       "coordinator_tab_show_request": "b20a8862-c442-4dc0-b7a5-56838f43db3b",
-      "coordinator_reply": "msg_1df0d14fa667",
+      "coordinator_reply": "msg_3f3e7f5af0c1",
       "observed_profile_work_count": 407,
       "expanded_profile_ids": 409,
       "last_partial_batch": {
@@ -191,13 +196,12 @@
         "partial": true,
         "author_completed": false
       },
-      "next_batch_go": {
-        "message": "msg_1df0d14fa667",
-        "max_items": 5,
-        "skip_ids": [
-          "7613069165708053795",
-          "7602272401598024987"
-        ]
+      "last_failed_batch": {
+        "attempted_new": 0,
+        "pending": 409,
+        "progress_rows": 2,
+        "markdown": 0,
+        "reason": "author_url=false"
       }
     },
     {
@@ -208,17 +212,17 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAACiiwHj4HX6RJRRkxnMk5bLJv2wKaI2Z_2GdqGWanwEo?from_tab_name=main",
       "profile_work_count": 110,
       "source_plan_status": "ready",
-      "status": "next_batch_queued_concurrency_limit",
+      "status": "extracting_next_batch_max2",
       "slot": "D",
       "branch": "AdrianAndroid/orca-d-89017187607-batch2",
       "dispatch": "ctx_9e33cb20e7dd",
       "existing_markdown": 2,
       "progress_exists": true,
       "resume_audit_required": false,
-      "adaptive_next_limit": 5,
+      "adaptive_next_limit": 2,
       "worker_commit": "725fcaf",
       "merge_commit": "6e83b5da418321f362fbf4c55abef7192e665418",
-      "last_error": "首批2篇saved、2个AI正文/元数据超时、108 pending；下一批须延后旧错误且真实GO未授权",
+      "last_error": "D离线skip审查通过；E/C释放槽位后仅授权2个新ID，旧2错误继续pending",
       "task": "task_df9665928b9c",
       "terminal": "term_db01d40f-9ce7-45fa-b599-2036e201ba98",
       "branch_base": "8fc8c65dfed9ff491d77f6108a39fd9b60002f39",
@@ -227,7 +231,7 @@
       "preflight_ask": "msg_a63484a24de3",
       "extraction_go_reply": "msg_3c4a1c229eb3",
       "coordinator_tab_show_request": "389b7470-a3d7-4e77-819b-77ca5c9d75a8",
-      "coordinator_reply": "msg_45efd906ed92",
+      "coordinator_reply": "msg_cc2dea57dee9",
       "last_partial_batch": {
         "attempted": 4,
         "saved": 2,
@@ -237,13 +241,13 @@
         "partial": true,
         "author_completed": false
       },
-      "next_batch_proposed": {
-        "max_items": 5,
+      "next_batch_go": {
+        "message": "msg_cc2dea57dee9",
+        "max_items": 2,
         "skip_ids": [
           "7675722470506171654",
           "7704580351188617977"
-        ],
-        "authorized": false
+        ]
       }
     },
     {
@@ -254,7 +258,7 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAARhiUZGLfruwLPx2cnDw7jHGUObkP_JEdCxW1lwnAjySzQmvzVryOLmB14LSbv-iS?from_tab_name=main",
       "profile_work_count": 68,
       "source_plan_status": "ready",
-      "status": "extracting_next_batch_max2",
+      "status": "extraction_paused_pending_diagnostic",
       "slot": "E",
       "branch": "AdrianAndroid/orca-e-54771197908-batch3",
       "dispatch": "ctx_7060b58aff01",
@@ -262,9 +266,9 @@
       "progress_exists": true,
       "resume_audit_required": false,
       "adaptive_next_limit": 2,
-      "worker_commit": "7435a02",
-      "merge_commit": "78e60b25c678d4f3118e00c3688f708ae9b2847a",
-      "last_error": "skip实现后的runpy测试再次误入真实路径；无新增Markdown/进度，summary异常收尾已保留；仅授权正常CLI最多2个新ID并跳过2个旧错误",
+      "worker_commit": "124d914",
+      "merge_commit": "6435c4d0ac707c66240e59612121a33803bf57b0",
+      "last_error": "第三批2个新ID也全部AI正文/元数据超时；累计saved2/error4唯一、66 pending；不再扩大skip，等待只读诊断授权",
       "task": "task_b597bbadc1a0",
       "terminal": "term_8a98e5b8-7cb2-4f23-a9e7-31ede30fd3e1",
       "branch_base": "78e60b25c678d4f3118e00c3688f708ae9b2847a",
@@ -273,24 +277,22 @@
       "preflight_ask": "msg_3b509921ace3",
       "extraction_go_reply": "msg_f6cb3e043c07",
       "coordinator_tab_show_request": "31efba45-f3ad-4360-85fc-9a76ee96d8ce",
-      "coordinator_reply": "msg_8b5bb59a0246",
+      "coordinator_reply": "msg_ad237b1227bb",
       "last_partial_batch": {
-        "attempted": 6,
-        "saved": 2,
+        "batch": 3,
+        "attempted": 2,
+        "saved": 0,
         "no_ai": 0,
-        "errors": 4,
-        "unique_error_ids": 2,
+        "errors": 2,
+        "cumulative_attempted": 8,
+        "cumulative_saved": 2,
+        "cumulative_errors": 6,
+        "unique_error_ids": 4,
         "pending": 66,
+        "progress_rows": 8,
+        "markdown": 2,
         "partial": true,
         "author_completed": false
-      },
-      "next_batch_go": {
-        "message": "msg_8b5bb59a0246",
-        "max_items": 2,
-        "skip_ids": [
-          "7597740933051960591",
-          "7699798075400916266"
-        ]
       }
     },
     {
@@ -675,5 +677,5 @@
     }
   ],
   "real_extraction_concurrency_limit": 2,
-  "updated_at": "2026-11-07T04:18:36+08:00"
+  "updated_at": "2026-11-07T04:26:41+08:00"
 }

@@ -141,6 +141,14 @@
 - D 通过 `msg_23c12f30d2b9` 报告离线测试就绪。协调器确认 skip 在 max-items 选择前排除，未知 ID、重复和非法 ID 均拒绝；真实首批仍是 4 行进度、2 篇 Markdown、108 pending，只有提取器和执行记录变化。
 - 因 E+C 已占满两个真实提取槽位，回复 `msg_45efd906ed92` 仅给 D `TEST_ONLY_ACCEPTED` 和 `NEXT_BATCH_QUEUED`，明确**没有发放 GO**。D 随后正常结束当前 agent turn 并保持 dispatch 打开；这不是提取失败，也不是新的作者完成或授权。
 
+### 步骤 13：C/E 第二批封账，D 缩为两项，A 再次仅刷新
+
+- C 第二批在任何新作品处理前因 `author_url=false` 退出 3：资源/Profile/page 均匹配，但固定 page 当时位于同作者另一作品弹层 URL。独立确认 attempted_new=0、409 ID、409 pending、2 行进度、0 Markdown，skip 未新增进度，pending_known 已修正为 true。worker 提交 `9427038`，main 合并 `29d9776eca3e686ff39cde636ce68ee59348cd71`。回复 `msg_3f3e7f5af0c1`：不放宽身份校验，下一步必须先恢复精确作者主页；当前仅排队，未授权导航或续提。
+- E 第三批严格跳过两个旧错误，处理两个新 ID `7699441653064404258`、`7697195016107658547`，两者仍各一次 AI 正文/元数据超时。累计 8 行进度、attempted=8、saved=2、errors=6，最新唯一 saved=2、error=4，pending=66，Markdown 仍 2 篇；进程和锁停止/释放。worker 提交 `124d914`，main 合并 `6435c4d0ac707c66240e59612121a33803bf57b0`。
+- 因 E 连两个新 ID 也全部超时，回复 `msg_ad237b1227bb` 将 E 设为 `EXTRACTION_PAUSED_NO_GO`，不再通过不断扩大 skip 列表消耗新 ID；后续须先获只读诊断授权。
+- A 的绑定修正经 diff 审查：仅将 tab 返回值与 `REPO_ID::resolved_ROOT` 精确比较，CLI 仍使用完整 `id:` selector。通过 `msg_3d9f268cb1ae` 再授权一次 `--refresh-ids-only`，仍不允许真实作品提取。
+- D 的 skip 修正已验收；E/C 释放槽位后，通过 `msg_cc2dea57dee9` 发放 D 的 `NEXT_BATCH_GO`，但鉴于 E 新增项继续超时，将原拟 5 项主动缩为 **2 个新 ID**，跳过两个旧错误。当前真实提取仅 D，active_count=1；A 只进行主页 ID 刷新，C/E 均未获续提 GO。
+
 ## 四、复用与防冲突规则（后续任务必须执行）
 
 1. **固定浏览器资源**：复用上表 5 个 worktree/Profile/page。登录失效时只暂停对应槽位并让用户在原 Profile/page 重新扫码，不通过新建 Profile 绕过。
