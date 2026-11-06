@@ -3,7 +3,7 @@
 > 创建时间：2026-11-07T02:56:37+08:00
 > 协调器：当前主会话
 > Orca run：`run_573b10a4429c`
-> 当前阶段：C 已获主页恢复与最多 2 个新 ID 的授权；A 仅按已知 737 清单获最多 2 个未尝试作品的部分批次授权，737/738 最终覆盖差异仍未解决。真实提取槽位最多两路，B 排队，D/E 暂停。
+> 当前阶段：A 已知 737 清单的两项批次成功保存 2 篇并已合并；C 恢复精确主页后两个新 ID 仍超时，第三批已按真实失败验收合并。当前真实提取 active=0；B 排队，C/D/E 暂停等待诊断，A 等待后续明确授权。页面 738/清单 737 与页面 407/清单 409 的双重量事实继续保留。
 
 ## 一、用户目标与当前范围
 
@@ -17,11 +17,11 @@
 
 | 槽位 | worktree 路径 | 分支 | Profile | 固定 page | 当前状态 |
 |---|---|---|---|---|---|
-| A | `/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy` | 首批 `AdrianAndroid/orca-a-52327471915` | `9483ec18-4a86-4e2c-92d5-a2441a1cafb6` | `01b0f677-3907-4ee8-91d7-7f707439b8de` | 登录已核验；凯哥恋爱说预检准备 |
-| B | `/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun` | 首批 `AdrianAndroid/orca-b-wangxiaolangk` | `2bd87da7-ccc5-4110-b058-691269a45eef` | `eb12641b-ca19-470e-8bc2-8e9bce2aed98` | 登录、隔离探针已核验；王小浪预检准备 |
-| C | `/Users/zhaojian/orca/workspaces/ai-learn/puffin` | 首批 `AdrianAndroid/orca-c-81957333169` | `888988a3-faae-454c-931b-b975a8a862c4` | `262c9f33-264f-442b-aec4-88fe21cb8f5b` | 登录、隔离探针已核验；宋那个辞预检准备 |
-| D | `/Users/zhaojian/orca/workspaces/ai-learn/dugong` | 首批 `AdrianAndroid/orca-d-89017187607` | `a3385429-07ca-4470-ade7-241ede7f5697` | `a09cac76-e55d-450b-9333-8b3ab59a485a` | 登录、隔离探针已核验；苏南预检准备 |
-| E | `/Users/zhaojian/orca/workspaces/ai-learn/jellyfish` | 首批 `AdrianAndroid/orca-e-54771197908` | `ffa4d1f5-6874-4817-ae7e-085f3293bb54` | `f826d2ef-8be3-469f-a41d-037a4ffeb85a` | 登录、隔离探针已核验；宅男相亲记预检准备 |
+| A | `/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy` | `AdrianAndroid/orca-a-52327471915-known737-batch1` | `9483ec18-4a86-4e2c-92d5-a2441a1cafb6` | `01b0f677-3907-4ee8-91d7-7f707439b8de` | 两项成功批次已封账；当前无后续 GO |
+| B | `/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun` | `AdrianAndroid/orca-b-wangxiaolangk-batch2` | `2bd87da7-ccc5-4110-b058-691269a45eef` | `eb12641b-ca19-470e-8bc2-8e9bce2aed98` | 离线修正已验收；下一批排队，未获 GO |
+| C | `/Users/zhaojian/orca/workspaces/ai-learn/puffin` | `AdrianAndroid/orca-c-81957333169-batch2` | `888988a3-faae-454c-931b-b975a8a862c4` | `262c9f33-264f-442b-aec4-88fe21cb8f5b` | 第三批两项超时已封账；暂停等待诊断 |
+| D | `/Users/zhaojian/orca/workspaces/ai-learn/dugong` | `AdrianAndroid/orca-d-89017187607-batch2` | `a3385429-07ca-4470-ade7-241ede7f5697` | `a09cac76-e55d-450b-9333-8b3ab59a485a` | 第二批已封账；暂停等待诊断 |
+| E | `/Users/zhaojian/orca/workspaces/ai-learn/jellyfish` | `AdrianAndroid/orca-e-54771197908-batch3` | `ffa4d1f5-6874-4817-ae7e-085f3293bb54` | `f826d2ef-8be3-469f-a41d-037a4ffeb85a` | 第三批已封账；暂停等待诊断 |
 
 所有 worktree 的完整 selector 均为 `id:da2e8721-3aa8-432b-8a51-fb648a32632c::<上述路径>`。后续浏览器命令必须同时显式携带对应 worktree 和 page，不能只依赖当前活跃 tab。
 
@@ -181,6 +181,18 @@
 - 通过 `msg_5bbbbed025a7` 发放 `KNOWN_737_PARTIAL_BATCH_GO`：先在原固定 page 恢复并核验精确作者主页、绑定、身份、登录及 JS 上下文；通过后仅一次正常 CLI `extract_author.py --max-items 2`。禁止刷新、代码修改、测试、内部函数调用和 Git 写操作；其余 ID 保持 pending，停滞安全收尾并 ask。
 - 此步只是授权，尚未收到 A 的实际批次结果。当前真实提取 active_count=2，仅 C 和 A；B 继续排队，D/E 暂停，不自动扩展作者范围，不推送 GitHub。
 
+### 步骤 18：A 两篇成功保存、C 第三个两项批次超时，均已验收合并
+
+- **A 已知 737 清单部分批次成功**：`msg_5bbbbed025a7` 授权后，worker 在原固定 page 重新读取到页面 `works:["作品\n738"]`，同时确认既有真实清单仍为 737；这次是最新预检的页面读数，不再只是早期快照。绑定、精确作者 URL、作者名/抖音号、登录及 JS 上下文均通过。唯一一次正常 CLI 于 04:57:48–04:58:24 运行，exit=0、timeout=false、stderr 为空，未刷新 ID、未改代码、未测试、未直接调用内部函数、未执行 Git 写操作。
+- A 本批 attempted=2、saved=2、no_ai=0、errors=0：`7663790068393430312`《你的形象越好，你的恋爱成本就越低》（2026-07-18，AI 长度 788，SHA-256 `b091a34355dc1d41625a06e7d00c308f0ef795b068882cc90951bffd69287a25`）；`7663391157749157174`《今天你要体验的人生副本是：一辈子不结婚的一生》（2026-07-17，AI 长度 765，SHA-256 `9d322cf74449e20af885b266efb625e0dfa770fb0f8823164edb0ace7cb1489f`）。协调器逐篇读取并核对作者、抖音号、ID、日期、标题和 AI 正文。
+- 独立核验 A：Markdown 109→111，进度 110→112 行且旧前缀不变，pending 628→626 且恰好移除上述两个 ID；737 个 ID、配置及旧 109 篇正文均未改变。最终 saved=111、pending=626、Markdown=111，`running:false、partial:true、author_completed:false`，无完整校验/完成报告，进程=0、锁释放。页面 738 与实际清单 737 的覆盖差异仍未解决，不能认定作者完成。
+- A staged 仅本作者允许目录，diff-check 通过。worker 提交 `df091461845d0ff10b8899602f456e625f01f0d5`，本地 main 顺序合并 `ad638df6f06c271d736efd6604bef75c91b82483`。验收回复 `msg_db9bf34e5ba2` 仅确认结果，不含新 GO；后续 `msg_stop_cf5eea65f4911e559b5f52a8` 是 worker 按要求等待而正常结束 turn，dispatch 仍 open。
+- **C 恢复精确主页后两个新 ID 仍超时**：worker 按 `msg_0bf0835c435b` 先恢复精确作者主页并通过包括 `author_url:true` 在内的启动绑定。唯一一次正常 CLI 于 04:52:54–04:58:03 运行：`--max-items 2 --skip-ids 7613069165708053795 7602272401598024987`，exit=2、`result=partial_errors`。新处理 `7606324862663118131`、`7680121778726784297`，两者均为 `AI text or metadata timeout`；saved=0、no_ai=0、new_errors=2。
+- 协调器独立核验 C：409 个唯一 ID 与 409 个唯一 pending 集合完全相同，ID/pending 与合并前旧版逐字节一致；进度仅由旧 2 行追加到 4 行，四个 ID 各一条 error，两个 skip ID 未新增进度。Markdown=0，无完整校验/完成报告，`running:false、partial:true、author_completed:false`，同作者进程=0，真实锁 `/tmp/orca-douyin-da2e8721-3aa8-432b-8a51-fb648a32632c-81957333169.lock` 可非阻塞重新获取并已释放。
+- C staged 仅本作者 TMP 内执行记录、运行状态、提取状态、提取进度四个文件，diff-check 通过。worker 提交 `17a13a92f63b1cc8218e7df2cc958beaa3e71878`，本地 main 从 `ad638df6f06c271d736efd6604bef75c91b82483` 顺序合并为 `8dc06d23346cccf04c3ec0f95282bfbb1842a4df`；主分支复验上述 409/409/4/0 和 partial 状态均通过。
+- 通过 `msg_b43af61b847a` 回复 C 的 `msg_30752acb11eb`：第三批仅验收，两个新 ID 的超时不计为无 AI 或完成；暂停真实提取，不扩大 skip、不自行重试，等待只读诊断或后续明确指令。随后 `msg_stop_53f5da07fb5db2415bf000a4` 只是 C 正常结束 turn，dispatch 仍 open，不是新的提取失败。
+- 当前 A/C 均已停止，真实提取 active=0；B 继续 queued 且未获 GO，D/E 保持暂停。页面 407/实际清单 409 与页面 738/实际清单 737 均按不同来源保留，completed_this_run=0。C 合并后的 main HEAD 为 `8dc06d23346cccf04c3ec0f95282bfbb1842a4df`，未推送 GitHub。
+
 ## 四、复用与防冲突规则（后续任务必须执行）
 
 1. **固定浏览器资源**：复用上表 5 个 worktree/Profile/page。登录失效时只暂停对应槽位并让用户在原 Profile/page 重新扫码，不通过新建 Profile 绕过。
@@ -212,9 +224,10 @@
 - [x] 协调器逐一核验五个槽位当前登录状态与绑定；D 空白页已在原资源恢复。
 - [x] B/C/D/E 隔离探针通过；A 旧写入失败已如实记录，正常作者页 window 执行上下文另行验证通过。
 - [x] 审查凯哥旧断点，建立不含共享计划写入的 24 位独立调度清单。
-- [x] 首批五作者在独立分支完成提取器改造、静态/锁测试和作者预检；A 两次仅 ID 刷新均已封账，第二次仍只收集 737，737/738 差异待复核且未授权真实提取。
+- [x] 首批五作者在独立分支完成提取器改造、静态/锁测试和作者预检；A 两次仅 ID 刷新均已封账，第二次仍只收集 737。后续已明确允许按现有 737 清单做部分提取，页面 738/清单 737 的最终覆盖差异仍保留。
 - [x] 协调器逐项放行后执行真实提取，B/C/D/E 首批均因停滞安全收尾并保留真实 pending。
 - [x] E/C/D/B 首批及 A 失败刷新批次已独立核验、提交并顺序合并；后续批次继续逐批验收。
 - [x] A refresh2 与 D 第二个两项批次已独立核验、提交并顺序合并；两者均未形成作者完成结论。
+- [x] A 已知 737 清单的两项成功批次和 C 恢复主页后的两项超时批次已独立核验、提交并顺序合并；A 累计 111 篇、626 pending，C 仍 409 pending，均未形成作者完成结论。
 - [ ] 完成五作者全部 pending 的补提与完整校验；当前没有任何一位在本轮被认定为作者完成。
 - [ ] 首批五作者 settled 后，再按固定槽位依次领取其余 19 位，不自动扩大范围。
