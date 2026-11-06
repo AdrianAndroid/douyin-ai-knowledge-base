@@ -3,7 +3,7 @@
 - run：`run_573b10a4429c`
 - task：`task_4ec80a8b1b81`
 - dispatch：`ctx_b1f5e1508517`
-- 当前阶段：refresh2 的唯一一次真实 ID-only 刷新已结束：绑定核验通过，但目标数 738、滚动实际收集仍为 737，严格校验拒绝写入，exit=1；已记录 `AUTHOR_BATCH_SETTLED` 并停止。旧 737 清单、配置、pending、历史进度和 109 篇正文均保持不变，真实提取未授权。
+- 当前阶段：已知 737 清单的两项部分批次已完成并停止：精确主页/绑定/登录/JS 预检通过，唯一一次 `--max-items 2` exit=0，新增保存指定两个 ID；现为 111 篇、112 行进度、pending=626。737 与页面显示 738 的差异保留，`partial:true、author_completed:false`，未获后续 GO 不续提。
 - 允许边界：仅当前 worktree 的 `tmp/52327471915-凯哥恋爱说/` 与 `抖音关注/52327471915-凯哥恋爱说/`；主队列只读；不执行 Git 写操作。
 
 ## 1. 修改或运行前的独立断点基线
@@ -207,3 +207,25 @@
 - 未生成完整校验或作者完成报告，未执行 Git 写操作。
 
 **本次真实刷新未成功，不自行重试或缩窄校验；等待协调器独立验收和进一步指令。真实提取仍未授权。**
+
+协调器随后以 `AUTHOR_BATCH_ACCEPTED` 接受 refresh2 失败批次：worker=`ded499704773b50f66f17169868b7cd053150bc9`，main merge=`13da044baa65296ed0f595e7f7d6135078eac81f`，状态=`id_refresh_failed_validation_pending_reconciliation`，并逐字节确认 109 篇正文未变。
+
+## 11. 已知 737 清单：指定前两个 unattempted ID 的部分批次
+
+协调器消息 `msg_5bbbbed025a7` 授予 `KNOWN_737_PARTIAL_BATCH_GO slot=A douyin_id=52327471915`：仅按现有 737 个真实 ID 提取两个，页面 738 与实际 737 的差异继续保留，不得伪造第 738 项或再次刷新。禁止代码修改、测试、内部函数调用及 Git 写操作。
+
+- 预检在同作者排他锁内完成，所有浏览器命令使用原完整 worktree selector 和固定 page；恢复精确 sec_uid 作者主页后，最终 URL 与目标完全一致。
+- `tab.worktreeId=REPO_ID::resolved_ROOT`、Profile、page、loaded 均匹配，loadError 为空；作者名=`凯哥恋爱说`、页面包含抖音号=`52327471915`、已关注=true，登录按钮=false，投稿/消息/通知入口存在。
+- 页面显示 `作品 738`，固定清单仍为 737；无验证码或限流文本。独立 window key 写入、读取、删除及清理成功，未读取 Cookie、Web Storage 或会话凭据。完整命令响应与检查项见 `已知737两项批次预检.json`。
+- 待补提清单前两项与协调器指定完全一致：`7663790068393430312`、`7663391157749157174`。
+- 随后仅运行一次正常 CLI 子进程 `python3 -I .../extract_author.py --max-items 2`，开始=`2026-11-07T04:57:48+08:00`，结束=`2026-11-07T04:58:24+08:00`，exit=0、timeout=false、stderr 为空，未重试、未续提。
+- 保存 ID `7663790068393430312`：《你的形象越好，你的恋爱成本就越低》，AI 长度 788；文件=`20260718-7663790068393430312-你的形象越好，你的恋爱成本就越低.md`，SHA-256=`b091a34355dc1d41625a06e7d00c308f0ef795b068882cc90951bffd69287a25`。
+- 保存 ID `7663391157749157174`：《今天你要体验的人生副本是：一辈子不结婚的一生》，AI 长度 765；文件=`20260717-7663391157749157174-今天你要体验的人生副本是：一辈子不结婚的一生.md`，SHA-256=`9d322cf74449e20af885b266efb625e0dfa770fb0f8823164edb0ace7cb1489f`。
+- 本批 attempted=2、saved=2、no_ai=0、error=0。Markdown 109→111，进度 110→112 行，latest saved=111，pending 628→626；仅追加指定两行进度和新增两个 Markdown，旧 110 行字节前缀不变，旧 109 个正文无修改或删除。
+- 737 ID 清单及配置保持原哈希：ID=`e733688712fb0ae0cf90eb87789ccf384cdc9145d86a1e9100a7f05c8272ed3b`，配置=`f67222acf6e1fd54f19fc5c631196e21d196b9e1ef878d8712db12b68018fefe`，账号核对=`5ea2dc95d90bf4c71a8b846c1eba8b7983b1b45bd1cf5834da9af84df0841efa`。
+- 新 pending SHA-256=`4f36836f5e2dea7c8ba257abeeed1999505f15f8da6b5b5f5cfe97e5fcde85b0`，进度=`0675974abee8319a3146742c7292f190d0cda23736a4567076ffa7a3da21464f`，summary=`b1b04bd52cdaae8777ba88bfc6ce0075d23e6794f4e6fe5ae030f0f257aa726a`。
+- 按名称+空字节+正文组合口径，原 109 篇在本批前为 `4fde3efbe42c143c3adaabe628d93d11138321e23d963b7240c8354588ca4dea`，新增后 111 篇为 `0f9d01bfb94468460893abab1bc424d1f512df4ecc3f9bbc40e3b10d1c86af9c`。
+- 完整 stdout/stderr、追加行及前后哈希见 `已知737两项批次CLI结果.json`。`五worker运行状态.json` 已记录 `AUTHOR_BATCH_SETTLED`、`running:false、partial:true、author_completed:false`。
+- 事后同作者提取进程=0，锁 `lsof` exit=1，锁已释放；未生成完整校验或作者完成报告，未修改代码，未执行 Git 写操作。
+
+**本批已安全收尾；页面 738 与已知 737 的差异仍未解决，不认定作者完成。未获后续 GO 不续提。**

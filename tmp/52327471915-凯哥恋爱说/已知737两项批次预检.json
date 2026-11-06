@@ -1,0 +1,247 @@
+{
+  "gate": "KNOWN_737_PARTIAL_BATCH_GO slot=A douyin_id=52327471915",
+  "coordinator_message_id": "msg_5bbbbed025a7",
+  "started_at": "2026-11-07T04:57:08+08:00",
+  "worktree": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+  "profile": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
+  "page": "01b0f677-3907-4ee8-91d7-7f707439b8de",
+  "author_url": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main",
+  "cookie_or_storage_read": false,
+  "initial_tab": {
+    "browserPageId": "01b0f677-3907-4ee8-91d7-7f707439b8de",
+    "profileId": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
+    "index": 0,
+    "url": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main",
+    "title": "凯哥恋爱说的抖音 - 抖音",
+    "active": true,
+    "loadError": null,
+    "certificateFailure": null,
+    "worktreeId": "da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+    "profileLabel": "douyin-pilot-0753bjy",
+    "loaded": true
+  },
+  "identity": {
+    "readyState": "complete",
+    "href": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main",
+    "title": "凯哥恋爱说的抖音 - 抖音",
+    "name": "凯哥恋爱说",
+    "hasId": true,
+    "works": [
+      "作品\n738"
+    ],
+    "followed": true,
+    "loginButton": false,
+    "hasContribute": true,
+    "hasMessages": true,
+    "hasNotifications": true,
+    "captcha": false,
+    "rateLimit": false
+  },
+  "js_probe": {
+    "hadOwnBefore": false,
+    "roundTrip": true,
+    "deleted": true,
+    "ownKeyCleaned": true,
+    "href": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main",
+    "name": "凯哥恋爱说"
+  },
+  "final_tab": {
+    "browserPageId": "01b0f677-3907-4ee8-91d7-7f707439b8de",
+    "profileId": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
+    "index": 0,
+    "url": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main",
+    "title": "凯哥恋爱说的抖音 - 抖音",
+    "active": true,
+    "loadError": null,
+    "certificateFailure": null,
+    "worktreeId": "da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+    "profileLabel": "douyin-pilot-0753bjy",
+    "loaded": true
+  },
+  "checks": {
+    "exact_author_url": true,
+    "author_name": true,
+    "douyin_id": true,
+    "following": true,
+    "login": true,
+    "captcha_free": true,
+    "rate_limit_free": true,
+    "js_context": true,
+    "final_binding": true
+  },
+  "preflight_passed": true,
+  "commands": [
+    {
+      "args": [
+        "tab",
+        "list",
+        "--worktree",
+        "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+        "--json"
+      ],
+      "exit_code": 0,
+      "response": {
+        "id": "6d6f831b-7ad5-44aa-a2f9-89d8ad17e3e3",
+        "ok": true,
+        "result": {
+          "tabs": [
+            {
+              "browserPageId": "01b0f677-3907-4ee8-91d7-7f707439b8de",
+              "profileId": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
+              "index": 0,
+              "url": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main",
+              "title": "凯哥恋爱说的抖音 - 抖音",
+              "active": true,
+              "loadError": null,
+              "certificateFailure": null,
+              "worktreeId": "da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+              "profileLabel": "douyin-pilot-0753bjy",
+              "loaded": true
+            }
+          ]
+        },
+        "_meta": {
+          "runtimeId": "349fcd1f-62df-4c6b-b483-bc2938ef8ed2"
+        }
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "eval",
+        "--worktree",
+        "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+        "--page",
+        "01b0f677-3907-4ee8-91d7-7f707439b8de",
+        "--expression",
+        "location.assign(\"https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main\"); \"navigating\"",
+        "--json"
+      ],
+      "exit_code": 0,
+      "response": {
+        "id": "d976dc60-e896-4be1-acbe-fbfcdc44f11c",
+        "ok": true,
+        "result": {
+          "result": "navigating",
+          "origin": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main"
+        },
+        "_meta": {
+          "runtimeId": "349fcd1f-62df-4c6b-b483-bc2938ef8ed2"
+        }
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "eval",
+        "--worktree",
+        "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+        "--page",
+        "01b0f677-3907-4ee8-91d7-7f707439b8de",
+        "--expression",
+        "JSON.stringify({readyState:document.readyState,href:location.href,title:document.title,name:(document.querySelector(\"h1\")?.innerText||\"\").trim(),hasId:(document.body?.innerText||\"\").includes(\"52327471915\"),works:Array.from(document.querySelectorAll(\"h2\")).map(e=>e.innerText),followed:Array.from(document.querySelectorAll(\"button\")).some(b=>b.innerText.trim()===\"已关注\"),loginButton:Array.from(document.querySelectorAll(\"button\")).some(b=>b.innerText.trim()===\"登录\"),hasContribute:(document.body?.innerText||\"\").includes(\"投稿\"),hasMessages:(document.body?.innerText||\"\").includes(\"消息\"),hasNotifications:(document.body?.innerText||\"\").includes(\"通知\"),captcha:/验证码|安全验证|拖动滑块/.test(document.body?.innerText||\"\"),rateLimit:/操作频繁|请求过于频繁|稍后再试/.test(document.body?.innerText||\"\")})",
+        "--json"
+      ],
+      "exit_code": 0,
+      "response": {
+        "id": "01cc9eb0-bec4-4315-b6dc-5a7e6a59f976",
+        "ok": true,
+        "result": {
+          "result": "{\"readyState\":\"loading\",\"href\":\"https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main\",\"title\":\"\",\"name\":\"\",\"hasId\":false,\"works\":[],\"followed\":false,\"loginButton\":false,\"hasContribute\":false,\"hasMessages\":false,\"hasNotifications\":false,\"captcha\":false,\"rateLimit\":false}",
+          "origin": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main"
+        },
+        "_meta": {
+          "runtimeId": "349fcd1f-62df-4c6b-b483-bc2938ef8ed2"
+        }
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "eval",
+        "--worktree",
+        "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+        "--page",
+        "01b0f677-3907-4ee8-91d7-7f707439b8de",
+        "--expression",
+        "JSON.stringify({readyState:document.readyState,href:location.href,title:document.title,name:(document.querySelector(\"h1\")?.innerText||\"\").trim(),hasId:(document.body?.innerText||\"\").includes(\"52327471915\"),works:Array.from(document.querySelectorAll(\"h2\")).map(e=>e.innerText),followed:Array.from(document.querySelectorAll(\"button\")).some(b=>b.innerText.trim()===\"已关注\"),loginButton:Array.from(document.querySelectorAll(\"button\")).some(b=>b.innerText.trim()===\"登录\"),hasContribute:(document.body?.innerText||\"\").includes(\"投稿\"),hasMessages:(document.body?.innerText||\"\").includes(\"消息\"),hasNotifications:(document.body?.innerText||\"\").includes(\"通知\"),captcha:/验证码|安全验证|拖动滑块/.test(document.body?.innerText||\"\"),rateLimit:/操作频繁|请求过于频繁|稍后再试/.test(document.body?.innerText||\"\")})",
+        "--json"
+      ],
+      "exit_code": 0,
+      "response": {
+        "id": "7b6db3d9-78b3-48cb-aa04-8e694b4deb1c",
+        "ok": true,
+        "result": {
+          "result": "{\"readyState\":\"complete\",\"href\":\"https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main\",\"title\":\"凯哥恋爱说的抖音 - 抖音\",\"name\":\"凯哥恋爱说\",\"hasId\":true,\"works\":[\"作品\\n738\"],\"followed\":true,\"loginButton\":false,\"hasContribute\":true,\"hasMessages\":true,\"hasNotifications\":true,\"captcha\":false,\"rateLimit\":false}",
+          "origin": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main"
+        },
+        "_meta": {
+          "runtimeId": "349fcd1f-62df-4c6b-b483-bc2938ef8ed2"
+        }
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "eval",
+        "--worktree",
+        "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+        "--page",
+        "01b0f677-3907-4ee8-91d7-7f707439b8de",
+        "--expression",
+        "(()=>{const k=\"__orcaFiveWorkerSlotAProbe_known737batch2\";const had=Object.prototype.hasOwnProperty.call(window,k);window[k]={slot:\"A\",id:\"52327471915\"};const roundTrip=window[k].id===\"52327471915\";const deleted=delete window[k];return JSON.stringify({hadOwnBefore:had,roundTrip,deleted,ownKeyCleaned:!Object.prototype.hasOwnProperty.call(window,k),href:location.href,name:(document.querySelector(\"h1\")?.innerText||\"\").trim()})})()",
+        "--json"
+      ],
+      "exit_code": 0,
+      "response": {
+        "id": "9c6b4f68-5f06-44d5-88b4-d1917a6d2d8f",
+        "ok": true,
+        "result": {
+          "result": "{\"hadOwnBefore\":false,\"roundTrip\":true,\"deleted\":true,\"ownKeyCleaned\":true,\"href\":\"https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main\",\"name\":\"凯哥恋爱说\"}",
+          "origin": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main"
+        },
+        "_meta": {
+          "runtimeId": "349fcd1f-62df-4c6b-b483-bc2938ef8ed2"
+        }
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tab",
+        "list",
+        "--worktree",
+        "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+        "--json"
+      ],
+      "exit_code": 0,
+      "response": {
+        "id": "89eda6d3-9c97-4230-bf02-60b5426eec8a",
+        "ok": true,
+        "result": {
+          "tabs": [
+            {
+              "browserPageId": "01b0f677-3907-4ee8-91d7-7f707439b8de",
+              "profileId": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
+              "index": 0,
+              "url": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main",
+              "title": "凯哥恋爱说的抖音 - 抖音",
+              "active": true,
+              "loadError": null,
+              "certificateFailure": null,
+              "worktreeId": "da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+              "profileLabel": "douyin-pilot-0753bjy",
+              "loaded": true
+            }
+          ]
+        },
+        "_meta": {
+          "runtimeId": "349fcd1f-62df-4c6b-b483-bc2938ef8ed2"
+        }
+      },
+      "stderr": ""
+    }
+  ],
+  "finished_at": "2026-11-07T04:57:13+08:00",
+  "extractor_invoked": false
+}
