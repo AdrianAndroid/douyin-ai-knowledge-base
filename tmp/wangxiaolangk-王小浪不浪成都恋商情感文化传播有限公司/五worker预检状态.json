@@ -1,0 +1,181 @@
+{
+  "run": "run_573b10a4429c",
+  "task_id": "task_64b819ccc5db",
+  "dispatch_id": "ctx_505ffd5a8c58",
+  "slot": "B",
+  "douyin_id": "wangxiaolangk",
+  "author": "王小浪不浪成都恋商情感文化传播有限公司",
+  "status": "AUTHOR_PREFLIGHT_READY",
+  "ready_for_gate": true,
+  "required_go": "AUTHOR_EXTRACTION_GO slot=B douyin_id=wangxiaolangk",
+  "go_received": false,
+  "real_extraction_started": false,
+  "run_next45_executed": false,
+  "updated_at": "2026-11-07T03:44:15+08:00",
+  "coordinator_fix_review": {
+    "message_id": "msg_0f1d36b1a172",
+    "independent_tab_request_id": "2129f400-3e9c-4f68-b4ab-1bdbcbe918e5",
+    "requested_status": "AUTHOR_PREFLIGHT_FIX_REQUIRED",
+    "work_count_change": "490→491",
+    "config_profile_work_count": 491,
+    "evidence_profile_work_count": 491,
+    "shared_queue_modified": false,
+    "fix_completed": true
+  },
+  "identity": {
+    "cwd": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+    "worktree_id": "da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+    "branch": "AdrianAndroid/orca-b-wangxiaolangk",
+    "profile": "2bd87da7-ccc5-4110-b058-691269a45eef",
+    "page": "eb12641b-ca19-470e-8bc2-8e9bce2aed98",
+    "sec_uid": "MS4wLjABAAAArdqNGZ5-cnvTgxNaN0jB38Kz6ZTeUqtWiuXsodLOEQgfcgK_vQ_D-kcOcmhQGyHk",
+    "identity_matched": true
+  },
+  "initial_author_state": {
+    "treated_as_new_author_task": true,
+    "existing_markdown": 0,
+    "progress_exists": false,
+    "homepage_ids_exists": false,
+    "pending_file_exists": false,
+    "completion_report_exists": false,
+    "unexpected_active_process": false,
+    "existing_lock": false,
+    "cross_author_files_modified": false,
+    "initial_git_status": "clean",
+    "wei_qishun_no_ai_conclusion_reused": false,
+    "original_output": "/Volumes/wd/ai-learn/抖音关注/wangxiaolangk-王小浪不浪成都恋商情感文化传播有限公司",
+    "original_config_page": "6c482e4f-531e-453d-bf33-1518b3fa88fe"
+  },
+  "paths": {
+    "tmp": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/tmp/wangxiaolangk-王小浪不浪成都恋商情感文化传播有限公司",
+    "out": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun/抖音关注/wangxiaolangk-王小浪不浪成都恋商情感文化传播有限公司",
+    "configured_output": "抖音关注/wangxiaolangk-王小浪不浪成都恋商情感文化传播有限公司",
+    "root_derivation": "TMP.parent.parent",
+    "strict_tmp_out_assertions": true,
+    "output_is_worktree_relative": true,
+    "output_directory_created": false
+  },
+  "extractor_changes": {
+    "environment_bindings": [
+      "ORCA_WORKTREE",
+      "ORCA_PROFILE",
+      "ORCA_PAGE"
+    ],
+    "bindings_have_no_config_fallback": true,
+    "shared_page_config_removed": true,
+    "explicit_worktree_and_page_on_browser_calls": true,
+    "max_items_positive_integer_supported": true,
+    "full_author_resume_preserved": true,
+    "progress_append_preserved": true,
+    "atomic_json_and_markdown_replace_preserved": true,
+    "partial_batch_semantics": {
+      "running": false,
+      "partial": true,
+      "author_completed": false,
+      "real_pending_preserved": true,
+      "full_validation_or_completion_report_generated": false
+    },
+    "completion_report_requires_no_pending_and_passed_validation": true,
+    "fatal_login_captcha_rate_limit_page_failure_stops": true
+  },
+  "tests": {
+    "syntax": {
+      "exit_code": 0,
+      "result": "SYNTAX_OK",
+      "pycache_created": false
+    },
+    "json_and_diff_check": {
+      "exit_code": 0
+    },
+    "relative_path": {
+      "exit_code": 0,
+      "cwd": "/private/tmp",
+      "tmp_out_selector_profile_page_matched": true,
+      "browser_called": false,
+      "output_created": false
+    },
+    "missing_environment": [
+      {
+        "missing": "ORCA_WORKTREE",
+        "exit_code": 2,
+        "error": "extract_author.py: error: 缺少环境变量: ORCA_WORKTREE"
+      },
+      {
+        "missing": "ORCA_PROFILE",
+        "exit_code": 2,
+        "error": "extract_author.py: error: 缺少环境变量: ORCA_PROFILE"
+      },
+      {
+        "missing": "ORCA_PAGE",
+        "exit_code": 2,
+        "error": "extract_author.py: error: 缺少环境变量: ORCA_PAGE"
+      }
+    ],
+    "duplicate_launch_lock": {
+      "holder_pid": 91629,
+      "holder_kind": "external flock holder; no browser",
+      "second_exit_code": 4,
+      "second_stdout": "",
+      "second_stderr": "LOCK_BUSY path=/tmp/orca-douyin-da2e8721-3aa8-432b-8a51-fb648a32632c-wangxiaolangk.lock; exited before any browser operation or output write\n",
+      "new_tmp_entries": [],
+      "changed_tmp_entries": [],
+      "browser_audit_created": false,
+      "output_created": false,
+      "douyin_accessed": false,
+      "holder_release_reacquired": true
+    },
+    "final_lock_free_reacquire": {
+      "exit_code": 0,
+      "result": "LOCK_FREE_REACQUIRED"
+    },
+    "coordinator_fix_revalidation": {
+      "tested_at": "2026-11-07T03:44:15+08:00",
+      "json_syntax_diff_exit_code": 0,
+      "configured_profile_work_count": 491,
+      "previous_snapshot": 490,
+      "relative_path_exit_code": 0,
+      "relative_path_cwd": "/private/tmp",
+      "browser_called": false,
+      "output_created": false,
+      "duplicate_lock_holder_pid": 3947,
+      "duplicate_second_exit_code": 4,
+      "duplicate_second_stderr": "LOCK_BUSY path=/tmp/orca-douyin-da2e8721-3aa8-432b-8a51-fb648a32632c-wangxiaolangk.lock; exited before any browser operation or output write\n",
+      "new_tmp_entries": [],
+      "changed_tmp_entries": [],
+      "browser_audit_created": false,
+      "holder_release_reacquired": true
+    }
+  },
+  "lock": {
+    "path": "/tmp/orca-douyin-da2e8721-3aa8-432b-8a51-fb648a32632c-wangxiaolangk.lock",
+    "scope": "repo_id + douyin_id",
+    "type": "fcntl.flock LOCK_EX | LOCK_NB",
+    "held_by_worker_after_preflight": false
+  },
+  "browser_preflight": {
+    "evidence_file": "浏览器绑定.json",
+    "author_sec_uid_douyin_id_followed_login_all_matched": true,
+    "fatal_markers_found": [],
+    "configured_profile_work_count": 491,
+    "previous_queue_snapshot_work_count": 490,
+    "observed_profile_work_count": 491,
+    "work_count_change": "490→491",
+    "note": "初次预检发现作品数由队列快照490变为页面当前491；协调器独立复核后，已仅将本作者配置和预检证据更新为491，未修改共享队列。"
+  },
+  "file_boundary": {
+    "modified": [
+      "tmp/wangxiaolangk-王小浪不浪成都恋商情感文化传播有限公司/extract_author.py",
+      "tmp/wangxiaolangk-王小浪不浪成都恋商情感文化传播有限公司/配置.json"
+    ],
+    "preflight_evidence_created": [
+      "tmp/wangxiaolangk-王小浪不浪成都恋商情感文化传播有限公司/五worker执行记录.md",
+      "tmp/wangxiaolangk-王小浪不浪成都恋商情感文化传播有限公司/浏览器绑定.json",
+      "tmp/wangxiaolangk-王小浪不浪成都恋商情感文化传播有限公司/五worker预检状态.json"
+    ],
+    "shared_status_written": false,
+    "main_checkout_written": false,
+    "other_worktree_or_author_written": false,
+    "git_write_operations": false
+  },
+  "blocking_errors": []
+}

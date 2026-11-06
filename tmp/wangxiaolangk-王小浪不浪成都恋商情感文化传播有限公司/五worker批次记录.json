@@ -1,0 +1,68 @@
+{
+  "run": "run_573b10a4429c",
+  "task_id": "task_64b819ccc5db",
+  "dispatch_id": "ctx_505ffd5a8c58",
+  "slot": "B",
+  "author": "王小浪不浪成都恋商情感文化传播有限公司",
+  "douyin_id": "wangxiaolangk",
+  "batch": 1,
+  "go_message_id": "msg_48834b2e1a6f",
+  "mode": "full_author_resumable",
+  "max_items": null,
+  "started_at": "2026-11-07T03:50:08+08:00",
+  "finished_at": "2026-11-07T03:56:16+08:00",
+  "settled_at": "2026-11-07T03:57:43+08:00",
+  "result": "AUTHOR_BATCH_SETTLED",
+  "run_result": "incomplete",
+  "stop_reason": "连续两个作品 AI text or metadata timeout，清单收集后约5分钟无 saved/no_ai 实质进展",
+  "stop_signal": "SIGINT",
+  "process_pid": 9079,
+  "process_exit_code": 130,
+  "process_exited": true,
+  "lock_path": "/tmp/orca-douyin-da2e8721-3aa8-432b-8a51-fb648a32632c-wangxiaolangk.lock",
+  "lock_release_verified": true,
+  "inventory_count": 491,
+  "inventory_unique_count": 491,
+  "attempted_ids": [
+    "7214392743617940797",
+    "7667885557959698854",
+    "7669142308360781979"
+  ],
+  "attempted_count": 3,
+  "recorded_error_ids": [
+    "7214392743617940797",
+    "7667885557959698854"
+  ],
+  "errors": [
+    {
+      "id": "7214392743617940797",
+      "error": "AI text or metadata timeout"
+    },
+    {
+      "id": "7667885557959698854",
+      "error": "AI text or metadata timeout"
+    }
+  ],
+  "interrupted_before_result_id": "7669142308360781979",
+  "saved_count": 0,
+  "no_ai_count": 0,
+  "error_count": 2,
+  "pending_count": 491,
+  "pending_is_exact_full_inventory": true,
+  "markdown_count": 0,
+  "running": false,
+  "partial": true,
+  "author_completed": false,
+  "full_validation_generated": false,
+  "completion_report_generated": false,
+  "fatal": null,
+  "next_batch_max_items": 5,
+  "next_batch_started": false,
+  "hashes": {
+    "主页作品ID.json": "42f76bfe9aa6bfd8d726277c47708715e21aae45e6f8747e5b7c1dc3de045de8",
+    "待补提作品.json": "42f76bfe9aa6bfd8d726277c47708715e21aae45e6f8747e5b7c1dc3de045de8",
+    "提取进度.jsonl": "40051901dc0a95e01e7ae81363b7d64d06451755ccc58a1c2f8765511a068df5"
+  },
+  "file_boundary": "仅当前 worktree 的王小浪 TMP 与对应空输出目录；未写共享状态、其他作者或主 checkout，未执行 Git 写操作",
+  "waiting_for_independent_acceptance": true
+}
