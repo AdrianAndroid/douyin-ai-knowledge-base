@@ -1,0 +1,90 @@
+{
+  "run": "run_573b10a4429c",
+  "slot": "E",
+  "task_id": "task_b597bbadc1a0",
+  "dispatch_id": "ctx_7060b58aff01",
+  "status": "AUTHOR_PREFLIGHT_READY",
+  "created_at": "2026-11-07T03:27:16+08:00",
+  "real_extraction_started": false,
+  "identity": {
+    "author": "宅男相亲记迷你版",
+    "douyin_id": "54771197908",
+    "sec_uid": "MS4wLjABAAAARhiUZGLfruwLPx2cnDw7jHGUObkP_JEdCxW1lwnAjySzQmvzVryOLmB14LSbv-iS",
+    "profile_work_count": 68,
+    "followed": true,
+    "login_verified": true
+  },
+  "worktree": {
+    "cwd": "/Users/zhaojian/orca/workspaces/ai-learn/jellyfish",
+    "selector": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/jellyfish",
+    "branch": "AdrianAndroid/orca-e-54771197908",
+    "head": "bd02f7db94d3ce5ce2af1094a1a12b60e9abfb06",
+    "worktree_show_request_id": "fe75f128-ed77-4df3-b334-0d8f84ae117d",
+    "git_status_before_preflight_reports": [
+      "M tmp/54771197908-宅男相亲记迷你版/extract_author.py",
+      "M tmp/54771197908-宅男相亲记迷你版/配置.json"
+    ],
+    "git_diff_check_exit_code": 0,
+    "git_write_operations": false
+  },
+  "browser": {
+    "profile": "ffa4d1f5-6874-4817-ae7e-085f3293bb54",
+    "page": "f826d2ef-8be3-469f-a41d-037a4ffeb85a",
+    "binding_file": "浏览器绑定.json",
+    "login_wall": false,
+    "captcha": false,
+    "rate_limited": false,
+    "page_unavailable": false
+  },
+  "paths": {
+    "tmp": "/Users/zhaojian/orca/workspaces/ai-learn/jellyfish/tmp/54771197908-宅男相亲记迷你版",
+    "output": "/Users/zhaojian/orca/workspaces/ai-learn/jellyfish/抖音关注/54771197908-宅男相亲记迷你版",
+    "output_is_worktree_relative": true,
+    "output_exists_after_tests": false,
+    "strict_path_assertions_passed": true
+  },
+  "existing_state_before_changes": {
+    "markdown_count": 0,
+    "progress_exists": false,
+    "homepage_ids_exists": false,
+    "pending_exists": false,
+    "summary_exists": false,
+    "completion_report_exists": false,
+    "active_extractor_processes": 0,
+    "related_locks_found": 0,
+    "cross_author_files_found": 0
+  },
+  "lock": {
+    "path": "/tmp/orca-extract-da2e8721-3aa8-432b-8a51-fb648a32632c-54771197908.lock",
+    "duplicate_start_exit_code": 1,
+    "duplicate_start_stdout": "",
+    "duplicate_start_stderr_final_line": "RuntimeError: another extractor holds /tmp/orca-extract-da2e8721-3aa8-432b-8a51-fb648a32632c-54771197908.lock",
+    "duplicate_start_stderr_contains": "BlockingIOError: [Errno 35] Resource temporarily unavailable",
+    "test_path": "/nonexistent-orca-path",
+    "browser_invoked": false,
+    "author_files_unchanged": true,
+    "output_directory_created": false,
+    "active_holder_after_test": false,
+    "exclusive_acquire_after_test": true
+  },
+  "tests": {
+    "syntax_compile": "passed",
+    "config_page_key_removed": true,
+    "environment_only_binding": true,
+    "missing_ORCA_PAGE_exit_code": 1,
+    "missing_ORCA_PAGE_stderr_final_line": "RuntimeError: missing required environment variable: ORCA_PAGE",
+    "invalid_max_items_exit_code": 2,
+    "invalid_max_items_stderr_final_line": "extract_author.py: error: argument --max-items: must be at least 1",
+    "max_items_supported": true,
+    "partial_summary_fields_supported": true,
+    "partial_completion_report_suppressed": true,
+    "run_next45_executed": false,
+    "real_extraction_executed": false
+  },
+  "writes_allowed_to": [
+    "tmp/54771197908-宅男相亲记迷你版",
+    "抖音关注/54771197908-宅男相亲记迷你版"
+  ],
+  "shared_queue_modified": false,
+  "ready_gate": "AUTHOR_EXTRACTION_GO slot=E douyin_id=54771197908"
+}

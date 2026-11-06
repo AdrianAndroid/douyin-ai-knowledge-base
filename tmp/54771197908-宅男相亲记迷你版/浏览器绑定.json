@@ -1,0 +1,32 @@
+{
+  "run": "run_573b10a4429c",
+  "slot": "E",
+  "task_id": "task_b597bbadc1a0",
+  "worktree": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/jellyfish",
+  "profile": "ffa4d1f5-6874-4817-ae7e-085f3293bb54",
+  "profile_label": "douyin-reusable-slot-e",
+  "page": "f826d2ef-8be3-469f-a41d-037a4ffeb85a",
+  "tab_list_request_id": "5f216372-422b-410b-897c-0bb87c44194a",
+  "goto_request_id": "ffb8ddc3-0d71-49e1-a960-0f251799e116",
+  "context_request_id": "396f49b2-dca1-441e-95df-7566cd13a3b4",
+  "profile_url": "https://www.douyin.com/user/MS4wLjABAAAARhiUZGLfruwLPx2cnDw7jHGUObkP_JEdCxW1lwnAjySzQmvzVryOLmB14LSbv-iS?from_tab_name=main",
+  "observed_url": "https://www.douyin.com/user/MS4wLjABAAAARhiUZGLfruwLPx2cnDw7jHGUObkP_JEdCxW1lwnAjySzQmvzVryOLmB14LSbv-iS?from_tab_name=main",
+  "observed_sec_uid": "MS4wLjABAAAARhiUZGLfruwLPx2cnDw7jHGUObkP_JEdCxW1lwnAjySzQmvzVryOLmB14LSbv-iS",
+  "expected_sec_uid": "MS4wLjABAAAARhiUZGLfruwLPx2cnDw7jHGUObkP_JEdCxW1lwnAjySzQmvzVryOLmB14LSbv-iS",
+  "author": "宅男相亲记迷你版",
+  "douyin_id": "54771197908",
+  "douyin_id_present": true,
+  "followed": true,
+  "login_verified": true,
+  "profile_work_count": 68,
+  "work_tabs": [
+    "作品\n68"
+  ],
+  "document_ready": "complete",
+  "login_wall": false,
+  "captcha": false,
+  "rate_limited": false,
+  "page_unavailable": false,
+  "credentials_read": false,
+  "verified_at": "2026-11-07T03:27:16+08:00"
+}

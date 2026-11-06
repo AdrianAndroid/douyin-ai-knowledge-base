@@ -1,0 +1,20 @@
+{
+  "author": "宅男相亲记迷你版",
+  "douyin_id": "54771197908",
+  "profile_work_count": 68,
+  "running": false,
+  "partial": true,
+  "author_completed": false,
+  "updated_at": "2026-11-07T03:46:24",
+  "counts": {
+    "saved": 2,
+    "error": 2
+  },
+  "pending": 66,
+  "note": "批次异常停止：KeyboardInterrupt: ",
+  "last": {
+    "id": "7699798075400916266",
+    "status": "error",
+    "error": "AI text or metadata timeout"
+  }
+}
