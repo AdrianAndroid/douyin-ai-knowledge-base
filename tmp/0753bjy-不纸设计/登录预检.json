@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-11-07T02:16:38+08:00",
+  "worktree": "da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+  "profile": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
+  "page": "01b0f677-3907-4ee8-91d7-7f707439b8de",
+  "url": "https://www.douyin.com/user/MS4wLjABAAAAa8qzKVpz6bXmd86RJjV-_T1GPnLZnZQOAHG5II4ulj5G9O6hUS9cP7T-REXoSTdK?from_tab_name=main",
+  "sec_uid_matches_config": true,
+  "author_name": "不纸设计",
+  "douyin_id_present": "0753bjy",
+  "works_heading": "作品\n26",
+  "profile_work_count_matches_config": true,
+  "followed": false,
+  "login_button_present": true,
+  "login_required": true,
+  "captcha_detected": false,
+  "rate_limit_detected": false,
+  "goto_request_id": "8ec5ee45-560e-4b6b-a1a1-37239dff4ad2",
+  "identity_eval_request_id": "62f50cb0-02cb-41a1-84d9-5ba7f0690e60",
+  "extraction_started": false,
+  "credentials_or_cookies_saved": false,
+  "note": "作者身份匹配，但 isolated Profile 尚未登录，按钮为登录/关注而非已关注。未点击登录、未展示或保存扫码内容，等待协调器与用户处理。"
+}

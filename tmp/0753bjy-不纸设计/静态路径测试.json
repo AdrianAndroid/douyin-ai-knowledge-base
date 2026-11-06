@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "tested_at": "2026-11-07T02:08:45",
+  "syntax_ast_and_compile": true,
+  "root": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+  "tmp": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy/tmp/0753bjy-不纸设计",
+  "out": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy/抖音关注/0753bjy-不纸设计",
+  "paths_confined_to_worktree": true,
+  "config_page_removed": true,
+  "absolute_orca_binary_exists": true,
+  "pending_logic_saved_no_ai_excluded_error_retained": true,
+  "browser_calls": 0,
+  "douyin_accessed": false
+}
