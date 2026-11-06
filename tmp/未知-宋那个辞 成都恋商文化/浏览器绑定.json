@@ -1,0 +1,51 @@
+{
+  "run": "run_573b10a4429c",
+  "slot": "C",
+  "task_id": "task_0d58aeec79d0",
+  "verified_at": "2026-11-07T03:32:36+08:00",
+  "worktree_selector": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/puffin",
+  "worktree_root": "/Users/zhaojian/orca/workspaces/ai-learn/puffin",
+  "branch": "AdrianAndroid/orca-c-81957333169",
+  "profile_id": "888988a3-faae-454c-931b-b975a8a862c4",
+  "profile_label": "douyin-reusable-slot-c",
+  "page": "262c9f33-264f-442b-aec4-88fe21cb8f5b",
+  "tab_loaded": true,
+  "tab_load_error": null,
+  "profile_url": "https://www.douyin.com/user/MS4wLjABAAAAk60tAmbWm0U1voip4VgEycfrn75m_iFdYDdXAhi73AmAcsqD0GGnzEYBayDSitMu?from_tab_name=main",
+  "author": "宋那个辞 成都恋商文化",
+  "douyin_id": "81957333169",
+  "sec_uid": "MS4wLjABAAAAk60tAmbWm0U1voip4VgEycfrn75m_iFdYDdXAhi73AmAcsqD0GGnzEYBayDSitMu",
+  "profile_work_count": 407,
+  "followed_button": true,
+  "followed_text": true,
+  "logged_in": true,
+  "logged_in_markers": [
+    "通知",
+    "消息",
+    "投稿"
+  ],
+  "fatal_page_checks": {
+    "login_block": false,
+    "captcha": false,
+    "rate_limited": false,
+    "page_invalid": false
+  },
+  "extractor_binding_check": {
+    "exit_code": 0,
+    "lock_held": true,
+    "result": "BINDING_OK",
+    "extraction_started": false,
+    "output_written": false
+  },
+  "request_ids": {
+    "worktree_show": "d645946b-c773-4bed-989e-620b2e4e96dd",
+    "initial_snapshot": "4aee9227-3f85-4a63-84bd-04e27c74ebca",
+    "initial_tab_show": "806a37d5-7833-4900-bda3-842899982aa1",
+    "initial_profile_show": "0f56fb77-2e5a-4e84-87c5-c0755aad8ffe",
+    "goto_profile": "a414ef80-fb3c-4250-b1ce-3fe038009fc3",
+    "wait_load": "01b53b86-ccd5-4874-b615-6e48b97a3e3a",
+    "identity_eval": "64245c70-7dcf-4c67-8321-073e71f23196",
+    "final_tab_show": "fbe9052c-2a42-46d7-830b-b3852bf99e04",
+    "final_profile_show": "5ca2f1dd-62ce-4c67-b434-26cb1720e870"
+  }
+}

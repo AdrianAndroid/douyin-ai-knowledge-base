@@ -1,0 +1,20 @@
+{
+  "author": "宋那个辞 成都恋商文化",
+  "douyin_id": "81957333169",
+  "profile_work_count": 407,
+  "running": false,
+  "partial": true,
+  "author_completed": false,
+  "updated_at": "2026-11-07T03:49:23",
+  "counts": {
+    "error": 2
+  },
+  "pending": 409,
+  "pending_known": true,
+  "note": "fatal: 约5分钟无实质进展，安全收尾并停止当批",
+  "last": {
+    "id": "7602272401598024987",
+    "status": "error",
+    "error": "AI text or metadata timeout"
+  }
+}
