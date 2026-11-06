@@ -3,7 +3,7 @@
 - run：`run_573b10a4429c`
 - task：`task_4ec80a8b1b81`
 - dispatch：`ctx_b1f5e1508517`
-- 当前阶段：唯一一次 `--refresh-ids-only` 已在绑定核验阶段失败并停止，等待协调器独立验收；未重试，真实提取仍未授权。旧 737 清单、配置、pending、历史进度和 109 篇正文均保持不变。
+- 当前阶段：refresh2 的唯一一次真实 ID-only 刷新已结束：绑定核验通过，但目标数 738、滚动实际收集仍为 737，严格校验拒绝写入，exit=1；已记录 `AUTHOR_BATCH_SETTLED` 并停止。旧 737 清单、配置、pending、历史进度和 109 篇正文均保持不变，真实提取未授权。
 - 允许边界：仅当前 worktree 的 `tmp/52327471915-凯哥恋爱说/` 与 `抖音关注/52327471915-凯哥恋爱说/`；主队列只读；不执行 Git 写操作。
 
 ## 1. 修改或运行前的独立断点基线
@@ -165,7 +165,7 @@
 
 - 实际 CLI 调用次数：**1**。命令为当前提取器 `python3 -I .../extract_author.py --refresh-ids-only`，显式环境为固定完整 worktree、Profile=`9483ec18-4a86-4e2c-92d5-a2441a1cafb6`、page=`01b0f677-3907-4ee8-91d7-7f707439b8de`。
 - 起止时间均为 `2026-11-07T04:04:50+08:00`；exit=1，timeout=false，stdout 为空。
-- 失败发生在 `main -> verify_browser_binding`，错误为 `RuntimeError: browser binding mismatch`。stderr 中 tab 返回的 pageId、profileId、worktreeId 与固定值目视一致，但函数仍判定不匹配；当前未继续推断根因。
+- 失败发生在 `main -> verify_browser_binding`，错误为 `RuntimeError: browser binding mismatch`。当时错误记录为“tab 返回字段与固定值目视一致”；协调器独立核验后确认 tab.worktreeId 不带 `id:` 前缀，旧代码却与带前缀的完整 selector 比较。该判断错误在第 9 节修正。
 - 因失败发生在绑定核验，未进入 `collect_profile_ids`，未调用 `run/process_one`，未打开作品或读取 AI 正文，未进行第二次刷新。
 - 完整命令、环境绑定、stdout/stderr、前后文件哈希和派生计数已保存到 `ID刷新CLI结果.json`。成功路径专用的 `ID刷新证据.json` 未生成。
 - 尝试前后 ID 清单均为 737 且唯一，配置仍为 737，pending=628；新增 ID=0、缺失旧 ID=0。109 篇正文与历史进度哈希完全不变。
@@ -174,3 +174,36 @@
 - 当前 `五worker运行状态.json` 记录 `AUTHOR_BATCH_SETTLED`、`running:false、partial:true、author_completed:false`。未生成完整校验或作者完成报告，未执行 Git 写操作。
 
 **本次刷新未成功，不重试；等待协调器独立验收和进一步明确授权。真实提取仍未授权。**
+
+## 9. TEST_ONLY：修正 tab.worktreeId 比较并完成假 Orca CLI 回归
+
+协调器接受失败批次，记录 worker=`c723e30`、main merge=`8bd6b7ceb416f534497888421bbd3aa87bb4ffe0`，创建 `AdrianAndroid/orca-a-52327471915-refresh2` 并仅授予 `TEST_ONLY_GO`。本轮未执行真实浏览器、真实 ID 刷新或真实提取。
+
+- `verify_browser_binding()` 仍将完整 `id:REPO_ID::ROOT` selector 传给 Orca CLI；返回值比较则单独使用精确的 `REPO_ID::resolved_ROOT`，即 `expected_tab_worktree = f"{REPO_ID}::{ROOT}"`。Profile 和固定 page 的精确核验保持不变。
+- 静态 AST 检查 exit=0。
+- 所有目标测试均为实际提取器的 CLI 子进程，没有 `runpy`、直接调用内部函数或直接调用 `run/process_one`。
+- 正向假 CLI 用例返回不带 `id:` 前缀的 `REPO_ID::resolved_ROOT`：exit=0，绑定核验通过，共 8 次 eval；临时 fixture 收集 738 个唯一 ID，完整保留旧 737，仅增加测试 ID `7999999999999999999`；临时 pending=629、配置=738、进度不变，未出现作品处理或 AI JavaScript。
+- 反向假 CLI 用例故意返回错误带 `id:` 前缀的 tab.worktreeId：exit=1，`RuntimeError: browser binding mismatch`，在任何 eval 前拒绝，eval_calls=0；受保护 fixture 文件全部不变，未生成成功刷新证据。
+- 首次回归 harness 因 macOS `/tmp` 与 `/private/tmp` 的 resolved 路径差异退出；已改为用 `Path(path).resolve()` 构造预期绑定并重跑。该 harness 问题没有调用真实浏览器或修改真实作者文件。
+- 真实作者数据保持：ID=737/737 唯一、pending=628、Markdown=109/109 唯一、进度=110 行/latest saved=109；配置=737；`running:false、partial:true、author_completed:false`。
+- 真实受保护 SHA-256 未变：ID=`e733688712fb0ae0cf90eb87789ccf384cdc9145d86a1e9100a7f05c8272ed3b`，pending=`8026fba4c95925b368f29948cc6719a22b4cd52974bd17dc14b7f0e65330ac8a`，进度=`b5f4d655a136bbde22741e23d304662beec05a544eccdf2f4e1187868ebd3258`，summary=`0466e7cbf7577517b28e9bbdc55456c9e47ea84f090bb5705c163000dc1a64fe`，配置=`f67222acf6e1fd54f19fc5c631196e21d196b9e1ef878d8712db12b68018fefe`，账号核对=`5ea2dc95d90bf4c71a8b846c1eba8b7983b1b45bd1cf5834da9af84df0841efa`，109 篇组合=`1c0986e45783fab1c81e22e3e46f7ba65817700327102c4bf14b448a34db9266`。
+- 未生成完整校验或作者完成报告，未进行 Git 写操作。
+
+**当前结论：AUTHOR_ID_REFRESH_FIX_READY。重新申请 `AUTHOR_ID_REFRESH_GO slot=A douyin_id=52327471915`；真实刷新和真实提取均未获新授权，继续等待。**
+
+## 10. refresh2 真实 ID-only 刷新：实际收集仍为 737，校验拒绝并停止
+
+协调器消息 `msg_3d9f268cb1ae` 再次授权 `AUTHOR_ID_REFRESH_GO slot=A douyin_id=52327471915`，仅允许正常 CLI 子进程运行一次 `--refresh-ids-only`，成功或失败均保存真实证据并停止。
+
+- 实际 CLI 调用次数：**1**，未重试。开始=`2026-11-07T04:26:40+08:00`，结束=`2026-11-07T04:27:47+08:00`，timeout=false，exit=1。
+- 修正后的 `verify_browser_binding()` 已通过；进入 `collect_profile_ids(persist=False, expected_count=738)`。
+- 共滚动 44 轮：第 19 轮达到 737；第 20–44 轮连续 25 轮稳定在 737。最后输出 `COLLECTED profile=738 actual=737 persist=False`，其中 profile 字段是本次目标数 738，实际展开收集仍只有 737；没有另行读取或声称本轮回写页面标示作品数。
+- 严格校验按设计拒绝：`RuntimeError: refresh validation failed; old list unchanged: old=737, new=737, unique=737, added=0, missing=0`。
+- 因未满足“738 唯一且完整包含旧 737”，未更新 ID、pending、配置、summary 或账号核对；成功路径的 `ID刷新证据.json` 未生成。
+- 未调用 `run/process_one`，未打开作品或读取 AI 正文，未执行真实提取。
+- 完整命令、固定环境、44 轮 stdout、完整 stderr、前后哈希及派生计数保存在新文件 `ID刷新CLI结果-refresh2.json`；上一次失败的 `ID刷新CLI结果.json` 原样保留。
+- 尝试后真实 ID 仍为 737/737 唯一、配置=737、pending=628、Markdown=109，进度=110 行。各受保护文件 SHA-256 与尝试前完全一致：ID=`e733688712fb0ae0cf90eb87789ccf384cdc9145d86a1e9100a7f05c8272ed3b`，pending=`8026fba4c95925b368f29948cc6719a22b4cd52974bd17dc14b7f0e65330ac8a`，进度=`b5f4d655a136bbde22741e23d304662beec05a544eccdf2f4e1187868ebd3258`，summary=`0466e7cbf7577517b28e9bbdc55456c9e47ea84f090bb5705c163000dc1a64fe`，配置=`f67222acf6e1fd54f19fc5c631196e21d196b9e1ef878d8712db12b68018fefe`，账号核对=`5ea2dc95d90bf4c71a8b846c1eba8b7983b1b45bd1cf5834da9af84df0841efa`。refresh2 证据采用的 109 篇 Markdown 组合口径前后均为 `4fde3efbe42c143c3adaabe628d93d11138321e23d963b7240c8354588ca4dea`；早期基线的 `1c0986...` 属于此前快照/口径，不直接混用。协调器另将当前 worktree 与 main 的 109 篇逐字节比较，文件名和内容完全一致。
+- 事后同作者提取进程=0，锁 `lsof` exit=1，锁已释放。`五worker运行状态.json` 记录 `AUTHOR_BATCH_SETTLED`、`running:false、partial:true、author_completed:false`。
+- 未生成完整校验或作者完成报告，未执行 Git 写操作。
+
+**本次真实刷新未成功，不自行重试或缩窄校验；等待协调器独立验收和进一步指令。真实提取仍未授权。**

@@ -1,0 +1,79 @@
+{
+  "gate": "AUTHOR_ID_REFRESH_GO slot=A douyin_id=52327471915",
+  "coordinator_message_id": "msg_3d9f268cb1ae",
+  "mode": "--refresh-ids-only",
+  "actual_cli_invocations": 1,
+  "command": [
+    "/opt/anaconda3/bin/python3",
+    "-I",
+    "/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy/tmp/52327471915-凯哥恋爱说/extract_author.py",
+    "--refresh-ids-only"
+  ],
+  "worktree": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+  "profile": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
+  "page": "01b0f677-3907-4ee8-91d7-7f707439b8de",
+  "started_at": "2026-11-07T04:26:40+08:00",
+  "finished_at": "2026-11-07T04:27:47+08:00",
+  "exit_code": 1,
+  "timeout": false,
+  "stdout": "SCROLL 1 count=18 stable=0\nSCROLL 2 count=36 stable=0\nSCROLL 3 count=72 stable=0\nSCROLL 4 count=108 stable=0\nSCROLL 5 count=144 stable=0\nSCROLL 6 count=198 stable=0\nSCROLL 7 count=234 stable=0\nSCROLL 8 count=288 stable=0\nSCROLL 9 count=324 stable=0\nSCROLL 10 count=378 stable=0\nSCROLL 11 count=414 stable=0\nSCROLL 12 count=468 stable=0\nSCROLL 13 count=504 stable=0\nSCROLL 14 count=540 stable=0\nSCROLL 15 count=593 stable=0\nSCROLL 16 count=629 stable=0\nSCROLL 17 count=683 stable=0\nSCROLL 18 count=718 stable=0\nSCROLL 19 count=737 stable=0\nSCROLL 20 count=737 stable=1\nSCROLL 21 count=737 stable=2\nSCROLL 22 count=737 stable=3\nSCROLL 23 count=737 stable=4\nSCROLL 24 count=737 stable=5\nSCROLL 25 count=737 stable=6\nSCROLL 26 count=737 stable=7\nSCROLL 27 count=737 stable=8\nSCROLL 28 count=737 stable=9\nSCROLL 29 count=737 stable=10\nSCROLL 30 count=737 stable=11\nSCROLL 31 count=737 stable=12\nSCROLL 32 count=737 stable=13\nSCROLL 33 count=737 stable=14\nSCROLL 34 count=737 stable=15\nSCROLL 35 count=737 stable=16\nSCROLL 36 count=737 stable=17\nSCROLL 37 count=737 stable=18\nSCROLL 38 count=737 stable=19\nSCROLL 39 count=737 stable=20\nSCROLL 40 count=737 stable=21\nSCROLL 41 count=737 stable=22\nSCROLL 42 count=737 stable=23\nSCROLL 43 count=737 stable=24\nSCROLL 44 count=737 stable=25\nCOLLECTED profile=738 actual=737 persist=False\n",
+  "stderr": "Traceback (most recent call last):\n  File \"/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy/tmp/52327471915-凯哥恋爱说/extract_author.py\", line 739, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy/tmp/52327471915-凯哥恋爱说/extract_author.py\", line 731, in main\n    return refresh_ids_only()\n           ^^^^^^^^^^^^^^^^^^\n  File \"/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy/tmp/52327471915-凯哥恋爱说/extract_author.py\", line 429, in refresh_ids_only\n    raise RuntimeError(\nRuntimeError: refresh validation failed; old list unchanged: old=737, new=737, unique=737, added=0, missing=0\n",
+  "old_count": 737,
+  "new_count": 737,
+  "new_unique_count": 737,
+  "old_ids_fully_preserved": true,
+  "added_ids": [],
+  "missing_old_ids": [],
+  "config_count_after": 737,
+  "pending_after": 628,
+  "summary_after": {
+    "author": "凯哥恋爱说",
+    "douyin_id": "52327471915",
+    "profile_work_count": 737,
+    "running": false,
+    "partial": true,
+    "author_completed": false,
+    "updated_at": "2026-11-07T03:29:56",
+    "counts": {
+      "saved": 109
+    },
+    "pending": 628,
+    "note": "批次结束，真实待补提628个；未生成完整校验或完成报告",
+    "batch": {
+      "attempted": 2,
+      "saved": 2,
+      "no_ai": 0,
+      "error": 0
+    },
+    "last": {
+      "id": "7664138045670591796",
+      "title": "男人必备的九个顶级本领",
+      "date": "2026-07-19",
+      "status": "saved",
+      "file": "20260719-7664138045670591796-男人必备的九个顶级本领.md",
+      "ai_len": 954
+    }
+  },
+  "refresh_evidence_exists": false,
+  "progress_unchanged": true,
+  "markdown_unchanged": true,
+  "sha256_before": {
+    "主页作品ID.json": "e733688712fb0ae0cf90eb87789ccf384cdc9145d86a1e9100a7f05c8272ed3b",
+    "待补提作品.json": "8026fba4c95925b368f29948cc6719a22b4cd52974bd17dc14b7f0e65330ac8a",
+    "提取进度.jsonl": "b5f4d655a136bbde22741e23d304662beec05a544eccdf2f4e1187868ebd3258",
+    "提取状态.json": "0466e7cbf7577517b28e9bbdc55456c9e47ea84f090bb5705c163000dc1a64fe",
+    "配置.json": "f67222acf6e1fd54f19fc5c631196e21d196b9e1ef878d8712db12b68018fefe",
+    "账号核对.json": "5ea2dc95d90bf4c71a8b846c1eba8b7983b1b45bd1cf5834da9af84df0841efa",
+    "markdown_name_content": "4fde3efbe42c143c3adaabe628d93d11138321e23d963b7240c8354588ca4dea"
+  },
+  "sha256_after": {
+    "主页作品ID.json": "e733688712fb0ae0cf90eb87789ccf384cdc9145d86a1e9100a7f05c8272ed3b",
+    "待补提作品.json": "8026fba4c95925b368f29948cc6719a22b4cd52974bd17dc14b7f0e65330ac8a",
+    "提取进度.jsonl": "b5f4d655a136bbde22741e23d304662beec05a544eccdf2f4e1187868ebd3258",
+    "提取状态.json": "0466e7cbf7577517b28e9bbdc55456c9e47ea84f090bb5705c163000dc1a64fe",
+    "配置.json": "f67222acf6e1fd54f19fc5c631196e21d196b9e1ef878d8712db12b68018fefe",
+    "账号核对.json": "5ea2dc95d90bf4c71a8b846c1eba8b7983b1b45bd1cf5834da9af84df0841efa",
+    "markdown_name_content": "4fde3efbe42c143c3adaabe628d93d11138321e23d963b7240c8354588ca4dea"
+  },
+  "real_extraction_invoked": false
+}

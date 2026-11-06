@@ -58,11 +58,51 @@
     "returned_tab_fields": {
       "browserPageId": "01b0f677-3907-4ee8-91d7-7f707439b8de",
       "profileId": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
-      "worktreeId": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+      "worktreeId": "da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
       "loaded": true,
       "loadError": null
     },
-    "note": "返回字段与固定值目视一致但函数判定不匹配；未进入collect_profile_ids，未重试。完整stderr见ID刷新CLI结果.json。"
+    "note": "协调器独立核验确认tab.worktreeId不带id:前缀，而旧代码误与带前缀的完整selector比较；当时记录为目视一致是错误判断。未进入collect_profile_ids，未重试。完整stderr见ID刷新CLI结果.json。"
+  },
+  "binding_comparison_fix": {
+    "branch": "AdrianAndroid/orca-a-52327471915-refresh2",
+    "test_only_go": true,
+    "expected_tab_worktree_format": "REPO_ID::resolved_ROOT",
+    "selector_still_uses_id_prefix_for_cli": true,
+    "code_change": "expected_tab_worktree = f\"{REPO_ID}::{ROOT}\"，与tab.worktreeId精确比较；Profile/page检查不变。",
+    "fake_cli_regression": {
+      "all_target_tests_cli_subprocess": true,
+      "runpy_or_direct_internal_calls": false,
+      "real_browser_used": false,
+      "bare_worktree_positive_exit_code": 0,
+      "bare_worktree_binding_passed": true,
+      "bare_worktree_eval_calls": 8,
+      "bare_worktree_new_count": 738,
+      "bare_worktree_old_ids_preserved": true,
+      "bare_worktree_process_one_or_ai_js_seen": false,
+      "prefixed_worktree_negative_exit_code": 1,
+      "prefixed_worktree_rejected_before_eval": true,
+      "prefixed_worktree_eval_calls": 0,
+      "prefixed_worktree_protected_files_unchanged": true
+    },
+    "real_author_files_unchanged": true,
+    "real_refresh_or_extraction_performed": false,
+    "real_refresh_after_fix": {
+      "coordinator_message_id": "msg_3d9f268cb1ae",
+      "actual_cli_invocations": 1,
+      "binding_verification_passed": true,
+      "id_collection_started": true,
+      "target_count": 738,
+      "actual_collected_count": 737,
+      "scroll_rounds": 44,
+      "exit_code": 1,
+      "failure_stage": "refresh_validation_after_collection",
+      "old_list_unchanged": true,
+      "run_or_process_one_called": false,
+      "ai_text_read": false,
+      "retry_performed": false,
+      "evidence": "ID刷新CLI结果-refresh2.json"
+    }
   },
   "extractor_binding": {
     "environment_only": true,
@@ -75,5 +115,5 @@
     "eval_commands_include_worktree_and_page": true,
     "tab_list_uses_explicit_worktree": true
   },
-  "updated_at": "2026-11-07T04:05:45+08:00"
+  "updated_at": "2026-11-07T04:28:21+08:00"
 }

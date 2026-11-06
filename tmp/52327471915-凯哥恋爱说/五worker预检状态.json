@@ -1,14 +1,14 @@
 {
   "status": "AUTHOR_BATCH_SETTLED",
-  "batch_outcome": "failed",
+  "batch_outcome": "failed_refresh_validation_after_collection",
   "slot": "A",
   "author": "凯哥恋爱说",
   "douyin_id": "52327471915",
   "run": "run_573b10a4429c",
   "task_id": "task_4ec80a8b1b81",
   "dispatch_id": "ctx_b1f5e1508517",
-  "branch": "AdrianAndroid/orca-a-52327471915-preflight2",
-  "head_at_preflight_start": "7d0f3d0186b3339570e219db4e9da2f56e16ac9e",
+  "branch": "AdrianAndroid/orca-a-52327471915-refresh2",
+  "head_at_preflight_start": "8bd6b7ceb416f534497888421bbd3aa87bb4ffe0",
   "author_extraction_go_received": false,
   "author_id_refresh_go_received": true,
   "real_id_refresh_attempted": true,
@@ -102,7 +102,7 @@
   "id_refresh_only": {
     "coordinator_requirement": "AUTHOR_ID_REFRESH_FIX_REQUIRED",
     "implemented": true,
-    "waiting_for": "协调器独立验收；未获新授权前不得重试",
+    "waiting_for": "协调器独立验收refresh2失败批次；不得自行重试，真实提取仍未授权",
     "main_acquires_exclusive_lock_before_refresh": true,
     "verify_browser_binding_before_refresh": true,
     "only_profile_collection_call": "collect_profile_ids(persist=False, expected_count=738)",
@@ -196,6 +196,67 @@
       "109篇Markdown组合": "1c0986e45783fab1c81e22e3e46f7ba65817700327102c4bf14b448a34db9266"
     }
   },
+  "test_only_binding_fix": {
+    "coordinator_gate": "TEST_ONLY_GO",
+    "branch": "AdrianAndroid/orca-a-52327471915-refresh2",
+    "head_at_start": "8bd6b7ceb416f534497888421bbd3aa87bb4ffe0",
+    "expected_tab_worktree": "REPO_ID::resolved_ROOT",
+    "full_cli_selector_still_id_prefixed": true,
+    "static_ast_exit_code": 0,
+    "all_target_tests_cli_subprocess": true,
+    "runpy_or_direct_internal_calls": false,
+    "real_browser_used": false,
+    "real_refresh_or_extraction_performed": false,
+    "positive_bare_worktree": {
+      "exit_code": 0,
+      "binding_passed": true,
+      "eval_calls": 8,
+      "new_count": 738,
+      "new_unique_count": 738,
+      "old_ids_preserved": true,
+      "added_test_id": "7999999999999999999",
+      "pending": 629,
+      "config_count": 738,
+      "progress_unchanged": true,
+      "process_one_or_ai_js_seen": false
+    },
+    "negative_prefixed_worktree": {
+      "exit_code": 1,
+      "error": "RuntimeError: browser binding mismatch",
+      "rejected_before_eval": true,
+      "eval_calls": 0,
+      "protected_files_unchanged": true,
+      "refresh_evidence_created": false
+    },
+    "real_author_files_unchanged": true,
+    "next_gate_requested": "AUTHOR_ID_REFRESH_GO slot=A douyin_id=52327471915"
+  },
+  "refresh2_real_attempt": {
+    "gate": "AUTHOR_ID_REFRESH_GO slot=A douyin_id=52327471915",
+    "coordinator_message_id": "msg_3d9f268cb1ae",
+    "started_at": "2026-11-07T04:26:40+08:00",
+    "finished_at": "2026-11-07T04:27:47+08:00",
+    "actual_cli_invocations": 1,
+    "binding_verification_passed": true,
+    "target_count": 738,
+    "actual_collected_count": 737,
+    "scroll_rounds": 44,
+    "final_stable_rounds": 25,
+    "exit_code": 1,
+    "timeout": false,
+    "failure_stage": "refresh_validation_after_collection",
+    "error": "RuntimeError: refresh validation failed; old list unchanged: old=737, new=737, unique=737, added=0, missing=0",
+    "real_list_still_737": true,
+    "real_config_still_737": true,
+    "real_pending_still_628": true,
+    "progress_and_markdown_unchanged": true,
+    "run_or_process_one_called": false,
+    "ai_text_read": false,
+    "refresh_success_evidence_created": false,
+    "retry_performed": false,
+    "cli_result_evidence": "ID刷新CLI结果-refresh2.json",
+    "previous_cli_result_preserved": "ID刷新CLI结果.json"
+  },
   "final_process_and_lock": {
     "same_author_active_processes": 0,
     "lock_lsof_exit_code": 1,
@@ -212,5 +273,5 @@
   },
   "full_validation_generated_in_preflight2": false,
   "completion_report_generated_in_preflight2": false,
-  "updated_at": "2026-11-07T04:05:45+08:00"
+  "updated_at": "2026-11-07T04:28:21+08:00"
 }

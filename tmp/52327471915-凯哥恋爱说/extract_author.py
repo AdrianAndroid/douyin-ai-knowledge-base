@@ -156,7 +156,8 @@ def verify_browser_binding():
     tab = next((item for item in tabs if item.get("browserPageId") == PAGE), None)
     if not tab:
         raise RuntimeError(f"fixed page not found in worktree: {PAGE}")
-    if tab.get("worktreeId") != WORKTREE or tab.get("profileId") != PROFILE_ID:
+    expected_tab_worktree = f"{REPO_ID}::{ROOT}"
+    if tab.get("worktreeId") != expected_tab_worktree or tab.get("profileId") != PROFILE_ID:
         raise RuntimeError(f"browser binding mismatch: {tab}")
 
 
