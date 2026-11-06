@@ -7,7 +7,7 @@
   "status": "extracting",
   "total_remaining": 24,
   "completed_this_run": 0,
-  "active_count": 1,
+  "active_count": 3,
   "login_verified": true,
   "isolation_probe": {
     "slots_verified": [
@@ -109,7 +109,7 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAArdqNGZ5-cnvTgxNaN0jB38Kz6ZTeUqtWiuXsodLOEQgfcgK_vQ_D-kcOcmhQGyHk?from_tab_name=main",
       "profile_work_count": 490,
       "source_plan_status": "ready",
-      "status": "preflight_running",
+      "status": "preflight_fix_required",
       "slot": "B",
       "branch": "AdrianAndroid/orca-b-wangxiaolangk",
       "dispatch": "ctx_505ffd5a8c58",
@@ -119,10 +119,14 @@
       "adaptive_next_limit": null,
       "worker_commit": null,
       "merge_commit": null,
-      "last_error": null,
+      "last_error": "页面当前491，配置/计划快照490；需仅更新作者配置及证据后再放行",
       "task": "task_64b819ccc5db",
       "terminal": "term_8b6e06ff-8368-4d81-a799-e36bfc876397",
-      "branch_base": "bd02f7d"
+      "branch_base": "bd02f7d",
+      "preflight_ask": "msg_01f0cd750d62",
+      "coordinator_reply": "msg_0f1d36b1a172",
+      "coordinator_tab_show_request": "2129f400-3e9c-4f68-b4ab-1bdbcbe918e5",
+      "observed_profile_work_count": 491
     },
     {
       "author": "宋那个辞 成都恋商文化",
@@ -132,7 +136,7 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAAk60tAmbWm0U1voip4VgEycfrn75m_iFdYDdXAhi73AmAcsqD0GGnzEYBayDSitMu?from_tab_name=main",
       "profile_work_count": 407,
       "source_plan_status": "ready",
-      "status": "preflight_running",
+      "status": "extracting",
       "slot": "C",
       "branch": "AdrianAndroid/orca-c-81957333169",
       "dispatch": "ctx_f78f85235fd4",
@@ -145,7 +149,12 @@
       "last_error": null,
       "task": "task_0d58aeec79d0",
       "terminal": "term_7063e895-d363-4c0f-92e1-8fcb63d5fbb7",
-      "branch_base": "bd02f7d"
+      "branch_base": "bd02f7d",
+      "preflight_verified_at": "2026-11-07T03:43:40.933347+08:00",
+      "extraction_authorized_at": "2026-11-07T03:43:40.933347+08:00",
+      "preflight_ask": "msg_3e01798c6d80",
+      "extraction_go_reply": "msg_8e66ccef04d4",
+      "coordinator_tab_show_request": "b20a8862-c442-4dc0-b7a5-56838f43db3b"
     },
     {
       "author": "做性教育的苏南",
@@ -155,7 +164,7 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAACiiwHj4HX6RJRRkxnMk5bLJv2wKaI2Z_2GdqGWanwEo?from_tab_name=main",
       "profile_work_count": 110,
       "source_plan_status": "ready",
-      "status": "preflight_running",
+      "status": "extracting",
       "slot": "D",
       "branch": "AdrianAndroid/orca-d-89017187607",
       "dispatch": "ctx_9e33cb20e7dd",
@@ -168,7 +177,12 @@
       "last_error": null,
       "task": "task_df9665928b9c",
       "terminal": "term_db01d40f-9ce7-45fa-b599-2036e201ba98",
-      "branch_base": "bd02f7d"
+      "branch_base": "bd02f7d",
+      "preflight_verified_at": "2026-11-07T03:43:40.933347+08:00",
+      "extraction_authorized_at": "2026-11-07T03:43:40.933347+08:00",
+      "preflight_ask": "msg_a63484a24de3",
+      "extraction_go_reply": "msg_3c4a1c229eb3",
+      "coordinator_tab_show_request": "389b7470-a3d7-4e77-819b-77ca5c9d75a8"
     },
     {
       "author": "宅男相亲记迷你版",
