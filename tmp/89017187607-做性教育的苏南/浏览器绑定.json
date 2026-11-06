@@ -1,0 +1,49 @@
+{
+  "run": "run_573b10a4429c",
+  "slot": "D",
+  "author": "做性教育的苏南",
+  "douyin_id": "89017187607",
+  "worktree": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/dugong",
+  "profile": "a3385429-07ca-4470-ade7-241ede7f5697",
+  "profile_label": "douyin-reusable-slot-d",
+  "page": "a09cac76-e55d-450b-9333-8b3ab59a485a",
+  "profile_url": "https://www.douyin.com/user/MS4wLjABAAAACiiwHj4HX6RJRRkxnMk5bLJv2wKaI2Z_2GdqGWanwEo?from_tab_name=main",
+  "sec_uid": "MS4wLjABAAAACiiwHj4HX6RJRRkxnMk5bLJv2wKaI2Z_2GdqGWanwEo",
+  "tab_list_before": {
+    "request_id": "932a45d2-46c0-4614-8d4d-0cc475f636eb",
+    "loaded": true,
+    "load_error": null,
+    "url": "https://www.douyin.com/jingxuan"
+  },
+  "navigation": {
+    "request_id": "a27b79af-bc95-456d-b141-dea9252f646d",
+    "settled": true,
+    "title": "做性教育的苏南的抖音 - 抖音",
+    "new_page_created": false
+  },
+  "load_wait_request_id": "b95779eb-3191-47b4-a68e-3c885564e91b",
+  "verification": {
+    "request_id": "1affc46d-4dc3-4e53-b11c-3ade0273181b",
+    "ready_state": "complete",
+    "href_matches_exact_profile_url": true,
+    "sec_uid_matches": true,
+    "author_matches": true,
+    "douyin_id_present": true,
+    "works_heading": "作品\n110",
+    "followed": true,
+    "private_message": true,
+    "messages": true,
+    "notifications": true,
+    "login_buttons": [],
+    "fatal_signals": [],
+    "execution_context": "normal"
+  },
+  "tab_list_after": {
+    "request_id": "adbaa7b4-3d45-46bf-b397-0eab73b32a66",
+    "loaded": true,
+    "load_error": null,
+    "same_worktree_profile_page": true
+  },
+  "credential_access": "none; no Cookie, token, password, QR code, or other session storage read",
+  "checked_at": "2026-11-07T03:33:17+08:00"
+}
