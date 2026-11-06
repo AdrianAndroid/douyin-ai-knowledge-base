@@ -90,6 +90,13 @@
 
 - 当前仅 `preflight_running`，队列 active_count 仍为 0。worker 可做允许目录内的最小改造、静态/锁测试及作者身份/登录预检；真实作品提取尚未获放行。协调器等待 Orca 唤醒后逐项复核，不做无意义轮询。
 
+### 步骤 7：E 预检独立复核与单项放行
+
+- E 通过 `msg_3b509921ace3` 报告 `AUTHOR_PREFLIGHT_READY`。协调器读取其预检状态、浏览器绑定和执行记录，检查完整脚本/配置 diff、git status 与 diff-check；改动仅在宅男相亲记允许目录，输出目录尚未创建，真实提取尚未发生。
+- 协调器独立 `tab show` 请求 `31efba45-f3ad-4360-85fc-9a76ee96d8ce`：URL/sec_uid 匹配，标题为“宅男相亲记迷你版的抖音”，Profile/page/worktree 均与 E 固定绑定一致，loaded=true、loadError=null。worker 的身份记录还包含抖音号 `54771197908`、已关注、作品 68、登录有效及无验证码/限流。
+- 锁测试实际退出码 1，第二实例在浏览器操作和输出前因排他锁失败，测试后锁释放；缺环境变量及非法 max-items 也分别按预期失败。协调器据此只放行 E。
+- 首次较长回复被权限分类器拒绝，没有送达；改用简短的同授权回复后成功，消息 ID `msg_f6cb3e043c07`。授权内容仅为 `AUTHOR_EXTRACTION_GO slot=E douyin_id=54771197908`，并要求继续遵守自适应批次和验收闸门。队列 active_count 更新为 1，其他槽位未获放行。
+
 ## 四、复用与防冲突规则（后续任务必须执行）
 
 1. **固定浏览器资源**：复用上表 5 个 worktree/Profile/page。登录失效时只暂停对应槽位并让用户在原 Profile/page 重新扫码，不通过新建 Profile 绕过。

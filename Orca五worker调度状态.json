@@ -4,10 +4,10 @@
   "run": "run_573b10a4429c",
   "source_plan": "tmp/批次-商业人文知识-20261104/后续45位作者提取计划.json",
   "source_plan_writable_by_workers": false,
-  "status": "preflight",
+  "status": "extracting",
   "total_remaining": 24,
   "completed_this_run": 0,
-  "active_count": 0,
+  "active_count": 1,
   "login_verified": true,
   "isolation_probe": {
     "slots_verified": [
@@ -162,7 +162,7 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAARhiUZGLfruwLPx2cnDw7jHGUObkP_JEdCxW1lwnAjySzQmvzVryOLmB14LSbv-iS?from_tab_name=main",
       "profile_work_count": 68,
       "source_plan_status": "ready",
-      "status": "preflight_running",
+      "status": "extracting",
       "slot": "E",
       "branch": "AdrianAndroid/orca-e-54771197908",
       "dispatch": "ctx_7060b58aff01",
@@ -175,7 +175,12 @@
       "last_error": null,
       "task": "task_b597bbadc1a0",
       "terminal": "term_8a98e5b8-7cb2-4f23-a9e7-31ede30fd3e1",
-      "branch_base": "bd02f7d"
+      "branch_base": "bd02f7d",
+      "preflight_verified_at": "2026-11-07T03:31:38.631829+08:00",
+      "extraction_authorized_at": "2026-11-07T03:31:38.631829+08:00",
+      "preflight_ask": "msg_3b509921ace3",
+      "extraction_go_reply": "msg_f6cb3e043c07",
+      "coordinator_tab_show_request": "31efba45-f3ad-4360-85fc-9a76ee96d8ce"
     },
     {
       "author": "林老头linnn",
