@@ -1,0 +1,113 @@
+{
+  "gate": "KNOWN_737_PARTIAL_BATCH_GO slot=A douyin_id=52327471915",
+  "coordinator_message_id": "msg_5bbbbed025a7",
+  "mode": "--max-items 2",
+  "actual_cli_invocations": 1,
+  "command": [
+    "/opt/anaconda3/bin/python3",
+    "-I",
+    "/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy/tmp/52327471915-凯哥恋爱说/extract_author.py",
+    "--max-items",
+    "2"
+  ],
+  "worktree": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+  "profile": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
+  "page": "01b0f677-3907-4ee8-91d7-7f707439b8de",
+  "started_at": "2026-11-07T04:57:48+08:00",
+  "finished_at": "2026-11-07T04:58:24+08:00",
+  "exit_code": 0,
+  "timeout": false,
+  "stdout": "RESUME_IDS count=737\nROUND 1 pending=628\nFALLBACK_NAV id=7663790068393430312\nSAVED id=7663790068393430312 title=你的形象越好，你的恋爱成本就越低\nFALLBACK_NAV id=7663391157749157174\nSAVED id=7663391157749157174 title=今天你要体验的人生副本是：一辈子不结婚的一生\nBATCH_DONE pending=626 batch={'attempted': 2, 'saved': 2, 'no_ai': 0, 'error': 0}\n",
+  "stderr": "",
+  "expected_unattempted_ids": [
+    "7663790068393430312",
+    "7663391157749157174"
+  ],
+  "appended_progress_rows": [
+    {
+      "id": "7663790068393430312",
+      "title": "你的形象越好，你的恋爱成本就越低",
+      "date": "2026-07-18",
+      "status": "saved",
+      "file": "20260718-7663790068393430312-你的形象越好，你的恋爱成本就越低.md",
+      "ai_len": 788
+    },
+    {
+      "id": "7663391157749157174",
+      "title": "今天你要体验的人生副本是：一辈子不结婚的一生",
+      "date": "2026-07-17",
+      "status": "saved",
+      "file": "20260717-7663391157749157174-今天你要体验的人生副本是：一辈子不结婚的一生.md",
+      "ai_len": 765
+    }
+  ],
+  "old_progress_prefix_unchanged": true,
+  "old_progress_rows": 110,
+  "new_progress_rows": 112,
+  "id_list_unchanged": true,
+  "old_id_count": 737,
+  "new_id_count": 737,
+  "old_pending_count": 628,
+  "new_pending_count": 626,
+  "added_pending_ids": [],
+  "removed_pending_ids": [
+    "7663790068393430312",
+    "7663391157749157174"
+  ],
+  "summary_after": {
+    "author": "凯哥恋爱说",
+    "douyin_id": "52327471915",
+    "profile_work_count": 737,
+    "running": false,
+    "partial": true,
+    "author_completed": false,
+    "updated_at": "2026-11-07T04:58:24",
+    "counts": {
+      "saved": 111
+    },
+    "pending": 626,
+    "note": "批次结束，真实待补提626个；未生成完整校验或完成报告",
+    "batch": {
+      "attempted": 2,
+      "saved": 2,
+      "no_ai": 0,
+      "error": 0
+    },
+    "last": {
+      "id": "7663391157749157174",
+      "title": "今天你要体验的人生副本是：一辈子不结婚的一生",
+      "date": "2026-07-17",
+      "status": "saved",
+      "file": "20260717-7663391157749157174-今天你要体验的人生副本是：一辈子不结婚的一生.md",
+      "ai_len": 765
+    }
+  },
+  "old_markdown_files": 109,
+  "new_markdown_files": 111,
+  "added_markdown_files": [
+    "20260717-7663391157749157174-今天你要体验的人生副本是：一辈子不结婚的一生.md",
+    "20260718-7663790068393430312-你的形象越好，你的恋爱成本就越低.md"
+  ],
+  "changed_old_markdown_files": [],
+  "removed_markdown_files": [],
+  "markdown_unchanged_except_additions": true,
+  "sha256_before": {
+    "主页作品ID.json": "e733688712fb0ae0cf90eb87789ccf384cdc9145d86a1e9100a7f05c8272ed3b",
+    "待补提作品.json": "8026fba4c95925b368f29948cc6719a22b4cd52974bd17dc14b7f0e65330ac8a",
+    "提取进度.jsonl": "b5f4d655a136bbde22741e23d304662beec05a544eccdf2f4e1187868ebd3258",
+    "提取状态.json": "0466e7cbf7577517b28e9bbdc55456c9e47ea84f090bb5705c163000dc1a64fe",
+    "配置.json": "f67222acf6e1fd54f19fc5c631196e21d196b9e1ef878d8712db12b68018fefe",
+    "账号核对.json": "5ea2dc95d90bf4c71a8b846c1eba8b7983b1b45bd1cf5834da9af84df0841efa",
+    "markdown_name_content": "4fde3efbe42c143c3adaabe628d93d11138321e23d963b7240c8354588ca4dea"
+  },
+  "sha256_after": {
+    "主页作品ID.json": "e733688712fb0ae0cf90eb87789ccf384cdc9145d86a1e9100a7f05c8272ed3b",
+    "待补提作品.json": "4f36836f5e2dea7c8ba257abeeed1999505f15f8da6b5b5f5cfe97e5fcde85b0",
+    "提取进度.jsonl": "0675974abee8319a3146742c7292f190d0cda23736a4567076ffa7a3da21464f",
+    "提取状态.json": "b1b04bd52cdaae8777ba88bfc6ce0075d23e6794f4e6fe5ae030f0f257aa726a",
+    "配置.json": "f67222acf6e1fd54f19fc5c631196e21d196b9e1ef878d8712db12b68018fefe",
+    "账号核对.json": "5ea2dc95d90bf4c71a8b846c1eba8b7983b1b45bd1cf5834da9af84df0841efa",
+    "markdown_name_content": "0f9d01bfb94468460893abab1bc424d1f512df4ecc3f9bbc40e3b10d1c86af9c"
+  },
+  "full_validation_generated": false
+}

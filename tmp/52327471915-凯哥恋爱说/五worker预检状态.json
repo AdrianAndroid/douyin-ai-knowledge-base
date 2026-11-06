@@ -1,6 +1,6 @@
 {
   "status": "AUTHOR_BATCH_SETTLED",
-  "batch_outcome": "failed_refresh_validation_after_collection",
+  "batch_outcome": "known_737_two_item_partial_saved",
   "slot": "A",
   "author": "凯哥恋爱说",
   "douyin_id": "52327471915",
@@ -257,6 +257,48 @@
     "cli_result_evidence": "ID刷新CLI结果-refresh2.json",
     "previous_cli_result_preserved": "ID刷新CLI结果.json"
   },
+  "known_737_partial_batch": {
+    "gate": "KNOWN_737_PARTIAL_BATCH_GO slot=A douyin_id=52327471915",
+    "coordinator_message_id": "msg_5bbbbed025a7",
+    "preflight_passed": true,
+    "preflight_evidence": "已知737两项批次预检.json",
+    "exact_author_url_binding_identity_login_js_verified": true,
+    "visible_work_count": 738,
+    "known_id_list_count": 737,
+    "cookie_or_storage_read": false,
+    "actual_extraction_cli_invocations": 1,
+    "mode": "--max-items 2",
+    "started_at": "2026-11-07T04:57:48+08:00",
+    "finished_at": "2026-11-07T04:58:24+08:00",
+    "exit_code": 0,
+    "timeout": false,
+    "attempted": 2,
+    "saved": 2,
+    "no_ai": 0,
+    "error": 0,
+    "saved_ids": [
+      "7663790068393430312",
+      "7663391157749157174"
+    ],
+    "id_list_unchanged": true,
+    "id_refresh_performed": false,
+    "markdown_files": 111,
+    "progress_rows": 112,
+    "latest_saved": 111,
+    "pending": 626,
+    "old_progress_prefix_unchanged": true,
+    "old_markdown_changed_or_removed": false,
+    "running": false,
+    "partial": true,
+    "author_completed": false,
+    "full_validation_generated": false,
+    "completion_report_generated": false,
+    "code_modified": false,
+    "direct_internal_calls": false,
+    "continued_beyond_two_items": false,
+    "cli_result_evidence": "已知737两项批次CLI结果.json",
+    "waiting_for": "协调器独立验收；未获后续GO不得续提"
+  },
   "final_process_and_lock": {
     "same_author_active_processes": 0,
     "lock_lsof_exit_code": 1,
@@ -273,5 +315,5 @@
   },
   "full_validation_generated_in_preflight2": false,
   "completion_report_generated_in_preflight2": false,
-  "updated_at": "2026-11-07T04:28:21+08:00"
+  "updated_at": "2026-11-07T04:59:10+08:00"
 }
