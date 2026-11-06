@@ -1,0 +1,112 @@
+{
+  "run": "run_573b10a4429c",
+  "slot": "C",
+  "task_id": "task_0d58aeec79d0",
+  "dispatch_id": "ctx_f78f85235fd4",
+  "status": "AUTHOR_PREFLIGHT_READY",
+  "douyin_id": "81957333169",
+  "author": "宋那个辞 成都恋商文化",
+  "checked_at": "2026-11-07T03:32:36+08:00",
+  "go_required": "AUTHOR_EXTRACTION_GO slot=C douyin_id=81957333169",
+  "go_received": false,
+  "real_extraction_started": false,
+  "run_next45_started": false,
+  "initial_state": {
+    "existing_markdown": 0,
+    "output_directory_exists": false,
+    "progress_exists": false,
+    "profile_ids_exists": false,
+    "pending_file_exists": false,
+    "run_status_exists": false,
+    "completion_report_exists": false,
+    "author_processes": [],
+    "author_lock_active": false,
+    "preexisting_identity_files": [
+      "账号核对.json",
+      "搜索账号核对.json"
+    ]
+  },
+  "configuration": {
+    "worktree_selector": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/puffin",
+    "branch": "AdrianAndroid/orca-c-81957333169",
+    "profile_id": "888988a3-faae-454c-931b-b975a8a862c4",
+    "page": "262c9f33-264f-442b-aec4-88fe21cb8f5b",
+    "sec_uid": "MS4wLjABAAAAk60tAmbWm0U1voip4VgEycfrn75m_iFdYDdXAhi73AmAcsqD0GGnzEYBayDSitMu",
+    "profile_work_count": 407,
+    "root": "/Users/zhaojian/orca/workspaces/ai-learn/puffin",
+    "tmp": "/Users/zhaojian/orca/workspaces/ai-learn/puffin/tmp/未知-宋那个辞 成都恋商文化",
+    "out": "/Users/zhaojian/orca/workspaces/ai-learn/puffin/抖音关注/未知-宋那个辞 成都恋商文化",
+    "configured_output": "抖音关注/未知-宋那个辞 成都恋商文化",
+    "shared_page_removed_from_config": true,
+    "absolute_main_checkout_output_removed": true,
+    "environment_required": [
+      "ORCA_WORKTREE",
+      "ORCA_PROFILE",
+      "ORCA_PAGE"
+    ],
+    "max_items": "any positive integer; omitted means full-author resume"
+  },
+  "identity": {
+    "profile_url_exact": true,
+    "sec_uid_exact": true,
+    "author_exact": true,
+    "douyin_id_exact": true,
+    "followed": true,
+    "logged_in": true,
+    "login_block": false,
+    "captcha": false,
+    "rate_limited": false,
+    "page_invalid": false,
+    "identity_request_id": "64245c70-7dcf-4c67-8321-073e71f23196"
+  },
+  "tests": {
+    "syntax": {
+      "exit_code": 0
+    },
+    "paths_and_max_items_5": {
+      "exit_code": 0
+    },
+    "git_diff_check": {
+      "exit_code": 0
+    },
+    "missing_environment": {
+      "exit_code": 1,
+      "stderr": "missing required environment: ORCA_WORKTREE, ORCA_PROFILE, ORCA_PAGE"
+    },
+    "duplicate_start_lock": {
+      "exit_code": 73,
+      "stdout": "",
+      "stderr": "LOCK_BUSY /tmp/orca-douyin-da2e8721-3aa8-432b-8a51-fb648a32632c-81957333169.lock; exiting before any browser operation or output write",
+      "browser_called": false,
+      "output_created": false,
+      "progress_created": false
+    },
+    "extractor_binding_only": {
+      "exit_code": 0,
+      "result": "BINDING_OK",
+      "extraction_started": false,
+      "output_written": false
+    }
+  },
+  "lock": {
+    "path": "/tmp/orca-douyin-da2e8721-3aa8-432b-8a51-fb648a32632c-81957333169.lock",
+    "repository_scoped": true,
+    "douyin_id_scoped": true,
+    "nonblocking_exclusive": true,
+    "second_instance_exit_code": 73,
+    "release_reacquire_test_passed": true,
+    "active_after_preflight": false,
+    "size_bytes": 0
+  },
+  "git_status": [
+    "M tmp/未知-宋那个辞 成都恋商文化/extract_author.py",
+    "M tmp/未知-宋那个辞 成都恋商文化/配置.json",
+    "?? tmp/未知-宋那个辞 成都恋商文化/五worker执行记录.md",
+    "?? tmp/未知-宋那个辞 成都恋商文化/浏览器绑定.json",
+    "?? tmp/未知-宋那个辞 成都恋商文化/五worker预检状态.json"
+  ],
+  "git_write_operations": [],
+  "shared_queue_modified": false,
+  "cross_author_files_modified": false,
+  "awaiting": "coordinator explicit AUTHOR_EXTRACTION_GO"
+}
