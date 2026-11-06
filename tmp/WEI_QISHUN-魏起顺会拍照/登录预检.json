@@ -1,0 +1,35 @@
+{
+  "recorded_at": "2026-11-07T02:16:22+08:00",
+  "gate": "first_gate_passed_identity_precheck",
+  "operator": "Orca supervised worker B",
+  "worktree": "da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+  "profile": "2bd87da7-ccc5-4110-b058-691269a45eef",
+  "page": "eb12641b-ca19-470e-8bc2-8e9bce2aed98",
+  "navigation": {
+    "request_id": "e49ba7eb-cddc-40b7-a44f-2b6b47993b9d",
+    "url": "https://www.douyin.com/user/MS4wLjABAAAA4D1e4w14lf6_E9RTclnaiebfQJnxGqQtB6U9K4vrNI4?from_tab_name=main",
+    "only_approved_pilot_page_used": true,
+    "extraction_started": false
+  },
+  "identity": {
+    "name": "魏起顺会拍照",
+    "expected_name": "魏起顺会拍照",
+    "name_match": true,
+    "has_expected_douyin_id": true,
+    "douyin_id": "WEI_QISHUN",
+    "works_heading": "作品\n41",
+    "sec_uid_url_match": true
+  },
+  "login_state": {
+    "login_button": true,
+    "follow_button": true,
+    "followed": false,
+    "login_panel_detected": true,
+    "logged_in": false,
+    "verification_or_rate_limit_marker": "",
+    "user_login_required": true
+  },
+  "precheck_eval_request_id": "d5851574-c3fe-4a32-93e3-8f8410ec7ea0",
+  "credentials_or_qr_saved": false,
+  "next_action": "Stopped all browser actions and asked the coordinator to arrange user login in this existing isolated Profile/page; awaiting instructions."
+}

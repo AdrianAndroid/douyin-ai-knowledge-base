@@ -1,0 +1,113 @@
+{
+  "verified_at": "2026-11-07T02:40:27+08:00",
+  "author": "魏起顺会拍照",
+  "douyin_id": "WEI_QISHUN",
+  "full_author": true,
+  "max_items": null,
+  "binding": {
+    "worktree": "da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
+    "profile": "2bd87da7-ccc5-4110-b058-691269a45eef",
+    "page": "eb12641b-ca19-470e-8bc2-8e9bce2aed98",
+    "retained_for_coordinator_inspection": true
+  },
+  "gates": {
+    "first_gate_approval_message": "msg_6414767c8b8f",
+    "login_recheck_message": "msg_4b5e30071c20",
+    "second_gate_approval_message": "msg_6054e844494d"
+  },
+  "execution_timeline": [
+    {
+      "run": "initial full-author extraction",
+      "started_at": "2026-11-07T02:27:52+08:00",
+      "task_id": "bd01pmcwu",
+      "end": "Stopped with TaskStop after the user's first no-AI instruction; the stopped wrapper did not emit an exit code.",
+      "process_absent_after_stop": true
+    },
+    {
+      "run": "resumed full-author extraction",
+      "started_at": "2026-11-07T02:35:17+08:00",
+      "task_id": "bg3x4xv8b",
+      "end": "Stopped with TaskStop after the user confirmed that all author videos have no AI text; the stopped wrapper did not emit an exit code.",
+      "process_absent_after_stop": true
+    },
+    {
+      "run": "full-mode validation finalization",
+      "started_at": "2026-11-07T02:38:41+08:00",
+      "finished_at": "2026-11-07T02:38:43+08:00",
+      "exit_code": 0,
+      "attempted_count_this_run": 0
+    },
+    {
+      "run": "full-mode status refresh with cumulative attempt history",
+      "started_at": "2026-11-07T02:40:26+08:00",
+      "finished_at": "2026-11-07T02:40:27+08:00",
+      "exit_code": 0,
+      "attempted_count_this_run": 0
+    }
+  ],
+  "cumulative_automated_attempts": {
+    "count": 7,
+    "unique_count": 7,
+    "ids": [
+      "7661218624531886577",
+      "7634107759310623857",
+      "7601472183589002097",
+      "7701669983253040315",
+      "7699840869944024817",
+      "7698690168576387515",
+      "7697190874032375035"
+    ],
+    "historical_timeout_ids_preserved_in_progress": [
+      "7634107759310623857",
+      "7601472183589002097"
+    ]
+  },
+  "user_ground_truth": {
+    "instruction": "我看了一下，这个作者所有的视频都没有AI文案，记录",
+    "recorded_in": "全作者无AI核对.json",
+    "all_41_latest_rows_are_no_ai": true,
+    "previous_saved_and_error_rows_preserved": true
+  },
+  "final_result": {
+    "saved": 0,
+    "no_ai": 41,
+    "errors": 0,
+    "pending": 0,
+    "pending_ids": [],
+    "running": false,
+    "partial": false,
+    "author_completed": true,
+    "result": "completed",
+    "fatal": null,
+    "output_markdown_files": 0,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "quarantine": {
+    "directory": "tmp/WEI_QISHUN-魏起顺会拍照/用户确认无AI-误提取隔离",
+    "markdown_files_preserved_not_deleted": 5,
+    "reason": "These drafts were generated before the user's all-no-AI instruction; they are excluded from final output and validation but retained for audit."
+  },
+  "evidence": [
+    "试点执行记录.md",
+    "浏览器绑定.json",
+    "静态与锁测试.json",
+    "登录预检.json",
+    "全量提取预检.json",
+    "人工核对.json",
+    "全作者无AI核对.json",
+    "提取日志.txt",
+    "提取进度.jsonl",
+    "提取状态.json",
+    "试点运行状态.json",
+    "待补提作品.json",
+    "文案校验.json",
+    "提取完成报告.json"
+  ],
+  "completion_report_exists": true,
+  "extractor_process_running_after_final_audit": false,
+  "git_diff_check": "passed",
+  "commit_or_merge_performed": false,
+  "remaining_blockers": []
+}

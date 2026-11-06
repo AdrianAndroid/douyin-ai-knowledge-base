@@ -1,0 +1,17 @@
+{
+  "recorded_at": "2026-11-07T02:34:31+08:00",
+  "user_instruction": "我看了，第一个视频没有AI文案，可以跳过，并记录",
+  "interpretation": "Applied to the currently stalled item 7634107759310623857; did not overwrite item 7661218624531886577, which already has 238 characters of extracted AI text.",
+  "no_ai_row": {
+    "id": "7634107759310623857",
+    "status": "no_ai",
+    "note": "用户现场确认该作品无AI文案，跳过并记录；保留此前timeout错误行",
+    "source": "user_direct_instruction",
+    "recorded_at": "2026-11-07T02:34:31+08:00"
+  },
+  "prior_error_preserved": true,
+  "interrupted_task_id": "bd01pmcwu",
+  "interruption_reason": "Apply the user-confirmed no_ai classification before the next full-mode retry round.",
+  "process_absent_after_stop": true,
+  "resume_scope": "full author without --max-items; skip completed saved/no_ai IDs"
+}
