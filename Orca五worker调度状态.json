@@ -23,27 +23,42 @@
     "A": {
       "worktree": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
       "profile": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
-      "page": "01b0f677-3907-4ee8-91d7-7f707439b8de"
+      "page": "01b0f677-3907-4ee8-91d7-7f707439b8de",
+      "dispatch": "ctx_b1f5e1508517",
+      "task": "task_4ec80a8b1b81",
+      "terminal": "term_b7115e09-4f03-4956-8b56-ecbee23d3b70"
     },
     "B": {
       "worktree": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun",
       "profile": "2bd87da7-ccc5-4110-b058-691269a45eef",
-      "page": "eb12641b-ca19-470e-8bc2-8e9bce2aed98"
+      "page": "eb12641b-ca19-470e-8bc2-8e9bce2aed98",
+      "dispatch": "ctx_505ffd5a8c58",
+      "task": "task_64b819ccc5db",
+      "terminal": "term_8b6e06ff-8368-4d81-a799-e36bfc876397"
     },
     "C": {
       "worktree": "/Users/zhaojian/orca/workspaces/ai-learn/puffin",
       "profile": "888988a3-faae-454c-931b-b975a8a862c4",
-      "page": "262c9f33-264f-442b-aec4-88fe21cb8f5b"
+      "page": "262c9f33-264f-442b-aec4-88fe21cb8f5b",
+      "dispatch": "ctx_f78f85235fd4",
+      "task": "task_0d58aeec79d0",
+      "terminal": "term_7063e895-d363-4c0f-92e1-8fcb63d5fbb7"
     },
     "D": {
       "worktree": "/Users/zhaojian/orca/workspaces/ai-learn/dugong",
       "profile": "a3385429-07ca-4470-ade7-241ede7f5697",
-      "page": "a09cac76-e55d-450b-9333-8b3ab59a485a"
+      "page": "a09cac76-e55d-450b-9333-8b3ab59a485a",
+      "dispatch": "ctx_9e33cb20e7dd",
+      "task": "task_df9665928b9c",
+      "terminal": "term_db01d40f-9ce7-45fa-b599-2036e201ba98"
     },
     "E": {
       "worktree": "/Users/zhaojian/orca/workspaces/ai-learn/jellyfish",
       "profile": "ffa4d1f5-6874-4817-ae7e-085f3293bb54",
-      "page": "f826d2ef-8be3-469f-a41d-037a4ffeb85a"
+      "page": "f826d2ef-8be3-469f-a41d-037a4ffeb85a",
+      "dispatch": "ctx_7060b58aff01",
+      "task": "task_b597bbadc1a0",
+      "terminal": "term_8a98e5b8-7cb2-4f23-a9e7-31ede30fd3e1"
     }
   },
   "authors": [
@@ -55,17 +70,20 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main",
       "profile_work_count": 737,
       "source_plan_status": "running",
-      "status": "assigned_preflight",
+      "status": "preflight_running",
       "slot": "A",
       "branch": "AdrianAndroid/orca-a-52327471915",
-      "dispatch": null,
+      "dispatch": "ctx_b1f5e1508517",
       "existing_markdown": 107,
       "progress_exists": true,
       "resume_audit_required": true,
       "adaptive_next_limit": null,
       "worker_commit": null,
       "merge_commit": null,
-      "last_error": null
+      "last_error": null,
+      "task": "task_4ec80a8b1b81",
+      "terminal": "term_b7115e09-4f03-4956-8b56-ecbee23d3b70",
+      "branch_base": "bd02f7d"
     },
     {
       "author": "王小浪不浪成都恋商情感文化传播有限公司",
@@ -75,17 +93,20 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAArdqNGZ5-cnvTgxNaN0jB38Kz6ZTeUqtWiuXsodLOEQgfcgK_vQ_D-kcOcmhQGyHk?from_tab_name=main",
       "profile_work_count": 490,
       "source_plan_status": "ready",
-      "status": "assigned_preflight",
+      "status": "preflight_running",
       "slot": "B",
       "branch": "AdrianAndroid/orca-b-wangxiaolangk",
-      "dispatch": null,
+      "dispatch": "ctx_505ffd5a8c58",
       "existing_markdown": 0,
       "progress_exists": false,
       "resume_audit_required": false,
       "adaptive_next_limit": null,
       "worker_commit": null,
       "merge_commit": null,
-      "last_error": null
+      "last_error": null,
+      "task": "task_64b819ccc5db",
+      "terminal": "term_8b6e06ff-8368-4d81-a799-e36bfc876397",
+      "branch_base": "bd02f7d"
     },
     {
       "author": "宋那个辞 成都恋商文化",
@@ -95,17 +116,20 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAAk60tAmbWm0U1voip4VgEycfrn75m_iFdYDdXAhi73AmAcsqD0GGnzEYBayDSitMu?from_tab_name=main",
       "profile_work_count": 407,
       "source_plan_status": "ready",
-      "status": "assigned_preflight",
+      "status": "preflight_running",
       "slot": "C",
       "branch": "AdrianAndroid/orca-c-81957333169",
-      "dispatch": null,
+      "dispatch": "ctx_f78f85235fd4",
       "existing_markdown": 0,
       "progress_exists": false,
       "resume_audit_required": false,
       "adaptive_next_limit": null,
       "worker_commit": null,
       "merge_commit": null,
-      "last_error": null
+      "last_error": null,
+      "task": "task_0d58aeec79d0",
+      "terminal": "term_7063e895-d363-4c0f-92e1-8fcb63d5fbb7",
+      "branch_base": "bd02f7d"
     },
     {
       "author": "做性教育的苏南",
@@ -115,17 +139,20 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAACiiwHj4HX6RJRRkxnMk5bLJv2wKaI2Z_2GdqGWanwEo?from_tab_name=main",
       "profile_work_count": 110,
       "source_plan_status": "ready",
-      "status": "assigned_preflight",
+      "status": "preflight_running",
       "slot": "D",
       "branch": "AdrianAndroid/orca-d-89017187607",
-      "dispatch": null,
+      "dispatch": "ctx_9e33cb20e7dd",
       "existing_markdown": 0,
       "progress_exists": false,
       "resume_audit_required": false,
       "adaptive_next_limit": null,
       "worker_commit": null,
       "merge_commit": null,
-      "last_error": null
+      "last_error": null,
+      "task": "task_df9665928b9c",
+      "terminal": "term_db01d40f-9ce7-45fa-b599-2036e201ba98",
+      "branch_base": "bd02f7d"
     },
     {
       "author": "宅男相亲记迷你版",
@@ -135,17 +162,20 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAARhiUZGLfruwLPx2cnDw7jHGUObkP_JEdCxW1lwnAjySzQmvzVryOLmB14LSbv-iS?from_tab_name=main",
       "profile_work_count": 68,
       "source_plan_status": "ready",
-      "status": "assigned_preflight",
+      "status": "preflight_running",
       "slot": "E",
       "branch": "AdrianAndroid/orca-e-54771197908",
-      "dispatch": null,
+      "dispatch": "ctx_7060b58aff01",
       "existing_markdown": 0,
       "progress_exists": false,
       "resume_audit_required": false,
       "adaptive_next_limit": null,
       "worker_commit": null,
       "merge_commit": null,
-      "last_error": null
+      "last_error": null,
+      "task": "task_b597bbadc1a0",
+      "terminal": "term_8a98e5b8-7cb2-4f23-a9e7-31ede30fd3e1",
+      "branch_base": "bd02f7d"
     },
     {
       "author": "林老头linnn",

@@ -74,6 +74,22 @@
 - 首批按原 45 人计划顺序分配：A=凯哥恋爱说（`52327471915`，737 个作品，从 107 篇断点恢复）；B=王小浪不浪成都恋商情感文化传播有限公司（`wangxiaolangk`，490 个作品）；C=宋那个辞 成都恋商文化（`81957333169`，407 个作品）；D=做性教育的苏南（`89017187607`，110 个作品）；E=宅男相亲记迷你版（`54771197908`，68 个作品）。其余 19 位保持 pending，不自动领取。
 - 当前队列状态为 `preflight`，首批五位为 `assigned_preflight`，active_count=0。下一步只进行分支、提取器最小改造、静态/锁测试及作者身份/登录预检；协调器逐项复核后才放行真实提取。
 
+### 步骤 6：首批分支与五个受监督预检 worker
+
+- 独立调度清单和本记录首先提交到本地 main：`bd02f7d`（提交信息 `建立五worker剩余作者独立调度清单`）。提交只含这两个文件，既有调研文档 SHA-256 仍为 `7a7c11857635bd9db7df6c03eab0c5b273ef55317da55b4f0705f8f442f7d781`。
+- 五个原 worktree 在切分支前均干净；首批分支均从上述最新 main 基线创建，没有新建 worktree/Profile/page。
+- 新任务规格保存在 `/tmp/orca-a-kaige-preflight-spec.md`、`/tmp/orca-b-wangxiaolang-preflight-spec.md`、`/tmp/orca-c-songnageci-preflight-spec.md`、`/tmp/orca-d-sunan-preflight-spec.md`、`/tmp/orca-e-zhainan-preflight-spec.md`。规格明确只有协调器的 `AUTHOR_EXTRACTION_GO` 才能放行真实提取。
+
+| 槽位 | dispatch | task | terminal | 启动结果 |
+|---|---|---|---|---|
+| A | `ctx_b1f5e1508517` | `task_4ec80a8b1b81` | `term_b7115e09-4f03-4956-8b56-ecbee23d3b70` | ready |
+| B | `ctx_505ffd5a8c58` | `task_64b819ccc5db` | `term_8b6e06ff-8368-4d81-a799-e36bfc876397` | ready |
+| C | `ctx_f78f85235fd4` | `task_0d58aeec79d0` | `term_7063e895-d363-4c0f-92e1-8fcb63d5fbb7` | ready |
+| D | `ctx_9e33cb20e7dd` | `task_df9665928b9c` | `term_db01d40f-9ce7-45fa-b599-2036e201ba98` | ready |
+| E | `ctx_7060b58aff01` | `task_b597bbadc1a0` | `term_8a98e5b8-7cb2-4f23-a9e7-31ede30fd3e1` | ready |
+
+- 当前仅 `preflight_running`，队列 active_count 仍为 0。worker 可做允许目录内的最小改造、静态/锁测试及作者身份/登录预检；真实作品提取尚未获放行。协调器等待 Orca 唤醒后逐项复核，不做无意义轮询。
+
 ## 四、复用与防冲突规则（后续任务必须执行）
 
 1. **固定浏览器资源**：复用上表 5 个 worktree/Profile/page。登录失效时只暂停对应槽位并让用户在原 Profile/page 重新扫码，不通过新建 Profile 绕过。
