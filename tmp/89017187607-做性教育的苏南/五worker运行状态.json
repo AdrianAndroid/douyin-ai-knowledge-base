@@ -3,15 +3,23 @@
   "slot": "D",
   "author": "做性教育的苏南",
   "douyin_id": "89017187607",
-  "started_at": "2026-11-07T03:43:33",
-  "ended_at": "2026-11-07T03:51:31",
+  "started_at": "2026-11-07T04:26:25",
+  "ended_at": "2026-11-07T04:31:26",
   "running": false,
   "partial": true,
   "author_completed": false,
-  "max_items": null,
+  "max_items": 2,
+  "skip_ids": [
+    "7675722470506171654",
+    "7704580351188617977"
+  ],
+  "deferred_pending": [
+    "7675722470506171654",
+    "7704580351188617977"
+  ],
   "stop_reason": "约5分钟无实质作品进展",
-  "attempted": 4,
-  "saved": 2,
+  "attempted": 2,
+  "saved": 0,
   "no_ai": 0,
   "errors": 2,
   "pending": 108,
