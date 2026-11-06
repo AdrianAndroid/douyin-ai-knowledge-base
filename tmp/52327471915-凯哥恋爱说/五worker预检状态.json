@@ -1,0 +1,108 @@
+{
+  "status": "AUTHOR_PREFLIGHT_BLOCKED",
+  "slot": "A",
+  "author": "凯哥恋爱说",
+  "douyin_id": "52327471915",
+  "run": "run_573b10a4429c",
+  "task_id": "task_4ec80a8b1b81",
+  "dispatch_id": "ctx_b1f5e1508517",
+  "author_extraction_go_received": false,
+  "preflight_ready": false,
+  "blocker": "离线批次测试错误执行了真实 process_one，在 GO 前意外处理2个作品；已立即停止，未继续身份核验或隔离探针。",
+  "baseline_before_changes": {
+    "profile_ids": 737,
+    "profile_unique_ids": 737,
+    "markdown_files": 107,
+    "markdown_unique_ids": 107,
+    "progress_rows": 108,
+    "latest_saved": 107,
+    "latest_error": 1,
+    "pending": 630,
+    "active_extractor_processes": 0,
+    "old_running_true_treated_as_live": false,
+    "ids_sha256": "e733688712fb0ae0cf90eb87789ccf384cdc9145d86a1e9100a7f05c8272ed3b",
+    "progress_sha256": "471ae61ced3d6d08a4b2e12f65e519a63ee1c2248ed275886c0d39a36218ee30",
+    "markdown_name_content_sha256": "510d10968b606dcea7479c0b4e08d219d15e0744eea5f568bead962c5fdb7fce"
+  },
+  "offline_checks_before_block": {
+    "syntax_ast_parse": "passed",
+    "config_json_parse": "passed",
+    "path_assertions_exit_code": 0,
+    "resolved_output": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy/抖音关注/52327471915-凯哥恋爱说",
+    "missing_ORCA_WORKTREE_exit_code": 1,
+    "missing_ORCA_PROFILE_exit_code": 1,
+    "missing_ORCA_PAGE_exit_code": 1,
+    "duplicate_lock_exit_code": 73,
+    "duplicate_lock_stderr": "ERROR: author extraction lock is already held: /tmp/orca-author-extract-da2e8721-3aa8-432b-8a51-fb648a32632c-52327471915.lock",
+    "duplicate_lock_test_browser_access": false,
+    "duplicate_lock_test_author_output_writes": false,
+    "lock_test_safety_fallback": "/definitely/missing/orca-lock-test"
+  },
+  "unintended_real_batch": {
+    "cause": "runpy.run_path 返回字典的更新没有替换 run/process_one 的函数全局；测试替身未生效，直接 run(2) 又绕过了 main 中的锁和绑定核验。",
+    "run_return_code": 0,
+    "outer_test_exit_code": 1,
+    "outer_test_stderr": "FileNotFoundError: 测试随后从临时目录读取提取状态.json，但实际函数全局仍指向真实作者目录。",
+    "attempted": 2,
+    "saved": 2,
+    "no_ai": 0,
+    "errors_in_batch": 0,
+    "saved_ids": [
+      "7693863248113732902",
+      "7664138045670591796"
+    ],
+    "lock_held_by_unintended_run": false,
+    "active_extractor_processes_after_exit": 0,
+    "running": false,
+    "partial": true,
+    "author_completed": false,
+    "pending": 628,
+    "full_validation_generated": false,
+    "completion_report_generated": false,
+    "new_files": [
+      {
+        "file": "20261007-7693863248113732902-拥有这种性格的男生八成都是恋爱脑.md",
+        "sha256": "1b773a0686b41267df3bac8eec0a111e2f745e0d272eec0428afbe13483ff84e"
+      },
+      {
+        "file": "20260719-7664138045670591796-男人必备的九个顶级本领.md",
+        "sha256": "f2480f42921233a55ef74f571316cdb69f7002d166534da6e06d58b4e93824cf"
+      }
+    ]
+  },
+  "preservation_after_block": {
+    "profile_ids": 737,
+    "profile_unique_ids": 737,
+    "markdown_files": 109,
+    "markdown_unique_ids": 109,
+    "progress_rows": 110,
+    "latest_saved": 109,
+    "latest_error": 0,
+    "original_107_markdown_unchanged": true,
+    "original_107_markdown_name_content_sha256": "510d10968b606dcea7479c0b4e08d219d15e0744eea5f568bead962c5fdb7fce",
+    "original_108_progress_rows_unchanged": true,
+    "original_108_progress_rows_sha256": "471ae61ced3d6d08a4b2e12f65e519a63ee1c2248ed275886c0d39a36218ee30",
+    "current_progress_sha256": "b5f4d655a136bbde22741e23d304662beec05a544eccdf2f4e1187868ebd3258",
+    "current_pending_sha256": "8026fba4c95925b368f29948cc6719a22b4cd52974bd17dc14b7f0e65330ac8a",
+    "current_summary_sha256": "0466e7cbf7577517b28e9bbdc55456c9e47ea84f090bb5705c163000dc1a64fe",
+    "current_109_markdown_name_content_sha256": "1c0986e45783fab1c81e22e3e46f7ba65817700327102c4bf14b448a34db9266",
+    "files_deleted_or_reverted": false
+  },
+  "identity_login_probe": {
+    "completed": false,
+    "identity_verified": false,
+    "login_verified": false,
+    "following_verified": false,
+    "js_isolation_probe_verified": false,
+    "old_probe_cleanup_success_claimed": false,
+    "five_slot_probe_success_claimed": false
+  },
+  "git_boundary": {
+    "baseline_status_empty": true,
+    "git_write_operations_performed": false,
+    "main_queue_modified": false,
+    "other_author_or_worktree_modified": false,
+    "changes_confined_to_assigned_tmp_and_output": true
+  },
+  "updated_at": "2026-11-07T03:31:42+08:00"
+}
