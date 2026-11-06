@@ -3,7 +3,7 @@
 > 创建时间：2026-11-07T02:56:37+08:00
 > 协调器：当前主会话
 > Orca run：`run_573b10a4429c`
-> 当前阶段：用户已完成五个槽位扫码，登录和隔离已核验；首批五位作者进入预检准备，尚未开始真实提取。
+> 当前阶段：A 第二次仅 ID 刷新和 D 第二个两项批次均已验收合并并停止；真实提取槽位暂时为 0，C 按顺序等待主页恢复与小批次授权，B 继续排队，D/E 暂停等待诊断。
 
 ## 一、用户目标与当前范围
 
@@ -155,6 +155,16 @@
 - 回复 `msg_9680fbcf64ab` 仅给 `TEST_ONLY_ACCEPTED` 和 `NEXT_BATCH_QUEUED`。当前顺序为 D 小批次执行、A 仅 ID 刷新、C 等待主页恢复，再到 B；B 未获真实 GO。后续若放行，将缩为最多 2 个新 ID，并延后两个旧错误及一个中断未写结果 ID。
 - B 随后正常结束 agent turn，dispatch 保持打开；没有续提、真实输出或 Git 写操作。
 
+### 步骤 15：A 第二次刷新安全失败、D 第二个两项批次验收合并
+
+- **A refresh2 严格校验失败**：`msg_c8de3ae88d1c` 报告唯一一次正常 CLI 仅 ID 刷新于 04:26:40–04:27:47 结束，exit=1、timeout=false、未重试。修正后的绑定核验通过；目标数 738，滚动 44 轮，第 19 轮达到 737，随后连续 25 轮稳定 737。最终 old=737、new=737、unique=737、added=0、missing=0，严格校验拒绝覆盖，成功路径的 `ID刷新证据.json` 未生成。未调用 run/process_one，未打开作品或读取 AI 正文。
+- 协调器独立确认 A 进程=0、排他锁可重新获取；ID/pending/progress/summary/配置/账号核对与 main 逐字节一致，仍为 737 个唯一 ID、628 pending、110 行进度、latest saved=109、109 篇 Markdown，无完整校验或完成报告。refresh2 证据的 Markdown 组合哈希前后均为 `4fde3efbe42c143c3adaabe628d93d11138321e23d963b7240c8354588ca4dea`；早期 `1c0986...` 属此前快照/口径，不直接混用。当前 worktree 与 main 的 109 篇文件名及内容逐字节完全一致，协调器已澄清执行记录中的口径，不改动正文。
+- A staged 仅作者 TMP/OUT 6 个文件，diff-check 通过。worker 提交 `ded499704773b50f66f17169868b7cd053150bc9`，本地 main 顺序合并 `13da044baa65296ed0f595e7f7d6135078eac81f`。回复 `msg_9f7ba0af46cf` 明确这是**安全失败而非刷新成功**，状态转为 `id_refresh_failed_validation_pending_reconciliation`；真实作品提取仍未授权，737/738 双重量差异尚不能解释为已纳入第 738 项。
+- **D 第二个真实部分批次**：`msg_628f83eaadd4` 报告按 `msg_cc2dea57dee9` 仅运行一次 `--max-items 2` 并跳过两个旧错误，04:26:25–04:31:26 因约 5 分钟无实质进展退出 2。本批 attempted=2、saved=0、no_ai=0、errors=2、pending=108。新 ID `7704224779796736633` 出现 Orca 请求 `e4374a90-accd-49ad-bd1b-41a4dca2ef8c` 的 `Cannot find default execution context`；`7703395465718402340` 为 AI 正文/元数据超时。
+- 独立确认 D 进度从 4 行增至 6 行，仅新增上述两个新 ID；两个 skip 旧错误仍各只有首批一行 error，未记 no_ai。110 个主页 ID、108 个唯一 pending 集合吻合，最新 saved=2、error=4，Markdown 仍为首批 2 篇，`running:false、partial:true、author_completed:false`，无完整校验/完成报告，进程=0、锁释放。
+- D staged 仅作者 TMP/OUT 7 个文件，包含 exitcode 证据，diff-check 通过。worker 提交 `1fe466d1a2d0e06ebaac009948e73ecb074c16f2`，本地 main 顺序合并 `eb54d70eae7604fb2816486b803b2511f93909fe`。回复 `msg_234eb71b2ad6` 验收封账，并因执行上下文错误及持续超时将 D 转为 `extraction_paused_pending_diagnostic`，不再扩大 skip 或消耗新 ID。
+- 两批完成后真实提取 active_count=0；下一步按既有顺序由 C 先恢复原精确作者主页并重新核验，再决定是否放行最多 2 个新 ID，B 保持排队，E 保持暂停。A 的 `msg_stop_217a36d6d04a3a60ee6f59ae` 只是 worker 收到“等待、不操作”后正常结束 turn，dispatch 仍 open，不是新提取失败。当前 main HEAD=`eb54d70eae7604fb2816486b803b2511f93909fe`，未推送 GitHub。
+
 ## 四、复用与防冲突规则（后续任务必须执行）
 
 1. **固定浏览器资源**：复用上表 5 个 worktree/Profile/page。登录失效时只暂停对应槽位并让用户在原 Profile/page 重新扫码，不通过新建 Profile 绕过。
@@ -186,8 +196,9 @@
 - [x] 协调器逐一核验五个槽位当前登录状态与绑定；D 空白页已在原资源恢复。
 - [x] B/C/D/E 隔离探针通过；A 旧写入失败已如实记录，正常作者页 window 执行上下文另行验证通过。
 - [x] 审查凯哥旧断点，建立不含共享计划写入的 24 位独立调度清单。
-- [x] 首批五作者在独立分支完成提取器改造、静态/锁测试和作者预检；A 的 737→738 刷新仍有绑定修正闸门。
+- [x] 首批五作者在独立分支完成提取器改造、静态/锁测试和作者预检；A 两次仅 ID 刷新均已封账，第二次仍只收集 737，737/738 差异待复核且未授权真实提取。
 - [x] 协调器逐项放行后执行真实提取，B/C/D/E 首批均因停滞安全收尾并保留真实 pending。
 - [x] E/C/D/B 首批及 A 失败刷新批次已独立核验、提交并顺序合并；后续批次继续逐批验收。
+- [x] A refresh2 与 D 第二个两项批次已独立核验、提交并顺序合并；两者均未形成作者完成结论。
 - [ ] 完成五作者全部 pending 的补提与完整校验；当前没有任何一位在本轮被认定为作者完成。
 - [ ] 首批五作者 settled 后，再按固定槽位依次领取其余 19 位，不自动扩大范围。

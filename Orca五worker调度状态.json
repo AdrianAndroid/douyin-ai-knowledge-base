@@ -7,7 +7,7 @@
   "status": "extracting",
   "total_remaining": 24,
   "completed_this_run": 0,
-  "active_count": 1,
+  "active_count": 0,
   "login_verified": true,
   "isolation_probe": {
     "slots_verified": [
@@ -70,7 +70,7 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main",
       "profile_work_count": 737,
       "source_plan_status": "running",
-      "status": "id_refresh_in_progress",
+      "status": "id_refresh_failed_validation_pending_reconciliation",
       "slot": "A",
       "branch": "AdrianAndroid/orca-a-52327471915-refresh2",
       "dispatch": "ctx_b1f5e1508517",
@@ -78,14 +78,14 @@
       "progress_exists": true,
       "resume_audit_required": true,
       "adaptive_next_limit": null,
-      "worker_commit": "c723e30",
-      "merge_commit": "8bd6b7ceb416f534497888421bbd3aa87bb4ffe0",
-      "last_error": "绑定比较已修正并通过正反向假CLI测试；仅授权一次738 ID刷新，真实作品提取未授权",
+      "worker_commit": "ded499704773b50f66f17169868b7cd053150bc9",
+      "merge_commit": "13da044baa65296ed0f595e7f7d6135078eac81f",
+      "last_error": "refresh2目标738但44轮实际仍737，最后25轮稳定，added=0/missing=0；严格校验拒绝覆盖，旧737/628/109完整保留，真实提取未授权",
       "task": "task_4ec80a8b1b81",
       "terminal": "term_b7115e09-4f03-4956-8b56-ecbee23d3b70",
       "branch_base": "8bd6b7ceb416f534497888421bbd3aa87bb4ffe0",
       "preflight_ask": "msg_b9175c3c4df2",
-      "coordinator_reply": "msg_3d9f268cb1ae",
+      "coordinator_reply": "msg_9f7ba0af46cf",
       "last_partial_batch": {
         "attempted": 2,
         "saved": 2,
@@ -115,6 +115,24 @@
         "message": "msg_3d9f268cb1ae",
         "expected_count": 738,
         "extraction_authorized": false
+      },
+      "refresh2_result": {
+        "outcome": "failed_validation_after_collection",
+        "exit_code": 1,
+        "scroll_rounds": 44,
+        "final_stable_rounds": 25,
+        "observed_target_count": 738,
+        "actual_unique_ids": 737,
+        "added": 0,
+        "missing": 0,
+        "ids": 737,
+        "pending": 628,
+        "markdown": 109,
+        "progress_rows": 110,
+        "success_evidence": false,
+        "real_extraction_invoked": false,
+        "worker_commit": "ded499704773b50f66f17169868b7cd053150bc9",
+        "merge_commit": "13da044baa65296ed0f595e7f7d6135078eac81f"
       }
     },
     {
@@ -221,7 +239,7 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAACiiwHj4HX6RJRRkxnMk5bLJv2wKaI2Z_2GdqGWanwEo?from_tab_name=main",
       "profile_work_count": 110,
       "source_plan_status": "ready",
-      "status": "extracting_next_batch_max2",
+      "status": "extraction_paused_pending_diagnostic",
       "slot": "D",
       "branch": "AdrianAndroid/orca-d-89017187607-batch2",
       "dispatch": "ctx_9e33cb20e7dd",
@@ -229,9 +247,9 @@
       "progress_exists": true,
       "resume_audit_required": false,
       "adaptive_next_limit": 2,
-      "worker_commit": "725fcaf",
-      "merge_commit": "6e83b5da418321f362fbf4c55abef7192e665418",
-      "last_error": "D离线skip审查通过；E/C释放槽位后仅授权2个新ID，旧2错误继续pending",
+      "worker_commit": "1fe466d1a2d0e06ebaac009948e73ecb074c16f2",
+      "merge_commit": "eb54d70eae7604fb2816486b803b2511f93909fe",
+      "last_error": "第二批2个新ID均失败：1个Cannot find default execution context、1个AI正文/元数据超时；旧2个skip未新增进度，saved2/error4/pending108，暂停等待诊断",
       "task": "task_df9665928b9c",
       "terminal": "term_db01d40f-9ce7-45fa-b599-2036e201ba98",
       "branch_base": "8fc8c65dfed9ff491d77f6108a39fd9b60002f39",
@@ -240,12 +258,21 @@
       "preflight_ask": "msg_a63484a24de3",
       "extraction_go_reply": "msg_3c4a1c229eb3",
       "coordinator_tab_show_request": "389b7470-a3d7-4e77-819b-77ca5c9d75a8",
-      "coordinator_reply": "msg_cc2dea57dee9",
+      "coordinator_reply": "msg_234eb71b2ad6",
       "last_partial_batch": {
-        "attempted": 4,
-        "saved": 2,
+        "batch": 2,
+        "attempted": 2,
+        "saved": 0,
         "no_ai": 0,
         "errors": 2,
+        "cumulative_latest_saved": 2,
+        "cumulative_latest_errors": 4,
+        "progress_rows": 6,
+        "markdown": 2,
+        "new_error_ids": [
+          "7704224779796736633",
+          "7703395465718402340"
+        ],
         "pending": 108,
         "partial": true,
         "author_completed": false
@@ -256,7 +283,9 @@
         "skip_ids": [
           "7675722470506171654",
           "7704580351188617977"
-        ]
+        ],
+        "settled": true,
+        "further_extraction_authorized": false
       }
     },
     {
@@ -686,5 +715,5 @@
     }
   ],
   "real_extraction_concurrency_limit": 2,
-  "updated_at": "2026-11-07T04:28:24+08:00"
+  "updated_at": "2026-11-07T04:47:44+08:00"
 }
