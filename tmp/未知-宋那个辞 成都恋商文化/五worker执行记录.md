@@ -101,3 +101,31 @@
 - 文件写入仅位于本作者 TMP 和允许的作者输出目录；未改共享队列、其他作者/worktree，未执行 Git 写操作。
 
 本批已封账，状态为 `AUTHOR_BATCH_SETTLED`。按规格下一批最多 5 个，若仍卡顿最多 2 个；等待协调器独立验收与下一步指令，等待期间不继续写提取输出。
+
+## 批次 1 验收与 skip-ids 测试改造
+
+- 协调器 `msg_9f5db2548784` 回复 `AUTHOR_BATCH_ACCEPTED slot=C`，保留页面 407 与实际展开 409 唯一 ID 的双重量事实；worker=`5070195`，main merge=`2bfe84e2382704bd8041ee8c6ee7b6fa113e3af4`。
+- 收到 `TEST_ONLY_GO`：仅实现 `--skip-ids`，不得访问真实浏览器或写真实提取输出，不做 Git 写操作。
+- `extract_author.py` 新增 `--skip-ids ID [ID ...]`。选择批次时仅从 eligible 中延后这些 ID；`待补提作品.json` 仍使用未删减的真实 pending，skip_ids 写入运行状态，不为延后 ID 新增进度。
+- 所有测试均通过 CLI 子进程执行；未使用 runpy、import 或任何直接内部函数调用。使用 `/tmp` 新建隔离 worktree 副本及假 Orca CLI，测试结束后临时目录已清理。
+- 语法编译 CLI 与 `--help` CLI 退出码均为 0，help 展示 `--skip-ids` 且未调用浏览器。
+- 场景“延后两个、处理下一个”退出码 0：仅 attempted `7606324862663118131`；两个延后 ID 均仍在 pending，既有错误进度保持不变，没有其状态调用或新增进度；第三个 ID 在隔离输出保存 1 个 Markdown。
+- 场景“全部延后”退出码 0：attempted=0、pending=2、作品状态调用=0、Markdown=0，进度文件与测试前逐字节一致。
+- 两个场景均为 `running:false`、`partial:true`、`author_completed:false`，锁在 CLI 退出后均可重新获取并释放。
+- 测试前后真实进度、状态、pending、ID 清单的 SHA-256 均未变化，真实 Markdown 列表未变化；真实浏览器调用=0、真实提取输出写入=0。
+- `git diff --check` 退出码 0；未执行 Git 写操作。
+
+测试改造已完成，申请 `NEXT_BATCH_GO`。拟执行：`--max-items 5 --skip-ids 7613069165708053795 7602272401598024987`；尚未授权续提，继续等待。
+
+## 批次 2：作者 URL 绑定闸门停止
+
+- 协调器 `msg_1df0d14fa667` 回复 `NEXT_BATCH_GO slot=C douyin_id=81957333169`，仅允许正常 CLI 子进程运行一次：`--max-items 5 --skip-ids 7613069165708053795 7602272401598024987`。
+- 起止：2026-11-07T04:18:03+08:00 至 2026-11-07T04:18:04+08:00。严格只运行该 CLI 一次，未导航后重跑。
+- 启动绑定检查中 worktree、Profile、page、loaded 均为 true，唯独 `author_url:false`，因此在读取/处理本批作品前 fatal 停止，进程退出码 3。
+- 停止后的只读 tab 请求 `1f882ac4-8278-4730-99c1-8daf668900e0` 显示同一作者的 `modal_id=7602268151279029542` 页面，标题与 Profile/page 均正确；这只是事后 URL 证据，不改变启动时绑定失败及本批 0 处理事实，未据此自行重跑。
+- attempted new / saved / no_ai / new errors：0 / 0 / 0 / 0；既有错误仍为 2，真实 pending 仍为 409。
+- 两个 skip ID 没有新增进度；`提取进度.jsonl` 仍仅 2 行旧错误，`主页作品ID.json` 为 409 唯一 ID，`待补提作品.json` 与完整清单一致，Markdown=0。
+- 早期 fatal 路径将临时状态写成 pending unknown；2026-11-07T04:20:35+08:00 在持有作者锁时按真实 ID/pending/进度文件原子修正封账状态，未改进度。最终 `running:false`、`partial:true`、`author_completed:false`、`pending:409`、`latest_counts:{error:2}`。
+- 已确认 C 无提取进程，作者锁已释放；未生成完整校验或完成报告，无 Git 写操作。
+
+批次 2 已封账，状态为 `AUTHOR_BATCH_SETTLED`。等待协调器独立验收和下一步指令，不自行续提。
