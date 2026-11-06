@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "tested_at": "2026-11-07T02:09:26",
+  "cases": [
+    {
+      "case": "missing_ORCA_WORKTREE",
+      "returncode": 2,
+      "passed": true,
+      "browser_audit_created": false
+    },
+    {
+      "case": "missing_ORCA_PROFILE",
+      "returncode": 2,
+      "passed": true,
+      "browser_audit_created": false
+    },
+    {
+      "case": "missing_ORCA_PAGE",
+      "returncode": 2,
+      "passed": true,
+      "browser_audit_created": false
+    },
+    {
+      "case": "reject_max_items_3",
+      "returncode": 2,
+      "passed": true,
+      "browser_audit_created": false
+    }
+  ],
+  "douyin_accessed": false
+}

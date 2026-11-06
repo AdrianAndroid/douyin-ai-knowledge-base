@@ -1,0 +1,45 @@
+{
+  "author": "不纸设计",
+  "douyin_id": "0753bjy",
+  "worktree": "da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+  "worktree_selector": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+  "branch": "refs/heads/AdrianAndroid/pilot-buzhi-0753bjy",
+  "root": "/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+  "profile": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
+  "profile_label": "douyin-pilot-0753bjy",
+  "profile_scope": "isolated",
+  "page": "01b0f677-3907-4ee8-91d7-7f707439b8de",
+  "initial_url": "https://example.com/",
+  "created_at": "2026-11-07T01:58:30+08:00",
+  "commands": {
+    "profile_create": {
+      "command": "orca tab profile create --label douyin-pilot-0753bjy --scope isolated --json",
+      "ok": true,
+      "request_id": "f1cc2966-b306-414c-a0cf-8f226a2ba26c",
+      "summary": "创建 isolated Profile 9483ec18-4a86-4e2c-92d5-a2441a1cafb6；该命令不支持 --worktree/--page。"
+    },
+    "tab_create": {
+      "command": "orca tab create --worktree <完整worktree selector> --profile 9483ec18-4a86-4e2c-92d5-a2441a1cafb6 --url https://example.com/ --json",
+      "ok": true,
+      "request_id": "2fe4ae97-858e-4c5f-ac7a-69b970af01d0",
+      "summary": "创建固定 page 01b0f677-3907-4ee8-91d7-7f707439b8de。"
+    },
+    "worktree_show": {
+      "ok": true,
+      "request_id": "140c36b5-9202-4128-8345-0e04bf3a3f14",
+      "summary": "worktree id、root 与 branch 均匹配当前隔离 worktree。"
+    },
+    "tab_show": {
+      "ok": true,
+      "request_id": "a0a58623-f63e-4339-97da-7f986e0877c3",
+      "summary": "page、profileId、worktreeId 匹配；URL=https://example.com/，title=Example Domain，loadError=null。"
+    },
+    "tab_profile_show": {
+      "ok": true,
+      "request_id": "db2f9ebe-fe58-4700-b758-f60071c423d6",
+      "summary": "page 的 worktreeId、profileId、profileLabel 均匹配；Profile 为独立隔离会话。"
+    }
+  },
+  "douyin_navigation_performed": false,
+  "credentials_or_cookies_saved": false
+}

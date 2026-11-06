@@ -1,0 +1,22 @@
+{
+  "author": "不纸设计",
+  "douyin_id": "0753bjy",
+  "sec_uid": "MS4wLjABAAAAa8qzKVpz6bXmd86RJjV-_T1GPnLZnZQOAHG5II4ulj5G9O6hUS9cP7T-REXoSTdK",
+  "profile_work_count": 26,
+  "accessible_author_items": 26,
+  "running": false,
+  "updated_at": "2026-11-07T02:31:28",
+  "counts": {
+    "saved": 26,
+    "no_ai": 0,
+    "error": 0
+  },
+  "validation": {
+    "markdown_files": 26,
+    "unique_video_ids": 26,
+    "invalid_files": 0,
+    "duplicate_ids": 0,
+    "processed_not_in_profile_list": 0
+  },
+  "coverage_note": "主页显示作品26；实际展开并核对26个本作者作品。保存26个AI文案，0个无AI总结，待补提0个。"
+}
