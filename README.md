@@ -1,5 +1,8 @@
 # 抖音 AI 知识库
 
+> **GitHub 仓库**：[AdrianAndroid/douyin-ai-knowledge-base](https://github.com/AdrianAndroid/douyin-ai-knowledge-base)　|　**在线浏览入口**：[网页版 README](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/README.md)　|　**在线作者总索引**：[作者分页索引](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/作者/index.md)
+> 克隆：`git clone https://github.com/AdrianAndroid/douyin-ai-knowledge-base.git`
+
 > 数据快照：2026-11-07 11:11（全库重扫校准）。当前提取任务已暂停。**实际 Markdown 篇数以本次扫描为准：264 个作者目录合计 11,555 篇**（此前 00:42 快照登记 11,516，差额 39 篇为快照后新增）。作者价值分类与增量机制见 `作者价值分类与后续分析计划.md`，全表见 `_全库作者索引.md`。
 > 本文完整列出本地 **264 个作者目录**及 AI 文案提取情况；历史重复昵称和“未知”抖音号目录均保留，未擅自合并。
 

@@ -18,4 +18,4 @@
 ---
 
 **导航**：[← 上一位：宋那个辞 成都恋商文化](072-宋那个辞_成都恋商文化.md) | [↑ 返回作者总索引](index.md) | [下一位：开发游戏的couple →](074-开发游戏的couple.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/073-%E7%99%BD%E8%88%92%E6%80%A1SEO_E.md)

@@ -115,4 +115,4 @@
 ---
 
 **导航**：[← 上一位：硅谷101播客](038-硅谷101播客.md) | [↑ 返回作者总索引](index.md) | [下一位：混子哥边画边讲 →](040-混子哥边画边讲.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/039-%E8%B0%81%E6%98%AFAristotle.md)

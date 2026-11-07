@@ -198,4 +198,4 @@
 ---
 
 **导航**：[← 上一位：科学创造翟老师](009-科学创造翟老师.md) | [↑ 返回作者总索引](index.md) | [下一位：上官益Eric →](011-上官益Eric.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/010-%E6%95%B0%E5%AD%97%E6%B8%B8%E7%89%A7%E4%BA%BASamuel.md)

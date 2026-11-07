@@ -18,4 +18,4 @@
 ---
 
 **导航**：[← 上一位：摘颗星星](114-摘颗星星.md) | [↑ 返回作者总索引](index.md) | [下一位：Chou野 →](116-Chou野.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/115-%E7%99%BD%E7%BE%8ADing%E5%84%BF.md)

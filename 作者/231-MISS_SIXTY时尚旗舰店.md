@@ -18,4 +18,4 @@
 ---
 
 **导航**：[← 上一位：adidas专业运动旗舰店](230-adidas专业运动旗舰店.md) | [↑ 返回作者总索引](index.md) | [下一位：adidas运动休闲旗舰店 →](232-adidas运动休闲旗舰店.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/231-MISS_SIXTY%E6%97%B6%E5%B0%9A%E6%97%97%E8%88%B0%E5%BA%97.md)

@@ -68,4 +68,4 @@
 ---
 
 **导航**：[← 上一位：一启-AI](016-一启-AI.md) | [↑ 返回作者总索引](index.md) | [下一位：LumaAgent →](018-LumaAgent.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/017-Agent_data%E5%88%9B%E4%B8%9A.md)

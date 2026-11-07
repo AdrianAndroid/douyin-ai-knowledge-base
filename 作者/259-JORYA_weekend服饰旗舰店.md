@@ -18,4 +18,4 @@
 ---
 
 **导航**：[← 上一位：ANN ANDELMAN服饰旗舰店](258-ANN_ANDELMAN服饰旗舰店.md) | [↑ 返回作者总索引](index.md) | [下一位：NAWS官方旗舰店 →](260-NAWS官方旗舰店.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/259-JORYA_weekend%E6%9C%8D%E9%A5%B0%E6%97%97%E8%88%B0%E5%BA%97.md)

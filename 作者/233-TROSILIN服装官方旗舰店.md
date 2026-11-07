@@ -18,4 +18,4 @@
 ---
 
 **导航**：[← 上一位：adidas运动休闲旗舰店](232-adidas运动休闲旗舰店.md) | [↑ 返回作者总索引](index.md) | [下一位：猫猫定制牛仔裤 →](234-猫猫定制牛仔裤.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/233-TROSILIN%E6%9C%8D%E8%A3%85%E5%AE%98%E6%96%B9%E6%97%97%E8%88%B0%E5%BA%97.md)

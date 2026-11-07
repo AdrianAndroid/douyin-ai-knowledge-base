@@ -18,4 +18,4 @@
 ---
 
 **导航**：[← 上一位：荞克力](203-荞克力.md) | [↑ 返回作者总索引](index.md) | [下一位：小琰和嘉哥 →](205-小琰和嘉哥.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/204-TuTu%E7%94%9F%E6%B4%BB%E5%BF%97.md)

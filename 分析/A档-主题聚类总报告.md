@@ -1,5 +1,7 @@
 # A 档主题聚类总报告
 
+[GitHub 仓库](https://github.com/AdrianAndroid/douyin-ai-knowledge-base)　|　[本页在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E5%88%86%E6%9E%90/A%E6%A1%A3-%E4%B8%BB%E9%A2%98%E8%81%9A%E7%B1%BB%E6%80%BB%E6%8A%A5%E5%91%8A.md)
+
 [← README](../README.md)　|　[作者分页索引](../作者/index.md)　|　[全库作者索引](../_全库作者索引.md)　|　[A 档分析](README.md)
 
 > 数据：A 核心价值档 22 位有数据作者（A 档共 30 位，8 位编程号尚未提取、0 篇）/ 3,599 篇 AI 文案 / 2023-08-01 ~ 2026-11-05。

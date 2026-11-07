@@ -1,5 +1,7 @@
 # A 档作者观点卡片（22 位）
 
+[GitHub 仓库](https://github.com/AdrianAndroid/douyin-ai-knowledge-base)　|　[本页在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E5%88%86%E6%9E%90/A%E6%A1%A3-%E4%BD%9C%E8%80%85%E8%A7%82%E7%82%B9%E5%8D%A1%E7%89%87.md)
+
 [← README](../README.md)　|　[作者分页索引](../作者/index.md)　|　[全库作者索引](../_全库作者索引.md)　|　[A 档分析](README.md)
 
 > 依据：3,599 篇 AI 文案全量统计 + 8 位代表作精读；其余作者标注“(推断)”，表示由主题分布与工具共现推断，尚未逐篇精读。

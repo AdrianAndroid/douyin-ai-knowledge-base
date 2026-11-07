@@ -18,4 +18,4 @@
 ---
 
 **导航**：[← 上一位：细狗毛](099-细狗毛.md) | [↑ 返回作者总索引](index.md) | [下一位：喵星考拉 →](101-喵星考拉.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/100-Keith%E4%BB%8A%E6%97%A5%E4%BC%91%E6%81%AF%E5%90%97.md)

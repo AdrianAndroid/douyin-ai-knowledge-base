@@ -315,4 +315,4 @@
 ---
 
 **导航**：[← 上一位：凡哥教你谈恋爱](050-凡哥教你谈恋爱.md) | [↑ 返回作者总索引](index.md) | [下一位：凯哥恋爱说 →](052-凯哥恋爱说.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/051-%E9%9B%A8%E5%A7%90Raine.md)

@@ -18,4 +18,4 @@
 ---
 
 **导航**：[← 上一位：朱又包](210-朱又包.md) | [↑ 返回作者总索引](index.md) | [下一位：乖乖evil →](212-乖乖evil.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/211-Evelyn.md)

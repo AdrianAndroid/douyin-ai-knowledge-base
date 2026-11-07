@@ -18,4 +18,4 @@
 ---
 
 **导航**：[← 上一位：课代表立正](024-课代表立正.md) | [↑ 返回作者总索引](index.md) | [下一位：程序员阿崔Acui →](026-程序员阿崔Acui.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/025-python-%E9%9D%92%E6%9C%A8%E5%AD%A6%E9%95%BF%EF%BC%88%E5%B7%A5%E5%85%B7%E5%9C%A8%E8%A3%99%E9%87%8C%EF%BC%89.md)

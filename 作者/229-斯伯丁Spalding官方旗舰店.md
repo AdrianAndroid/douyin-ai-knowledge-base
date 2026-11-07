@@ -18,4 +18,4 @@
 ---
 
 **导航**：[← 上一位：迪茂收纳箱包源头工厂](228-迪茂收纳箱包源头工厂.md) | [↑ 返回作者总索引](index.md) | [下一位：adidas专业运动旗舰店 →](230-adidas专业运动旗舰店.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/229-%E6%96%AF%E4%BC%AF%E4%B8%81Spalding%E5%AE%98%E6%96%B9%E6%97%97%E8%88%B0%E5%BA%97.md)

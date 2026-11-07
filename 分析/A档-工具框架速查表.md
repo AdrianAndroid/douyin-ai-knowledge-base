@@ -1,5 +1,7 @@
 # A 档工具 / 框架速查表
 
+[GitHub 仓库](https://github.com/AdrianAndroid/douyin-ai-knowledge-base)　|　[本页在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E5%88%86%E6%9E%90/A%E6%A1%A3-%E5%B7%A5%E5%85%B7%E6%A1%86%E6%9E%B6%E9%80%9F%E6%9F%A5%E8%A1%A8.md)
+
 [← README](../README.md)　|　[作者分页索引](../作者/index.md)　|　[全库作者索引](../_全库作者索引.md)　|　[A 档分析](README.md)
 
 > 口径：按“涉及篇数”统计（一篇里多次出现只计 1 篇）。代表篇目给出 作品ID + 作者 + 标题；完整路径为 `抖音关注/{作者目录}/{文件名}.md`。

@@ -1,5 +1,7 @@
 # A 档分析产物（2026-11-07）
 
+[GitHub 仓库](https://github.com/AdrianAndroid/douyin-ai-knowledge-base)　|　[本页在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E5%88%86%E6%9E%90/README.md)
+
 [← README](../README.md)　|　[作者分页索引](../作者/index.md)　|　[全库作者索引](../_全库作者索引.md)　|　[A 档分析](README.md)
 
 针对 **A 核心价值档 22 位有数据作者 / 3,599 篇** AI 文案的分析结果。

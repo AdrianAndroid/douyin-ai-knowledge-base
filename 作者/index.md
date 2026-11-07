@@ -1,5 +1,7 @@
 # 作者分页索引（264 位）
 
+[GitHub 仓库](https://github.com/AdrianAndroid/douyin-ai-knowledge-base)　|　[本页在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/index.md)
+
 [← README](../README.md)　|　[全库索引（按价值档）](../_全库作者索引.md)　|　[分类计划](../作者价值分类与后续分析计划.md)　|　[A 档分析](../分析/README.md)
 
 > 点任一作者进入专页；专页内点每条作品可直接打开 md，页首页底有「上一页 / 下一页」。

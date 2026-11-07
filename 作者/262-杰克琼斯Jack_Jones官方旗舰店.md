@@ -18,4 +18,4 @@
 ---
 
 **导航**：[← 上一位：Reese瑞茜_③号店](261-Reese瑞茜_③号店.md) | [↑ 返回作者总索引](index.md) | [下一位：西域春乳品旗舰店 →](263-西域春乳品旗舰店.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/262-%E6%9D%B0%E5%85%8B%E7%90%BC%E6%96%AFJack_Jones%E5%AE%98%E6%96%B9%E6%97%97%E8%88%B0%E5%BA%97.md)

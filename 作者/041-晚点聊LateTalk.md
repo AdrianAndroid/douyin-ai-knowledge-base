@@ -95,4 +95,4 @@
 ---
 
 **导航**：[← 上一位：混子哥边画边讲](040-混子哥边画边讲.md) | [↑ 返回作者总索引](index.md) | [下一位：发财兄弟｜聊赚钱 →](042-发财兄弟｜聊赚钱.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/041-%E6%99%9A%E7%82%B9%E8%81%8ALateTalk.md)

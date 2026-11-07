@@ -18,4 +18,4 @@
 ---
 
 **导航**：[← 上一位：魏起顺会拍照](064-魏起顺会拍照.md) | [↑ 返回作者总索引](index.md) | [下一位：菜心设计铺 →](066-菜心设计铺.md)
-　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)
+　[🏠 README](../README.md) · [全库索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)　[GitHub 在线版](https://github.com/AdrianAndroid/douyin-ai-knowledge-base/blob/main/%E4%BD%9C%E8%80%85/065-%E6%9E%97%E8%80%81%E5%A4%B4linnn.md)
