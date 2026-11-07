@@ -4,15 +4,25 @@
   "running": false,
   "partial": true,
   "author_completed": false,
-  "full_author_requested": true,
-  "max_items": null,
-  "attempted_ids": [
+  "full_author_requested": false,
+  "max_items": 2,
+  "skip_ids": [
     "7214392743617940797",
     "7667885557959698854",
     "7669142308360781979"
   ],
-  "attempted_count": 3,
-  "attempted_unique_count": 3,
+  "skipped_pending_ids": [
+    "7214392743617940797",
+    "7667885557959698854",
+    "7669142308360781979"
+  ],
+  "skipped_pending_count": 3,
+  "attempted_ids": [
+    "7704661060138041445",
+    "7704244490215990257"
+  ],
+  "attempted_count": 2,
+  "attempted_unique_count": 2,
   "saved": [],
   "saved_count": 0,
   "no_ai": [],
@@ -25,23 +35,31 @@
     {
       "id": "7667885557959698854",
       "error": "AI text or metadata timeout"
+    },
+    {
+      "id": "7704661060138041445",
+      "error": "AI text or metadata timeout"
+    },
+    {
+      "id": "7704244490215990257",
+      "error": "AI text or metadata timeout"
     }
   ],
-  "error_count": 2,
+  "error_count": 4,
   "run_saved": [],
   "run_no_ai": [],
   "run_errors": [
     {
-      "id": "7214392743617940797",
+      "id": "7704661060138041445",
       "error": "AI text or metadata timeout"
     },
     {
-      "id": "7667885557959698854",
+      "id": "7704244490215990257",
       "error": "AI text or metadata timeout"
     }
   ],
   "latest_counts": {
-    "error": 2
+    "error": 4
   },
   "pending": [
     "7214392743617940797",
@@ -538,21 +556,9 @@
   ],
   "pending_count": 491,
   "pending_known": true,
-  "started_at": "2026-11-07T03:50:08+08:00",
-  "finished_at": "2026-11-07T03:56:16+08:00",
-  "result": "incomplete",
-  "batch": 1,
-  "batch_record": "五worker批次记录.json",
-  "batch_settled": true,
-  "stop_reason": "连续两个作品超时且约5分钟无 saved/no_ai 实质进展；SIGINT 安全收尾",
-  "process_pid": 9079,
-  "process_exit_code": 130,
-  "process_exited": true,
-  "lock_release_verified": true,
-  "interrupted_before_result_id": "7669142308360781979",
-  "next_batch_max_items": 5,
-  "next_batch_started": false,
-  "waiting_for_independent_acceptance": true,
+  "started_at": "2026-11-07T05:26:10+08:00",
+  "finished_at": "2026-11-07T05:31:20+08:00",
+  "result": "partial_errors",
   "fatal": null,
   "validation": null,
   "lock_path": "/tmp/orca-douyin-da2e8721-3aa8-432b-8a51-fb648a32632c-wangxiaolangk.lock",
