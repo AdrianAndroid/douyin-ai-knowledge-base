@@ -3,7 +3,7 @@
 > 创建时间：2026-11-07T02:56:37+08:00
 > 协调器：当前主会话
 > Orca run：`run_573b10a4429c`
-> 当前阶段：A 成功批次与 C 超时批次均已封账；B 已获恢复原固定作者页后最多 2 个新 ID 的明确 GO，当前授权快照 active=1，实际结果尚未返回。A 无后续 GO，C/D/E 暂停等待诊断。页面 738/清单 737 与页面 407/清单 409 的双重量事实继续保留。
+> 当前阶段：B 已获恢复原固定作者页后最多 2 个新 ID 的 GO；A 因上一批成功，下一批已逐步扩大为已知 737 清单最多 5 项。当前授权快照 active=2，仅 A/B，实际结果尚未返回；C/D/E 暂停等待诊断。页面 738/清单 737 与页面 407/清单 409 的双重量事实继续保留。
 
 ## 一、用户目标与当前范围
 
@@ -17,7 +17,7 @@
 
 | 槽位 | worktree 路径 | 分支 | Profile | 固定 page | 当前状态 |
 |---|---|---|---|---|---|
-| A | `/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy` | `AdrianAndroid/orca-a-52327471915-known737-batch1` | `9483ec18-4a86-4e2c-92d5-a2441a1cafb6` | `01b0f677-3907-4ee8-91d7-7f707439b8de` | 两项成功批次已封账；当前无后续 GO |
+| A | `/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy` | `AdrianAndroid/orca-a-52327471915-known737-batch2` | `9483ec18-4a86-4e2c-92d5-a2441a1cafb6` | `01b0f677-3907-4ee8-91d7-7f707439b8de` | 已获已知737清单最多五项的新批次 GO；结果待返回 |
 | B | `/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun` | `AdrianAndroid/orca-b-wangxiaolangk-batch2` | `2bd87da7-ccc5-4110-b058-691269a45eef` | `eb12641b-ca19-470e-8bc2-8e9bce2aed98` | 已获主页恢复后最多两项的 GO；结果待返回 |
 | C | `/Users/zhaojian/orca/workspaces/ai-learn/puffin` | `AdrianAndroid/orca-c-81957333169-batch2` | `888988a3-faae-454c-931b-b975a8a862c4` | `262c9f33-264f-442b-aec4-88fe21cb8f5b` | 第三批两项超时已封账；暂停等待诊断 |
 | D | `/Users/zhaojian/orca/workspaces/ai-learn/dugong` | `AdrianAndroid/orca-d-89017187607-batch2` | `a3385429-07ca-4470-ade7-241ede7f5697` | `a09cac76-e55d-450b-9333-8b3ab59a485a` | 第二批已封账；暂停等待诊断 |
@@ -202,6 +202,14 @@
 - 首次较长发送被权限分类器拒绝且未送达；随后以不扩大范围的简短消息 `msg_9ac8d874fbaf` 成功发放 `NEXT_BATCH_GO slot=B douyin_id=wangxiaolangk`。恢复检查通过后，仅允许一次正常 CLI：`extract_author.py --max-items 2 --skip-ids 7214392743617940797,7667885557959698854,7669142308360781979`。
 - 预计只选择接下来的两个新 ID `7704661060138041445`、`7704244490215990257`；三个 skip ID 不新增进度、不记 saved/no_ai。沿用禁止测试、代码修改、直接内部函数调用和 Git 写操作的既有边界；卡顿安全收尾并保存真实 partial 证据，完成后 ask，不自行重试或续提。
 - 此步仅为授权记录，尚未收到 B 的实际批次结果。授权快照真实提取 active=1，仅 B 获 GO；A 无后续 GO，C/D/E 暂停，其余 19 位保持 pending，不推送 GitHub。
+
+### 步骤 20：A 因成功响应逐步扩大为最多五项，与 B 共用两路上限
+
+- B 授权记录已提交为 `e2f078bc831a0312c5745b265c42bf4879710135`。A 上一批两项均正常保存，依据“页面恢复稳定后可从 2/5 个逐步扩大”的规则，下一批从 2 项增至**最多 5 项**，不是恢复完整作者模式。
+- 新 GO 前独立确认 A worktree 干净、同作者进程=0、锁可重新获取并已释放；主分支真实断点为 saved=111、pending=626，`running:false、partial:true、author_completed:false`。下一批前五个 pending ID 为 `7663048200747633962`、`7662658779921632558`、`7662281692861828388`、`7661926320535784767`、`7661535843206712610`，均无需新增 skip。
+- 直接 `switch -c` 首次被权限分类器拒绝且未执行；改为先安全创建分支引用、再在已确认干净的 worktree 切换，两步均成功。新分支 `AdrianAndroid/orca-a-52327471915-known737-batch2` 基于 main `e2f078bc831a0312c5745b265c42bf4879710135`，切换后 HEAD 与基线一致、工作区干净，没有新建 worktree/Profile/page。
+- 通过 `msg_021afd983dd1` 发放 `KNOWN_737_PARTIAL_BATCH_GO slot=A batch=2`：恢复原固定作者页并通过绑定、身份、登录检查后，仅运行一次正常 CLI `extract_author.py --max-items 5`。禁止刷新 ID、超过 5 项、测试、代码修改、直接内部函数调用和 Git 写操作；fatal 前置停止，卡顿安全收尾，完成后保存证据并 ask，不自行续提。
+- 此步仅授权，尚未收到 A 的新批结果。即使 5 项全部保存，仍须保留 `partial:true、author_completed:false`；页面 738/实际清单 737 的最终覆盖差异另案保留。当前授权快照 active=2，仅 A/B，真实提取并发上限仍为 2；C/D/E 暂停，其余 19 位 pending，不推送 GitHub。
 
 ## 四、复用与防冲突规则（后续任务必须执行）
 

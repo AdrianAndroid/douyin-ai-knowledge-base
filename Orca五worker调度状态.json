@@ -7,7 +7,7 @@
   "status": "extracting",
   "total_remaining": 24,
   "completed_this_run": 0,
-  "active_count": 1,
+  "active_count": 2,
   "login_verified": true,
   "isolation_probe": {
     "slots_verified": [
@@ -70,9 +70,9 @@
       "profile_url": "https://www.douyin.com/user/MS4wLjABAAAAuZMYFu2QHmJpCAQzWoUtW4KyHf93Lgp7Di9T_AZ7fyDbiRQmA9NkMzpWHOLNFbc2?from_tab_name=main",
       "profile_work_count": 737,
       "source_plan_status": "running",
-      "status": "known737_partial_batch_settled_no_go",
+      "status": "known737_batch2_max5_authorized",
       "slot": "A",
-      "branch": "AdrianAndroid/orca-a-52327471915-known737-batch1",
+      "branch": "AdrianAndroid/orca-a-52327471915-known737-batch2",
       "dispatch": "ctx_b1f5e1508517",
       "existing_markdown": 111,
       "progress_exists": true,
@@ -83,9 +83,9 @@
       "last_error": null,
       "task": "task_4ec80a8b1b81",
       "terminal": "term_b7115e09-4f03-4956-8b56-ecbee23d3b70",
-      "branch_base": "691c9e8",
+      "branch_base": "e2f078bc831a0312c5745b265c42bf4879710135",
       "preflight_ask": "msg_b9175c3c4df2",
-      "coordinator_reply": "msg_db9bf34e5ba2",
+      "coordinator_reply": "msg_021afd983dd1",
       "last_partial_batch": {
         "batch_type": "known737_max_items_2",
         "attempted": 2,
@@ -155,6 +155,21 @@
         "acceptance_message": "msg_db9bf34e5ba2",
         "worker_commit": "df091461845d0ff10b8899602f456e625f01f0d5",
         "merge_commit": "ad638df6f06c271d736efd6604bef75c91b82483",
+        "further_extraction_authorized": false
+      },
+      "known737_batch2_go": {
+        "message": "msg_021afd983dd1",
+        "max_items": 5,
+        "expected_pending_ids": [
+          "7663048200747633962",
+          "7662658779921632558",
+          "7662281692861828388",
+          "7661926320535784767",
+          "7661535843206712610"
+        ],
+        "refresh_authorized": false,
+        "author_completion_authorized": false,
+        "settled": false,
         "further_extraction_authorized": false
       }
     },
@@ -780,5 +795,5 @@
     }
   ],
   "real_extraction_concurrency_limit": 2,
-  "updated_at": "2026-11-07T05:24:20+08:00"
+  "updated_at": "2026-11-07T05:29:31+08:00"
 }
