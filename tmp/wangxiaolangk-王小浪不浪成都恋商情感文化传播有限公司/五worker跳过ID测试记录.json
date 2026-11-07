@@ -1,0 +1,122 @@
+{
+  "run": "run_573b10a4429c",
+  "task_id": "task_64b819ccc5db",
+  "dispatch_id": "ctx_505ffd5a8c58",
+  "slot": "B",
+  "author": "王小浪不浪成都恋商情感文化传播有限公司",
+  "douyin_id": "wangxiaolangk",
+  "stage": "TEST_ONLY_COMPLETE_WAITING_NEXT_BATCH_GO",
+  "recorded_at": "2026-11-07T04:25:15+08:00",
+  "real_browser_accessed": false,
+  "real_extraction_started": false,
+  "next_batch_started": false,
+  "implementation": {
+    "option": "--skip-ids",
+    "repeatable": true,
+    "comma_separated": true,
+    "ascii_numeric_validation": true,
+    "order_preserving_deduplication": true,
+    "deferred_ids_remain_pending": true,
+    "deferred_ids_append_progress": false,
+    "deferred_ids_counted_as_attempted": false
+  },
+  "real_cli_argument_tests": {
+    "help_exit_code": 0,
+    "help_contains_skip_ids": true,
+    "invalid_cases": [
+      "--skip-ids abc",
+      "--skip-ids 123,456x",
+      "--skip-ids ''",
+      "--skip-ids 123,,456",
+      "--skip-ids -123"
+    ],
+    "invalid_exit_code": 2,
+    "failed_before_lock_browser_or_output": true,
+    "error_contains": "只接受逗号分隔的数字作品ID"
+  },
+  "isolated_cli_subprocess_test": {
+    "method": "TemporaryDirectory 隔离副本、合成作者/作品状态、假 Orca CLI；python3 -I 启动提取器 CLI 子进程",
+    "runpy_or_direct_internal_call_used": false,
+    "fixture_history": [
+      {
+        "attempt": 1,
+        "passed": false,
+        "child_exit_code": 2,
+        "failure": "假 CLI 先匹配 passport，误将含健康检查代码的作品 STATE_JS 返回为字符串；报 'str' object has no attribute 'get'。这是夹具分派错误，随后优先匹配 hasAiButton + coauthorVerified。"
+      },
+      {
+        "attempt": 2,
+        "passed": false,
+        "failure": "核心选择/状态/进度/隔离断言已依次通过，但脆弱的固定调用次数断言失败；未将该次记为通过。"
+      },
+      {
+        "attempt": 3,
+        "passed": false,
+        "failure": "诊断输出确认实际假 Orca 调用为 14 次：4 次绑定核验 + 每个作品各 5 次；原断言误写为 12。诊断仍在旧计数断言退出，未将该次记为通过。"
+      },
+      {
+        "attempt": 4,
+        "passed": true,
+        "child_exit_code": 0,
+        "fake_orca_call_count": 14
+      }
+    ],
+    "command_shape": "python3 -I <隔离副本>/extract_author.py --max-items 2 --skip-ids 7214392743617940797,7667885557959698854 --skip-ids 7669142308360781979 --skip-ids 7214392743617940797",
+    "skip_ids": [
+      "7214392743617940797",
+      "7667885557959698854",
+      "7669142308360781979"
+    ],
+    "attempted_ids": [
+      "7704661060138041445",
+      "7704244490215990257"
+    ],
+    "run_saved_ids": [
+      "7704661060138041445",
+      "7704244490215990257"
+    ],
+    "deferred_count": 3,
+    "batch_count": 2,
+    "skipped_pending_count": 3,
+    "pending_ids": [
+      "7214392743617940797",
+      "7667885557959698854",
+      "7669142308360781979",
+      "7703923863743073457",
+      "7703579900413825787",
+      "7703163371002846074"
+    ],
+    "pending_count": 6,
+    "preexisting_error_rows_unchanged": true,
+    "new_progress_only_for_attempted_ids": true,
+    "interrupted_id_progress_added": false,
+    "isolated_markdown_count": 2,
+    "running": false,
+    "partial": true,
+    "author_completed": false,
+    "full_validation_generated": false,
+    "completion_report_generated": false,
+    "explicit_worktree_and_page_on_all_fake_browser_calls": true,
+    "real_tmp_or_output_changed": false
+  },
+  "final_checks": {
+    "python_compile": "SYNTAX_OK",
+    "git_diff_check_exit_code": 0,
+    "real_hashes": {
+      "主页作品ID.json": "42f76bfe9aa6bfd8d726277c47708715e21aae45e6f8747e5b7c1dc3de045de8",
+      "待补提作品.json": "42f76bfe9aa6bfd8d726277c47708715e21aae45e6f8747e5b7c1dc3de045de8",
+      "提取进度.jsonl": "40051901dc0a95e01e7ae81363b7d64d06451755ccc58a1c2f8765511a068df5"
+    },
+    "real_markdown_count": 0,
+    "real_attempted_count": 3,
+    "real_saved_count": 0,
+    "real_no_ai_count": 0,
+    "real_error_count": 2,
+    "real_pending_count": 491,
+    "real_running": false,
+    "real_partial": true,
+    "real_author_completed": false
+  },
+  "git_write_operations": false,
+  "waiting_for": "NEXT_BATCH_GO"
+}

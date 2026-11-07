@@ -616,10 +616,12 @@ def now_iso():
     return dt.datetime.now().astimezone().isoformat(timespec="seconds")
 
 
-def write_run_status(started_at, max_items, attempted_ids, run_rows, all_ids, rows,
+def write_run_status(started_at, max_items, skip_ids, attempted_ids, run_rows, all_ids, rows,
                      result, validation=None, fatal="", pending_known=True,
                      author_completed=False):
     pending = pending_ids(all_ids, rows) if pending_known else None
+    skipped_pending = ([video_id for video_id in pending if video_id in set(skip_ids)]
+                       if pending is not None else None)
     latest = latest_rows(rows)
     saved = sorted(video_id for video_id, row in latest.items() if row.get("status") == "saved")
     no_ai = sorted(video_id for video_id, row in latest.items() if row.get("status") == "no_ai")
@@ -633,6 +635,8 @@ def write_run_status(started_at, max_items, attempted_ids, run_rows, all_ids, ro
         "author": AUTHOR, "douyin_id": DOUYIN_ID, "running": False,
         "partial": not author_completed, "author_completed": author_completed,
         "full_author_requested": max_items is None, "max_items": max_items,
+        "skip_ids": skip_ids, "skipped_pending_ids": skipped_pending,
+        "skipped_pending_count": len(skipped_pending) if skipped_pending is not None else None,
         "attempted_ids": attempted_ids, "attempted_count": len(attempted_ids),
         "attempted_unique_count": len(set(attempted_ids)),
         "saved": saved, "saved_count": len(saved),
@@ -648,13 +652,28 @@ def write_run_status(started_at, max_items, attempted_ids, run_rows, all_ids, ro
     })
 
 
+def parse_skip_ids(values, parser):
+    skip_ids = []
+    for value in values:
+        for item in value.split(","):
+            video_id = item.strip()
+            if not re.fullmatch(r"[0-9]+", video_id):
+                parser.error(f"--skip-ids 只接受逗号分隔的数字作品ID，无效值: {item!r}")
+            if video_id not in skip_ids:
+                skip_ids.append(video_id)
+    return skip_ids
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--max-items", type=int, default=None,
                         help="process at most N pending items; omit for the full resumable author run")
+    parser.add_argument("--skip-ids", action="append", default=[], metavar="ID[,ID...]",
+                        help="defer numeric IDs without attempting them or appending progress; repeatable")
     args = parser.parse_args()
     if args.max_items is not None and args.max_items < 1:
         parser.error("--max-items must be a positive integer")
+    skip_ids = parse_skip_ids(args.skip_ids, parser)
     missing = [name for name in ("ORCA_WORKTREE", "ORCA_PROFILE", "ORCA_PAGE")
                if not os.environ.get(name, "").strip()]
     if missing:
@@ -666,6 +685,7 @@ def main():
         return 4
 
     partial = args.max_items is not None
+    skip_id_set = set(skip_ids)
     started_at = now_iso()
     rows = []
     run_rows = []
@@ -695,9 +715,12 @@ def main():
                           "部分批次运行中" if partial else "完整作者提取运行中", partial=True)
             for attempt in range(1, 2 if partial else 4):
                 pending = pending_ids(all_ids, rows)
-                batch = pending[:args.max_items] if partial else pending
+                candidates = [video_id for video_id in pending if video_id not in skip_id_set]
+                batch = candidates[:args.max_items] if partial else candidates
                 write_json(PENDING_FILE, pending)
-                print(f"ROUND {attempt} pending={len(pending)} batch={len(batch)}", flush=True)
+                deferred = len(pending) - len(candidates)
+                print(f"ROUND {attempt} pending={len(pending)} deferred={deferred} batch={len(batch)}",
+                      flush=True)
                 if not batch:
                     break
                 for video_id in batch:
@@ -762,7 +785,7 @@ def main():
                     f"{result}，待补提{len(pending)}个" if ids_known else result)
             write_summary(rows, all_ids, False, note, partial=not author_completed,
                           author_completed=author_completed, pending_known=ids_known)
-            write_run_status(started_at, args.max_items, attempted_ids, run_rows, all_ids, rows,
+            write_run_status(started_at, args.max_items, skip_ids, attempted_ids, run_rows, all_ids, rows,
                              result, validation, fatal, pending_known=ids_known,
                              author_completed=author_completed)
             print(f"DONE result={result} pending={len(pending) if pending is not None else 'unknown'}",

@@ -5,15 +5,15 @@
   "running": false,
   "partial": true,
   "author_completed": false,
-  "updated_at": "2026-11-07T03:56:16",
+  "updated_at": "2026-11-07T05:31:20",
   "counts": {
-    "error": 2
+    "error": 4
   },
   "pending": 491,
   "pending_known": true,
-  "note": "incomplete，待补提491个",
+  "note": "partial_errors，待补提491个",
   "last": {
-    "id": "7667885557959698854",
+    "id": "7704244490215990257",
     "status": "error",
     "error": "AI text or metadata timeout"
   }

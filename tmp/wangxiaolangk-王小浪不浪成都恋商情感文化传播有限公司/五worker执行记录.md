@@ -6,7 +6,7 @@
 - 作者：王小浪不浪成都恋商情感文化传播有限公司（`wangxiaolangk`）
 - 记录时间：2026-11-07T03:31:38+08:00
 - 最近修正：2026-11-07T03:44:15+08:00（协调器要求作品数 490→491）
-- 当前阶段：已收到明确 GO；首批因连续两次超时及约 5 分钟无实质进展安全收尾，等待协调器独立验收，未继续提取。
+- 当前阶段：首批已独立验收；`--skip-ids` 隔离 CLI 子进程测试完成，等待协调器明确 `NEXT_BATCH_GO`，真实续提尚未启动。
 
 ## 1. 版本指南与固定身份
 
@@ -149,3 +149,22 @@ DOM 证据：
 - 详细机器可读记录见 `五worker批次记录.json`；`五worker运行状态.json` 已补充真实退出码、进程/锁核验、停滞原因和下一批上限 5。
 
 本批没有继续处理剩余作品，没有执行 Git 写操作。下一步仅发送 `AUTHOR_BATCH_SETTLED` ask，等待独立验收；下一批未启动。
+
+## 9. TEST_ONLY_GO：`--skip-ids` 实现与隔离验证（2026-11-07 04:25:15 +08:00）
+
+首批经协调器独立验收后，按 `TEST_ONLY_GO` 仅实现延后作品 ID 的选择逻辑，没有启动真实续提：
+
+- `--skip-ids` 支持重复参数和逗号分隔，按 ASCII 数字校验并保持首次出现顺序去重。
+- 被延后的 ID 不进入 attempted、不追加进度，仍保留在完整 pending；运行状态新增 `skip_ids`、`skipped_pending_ids` 和 `skipped_pending_count`。
+- 真实 CLI `--help` 退出码 0；`abc`、`123,456x`、空字符串、`123,,456`、`-123` 均在锁、浏览器和输出前以退出码 2 拒绝，错误包含“只接受逗号分隔的数字作品ID”。
+
+隔离测试使用 `TemporaryDirectory` 中的提取器副本、合成作者/作品状态和假 Orca CLI，仅通过 `python3 -I .../extract_author.py` CLI 子进程运行，未使用 runpy 或直接内部调用。保留的夹具排错过程：
+
+1. 首次假 CLI 因先匹配 `passport`，误把作品状态脚本当成健康检查，子进程退出码 2，报 `'str' object has no attribute 'get'`；修正为优先识别 `hasAiButton` + `coauthorVerified`。
+2. 第二次核心选择/状态/进度/隔离断言依次通过，但固定调用次数断言失败，未记为通过。
+3. 诊断确认实际为 14 次假 Orca 调用（4 次绑定核验，加两个作品各 5 次），原夹具误写为 12；该诊断仍在旧计数断言退出，未记为通过。
+4. 修正夹具计数后最终重跑退出码 0，输出 `SKIP_IDS_ISOLATED_CLI_TEST_OK exit=0 real_tmp_or_output_changed=false`。
+
+最终隔离用例以 `--max-items 2` 和重复/逗号混合参数跳过 `7214392743617940797`、`7667885557959698854`、`7669142308360781979`。实际 attempted 仅为 `7704661060138041445`、`7704244490215990257`；三个跳过 ID 全部仍在 pending，第三个中断 ID 没有新增进度，前两条既有 error 原样保留。隔离结果 `pending=6`、新增进度仅两条、`partial:true`、`author_completed:false`，未生成完整校验或完成报告；14 次假浏览器调用均显式携带 worktree 和 page。
+
+最终 Python 编译及 `git diff --check` 均通过。真实 TMP/OUT 前后条目、大小及 mtime 快照一致；三个真实首批文件 SHA-256 未变，真实 Markdown 仍为 0，状态仍为 attempted=3、saved=0、no_ai=0、errors=2、pending=491。机器可读证据见 `五worker跳过ID测试记录.json`。未访问真实浏览器、未写真实提取输出、未执行 Git 写操作；下一步仅 ask 申请 `NEXT_BATCH_GO`。
