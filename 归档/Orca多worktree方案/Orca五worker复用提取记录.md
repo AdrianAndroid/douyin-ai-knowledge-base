@@ -1,5 +1,7 @@
 # Orca 五 worker 复用提取记录
 
+> **归档说明（2026-11-07）：多 worktree 方案已停用。本文所有 GO、固定槽位、复用规则和等待状态均为历史记录，不再有效；A–E 五个 worktree 已删除，当前只保留 `/Volumes/wd/ai-learn`。后续不得依据本文重启多 worker 提取。**
+
 > 创建时间：2026-11-07T02:56:37+08:00
 > 协调器：当前主会话
 > Orca run：`run_573b10a4429c`
@@ -225,6 +227,8 @@
 - 主分支复验 A/B 文件与 worker 提交一致，A=116/621/117/116，B=4 error/491/4/0。当前真实提取 active=0，A/B 均无新 GO，C/D/E 继续暂停，completed_this_run=0，其余 19 位 pending；未推送 GitHub。
 
 ## 四、复用与防冲突规则（后续任务必须执行）
+
+> **用户新增硬性规则（2026-11-07）：抖音作品页的 AI Tab 若不是自动生成，就不要提取该作品。** 不得手动点击或调用接口触发生成，不得把缺少自动 AI Tab 的作品记为 saved、no_ai 或作者完成；该作品继续保留 pending，并如实记录未提取原因。既有批次已经落盘的真实 saved/error 记录不回溯改写。从下一批起，任何 GO、提取器和验收都必须遵守此规则。规则通知仅要求知悉、不含 GO：A=`msg_1eebff27c485`、B=`msg_f2ad43527a74`、C=`msg_8d376b78c30b`、D=`msg_190a0675df11`、E=`msg_9156fbfca215`。
 
 1. **固定浏览器资源**：复用上表 5 个 worktree/Profile/page。登录失效时只暂停对应槽位并让用户在原 Profile/page 重新扫码，不通过新建 Profile 绕过。
 2. **受监督复用**：仍 open 的 dispatch 使用 `orchestration send` 继续；需要新 agent 时，用 `worker-start --worktree id:<完整ID>` 在现有 worktree 创建受监督 agent，不创建额外 worktree。
