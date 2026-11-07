@@ -1,0 +1,147 @@
+{
+  "gate": "KNOWN_737_PARTIAL_BATCH_GO slot=A douyin_id=52327471915 batch=2",
+  "coordinator_message_id": "msg_021afd983dd1",
+  "branch": "AdrianAndroid/orca-a-52327471915-known737-batch2",
+  "mode": "--max-items 5",
+  "actual_cli_invocations": 1,
+  "command": [
+    "/opt/anaconda3/bin/python3",
+    "-I",
+    "/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy/tmp/52327471915-凯哥恋爱说/extract_author.py",
+    "--max-items",
+    "5"
+  ],
+  "worktree": "id:da2e8721-3aa8-432b-8a51-fb648a32632c::/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy",
+  "profile": "9483ec18-4a86-4e2c-92d5-a2441a1cafb6",
+  "page": "01b0f677-3907-4ee8-91d7-7f707439b8de",
+  "started_at": "2026-11-07T05:30:59+08:00",
+  "finished_at": "2026-11-07T05:32:08+08:00",
+  "exit_code": 0,
+  "timeout": false,
+  "stdout": "RESUME_IDS count=737\nROUND 1 pending=626\nFALLBACK_NAV id=7663048200747633962\nSAVED id=7663048200747633962 title=讲话不要有奴才之相\nFALLBACK_NAV id=7662658779921632558\nSAVED id=7662658779921632558 title=男生个人爱好吸引女生程度从夯到拉\nFALLBACK_NAV id=7662281692861828388\nSAVED id=7662281692861828388 title=这样谈恋爱真的很容易走到结婚\nFALLBACK_NAV id=7661926320535784767\nSAVED id=7661926320535784767 title=男生下头行为实力排行\nFALLBACK_NAV id=7661535843206712610\nSAVED id=7661535843206712610 title=当你跟女生实在没东西聊了，那你一定要聊这三个话题\nBATCH_DONE pending=621 batch={'attempted': 5, 'saved': 5, 'no_ai': 0, 'error': 0}\n",
+  "stderr": "",
+  "expected_unattempted_ids": [
+    "7663048200747633962",
+    "7662658779921632558",
+    "7662281692861828388",
+    "7661926320535784767",
+    "7661535843206712610"
+  ],
+  "appended_progress_rows": [
+    {
+      "id": "7663048200747633962",
+      "title": "讲话不要有奴才之相",
+      "date": "2026-07-16",
+      "status": "saved",
+      "file": "20260716-7663048200747633962-讲话不要有奴才之相.md",
+      "ai_len": 978
+    },
+    {
+      "id": "7662658779921632558",
+      "title": "男生个人爱好吸引女生程度从夯到拉",
+      "date": "2026-07-15",
+      "status": "saved",
+      "file": "20260715-7662658779921632558-男生个人爱好吸引女生程度从夯到拉.md",
+      "ai_len": 904
+    },
+    {
+      "id": "7662281692861828388",
+      "title": "这样谈恋爱真的很容易走到结婚",
+      "date": "2026-07-14",
+      "status": "saved",
+      "file": "20260714-7662281692861828388-这样谈恋爱真的很容易走到结婚.md",
+      "ai_len": 1055
+    },
+    {
+      "id": "7661926320535784767",
+      "title": "男生下头行为实力排行",
+      "date": "2026-07-13",
+      "status": "saved",
+      "file": "20260713-7661926320535784767-男生下头行为实力排行.md",
+      "ai_len": 813
+    },
+    {
+      "id": "7661535843206712610",
+      "title": "当你跟女生实在没东西聊了，那你一定要聊这三个话题",
+      "date": "2026-07-12",
+      "status": "saved",
+      "file": "20260712-7661535843206712610-当你跟女生实在没东西聊了，那你一定要聊这三个话题.md",
+      "ai_len": 562
+    }
+  ],
+  "old_progress_prefix_unchanged": true,
+  "old_progress_rows": 112,
+  "new_progress_rows": 117,
+  "id_list_unchanged": true,
+  "old_id_count": 737,
+  "new_id_count": 737,
+  "old_pending_count": 626,
+  "new_pending_count": 621,
+  "added_pending_ids": [],
+  "removed_pending_ids": [
+    "7663048200747633962",
+    "7662658779921632558",
+    "7662281692861828388",
+    "7661926320535784767",
+    "7661535843206712610"
+  ],
+  "summary_after": {
+    "author": "凯哥恋爱说",
+    "douyin_id": "52327471915",
+    "profile_work_count": 737,
+    "running": false,
+    "partial": true,
+    "author_completed": false,
+    "updated_at": "2026-11-07T05:32:08",
+    "counts": {
+      "saved": 116
+    },
+    "pending": 621,
+    "note": "批次结束，真实待补提621个；未生成完整校验或完成报告",
+    "batch": {
+      "attempted": 5,
+      "saved": 5,
+      "no_ai": 0,
+      "error": 0
+    },
+    "last": {
+      "id": "7661535843206712610",
+      "title": "当你跟女生实在没东西聊了，那你一定要聊这三个话题",
+      "date": "2026-07-12",
+      "status": "saved",
+      "file": "20260712-7661535843206712610-当你跟女生实在没东西聊了，那你一定要聊这三个话题.md",
+      "ai_len": 562
+    }
+  },
+  "old_markdown_files": 111,
+  "new_markdown_files": 116,
+  "added_markdown_files": [
+    "20260712-7661535843206712610-当你跟女生实在没东西聊了，那你一定要聊这三个话题.md",
+    "20260713-7661926320535784767-男生下头行为实力排行.md",
+    "20260714-7662281692861828388-这样谈恋爱真的很容易走到结婚.md",
+    "20260715-7662658779921632558-男生个人爱好吸引女生程度从夯到拉.md",
+    "20260716-7663048200747633962-讲话不要有奴才之相.md"
+  ],
+  "changed_old_markdown_files": [],
+  "removed_markdown_files": [],
+  "markdown_unchanged_except_additions": true,
+  "sha256_before": {
+    "主页作品ID.json": "e733688712fb0ae0cf90eb87789ccf384cdc9145d86a1e9100a7f05c8272ed3b",
+    "待补提作品.json": "4f36836f5e2dea7c8ba257abeeed1999505f15f8da6b5b5f5cfe97e5fcde85b0",
+    "提取进度.jsonl": "0675974abee8319a3146742c7292f190d0cda23736a4567076ffa7a3da21464f",
+    "提取状态.json": "b1b04bd52cdaae8777ba88bfc6ce0075d23e6794f4e6fe5ae030f0f257aa726a",
+    "配置.json": "f67222acf6e1fd54f19fc5c631196e21d196b9e1ef878d8712db12b68018fefe",
+    "账号核对.json": "5ea2dc95d90bf4c71a8b846c1eba8b7983b1b45bd1cf5834da9af84df0841efa",
+    "markdown_name_content": "0f9d01bfb94468460893abab1bc424d1f512df4ecc3f9bbc40e3b10d1c86af9c"
+  },
+  "sha256_after": {
+    "主页作品ID.json": "e733688712fb0ae0cf90eb87789ccf384cdc9145d86a1e9100a7f05c8272ed3b",
+    "待补提作品.json": "c2220d5006be55c2e75aef0963647ee593a7c712425672fa41c8eba8c55ce29f",
+    "提取进度.jsonl": "6f84e24eb714e88b137731e15fbb6617285b76aa0d79d9300793036c98c13df4",
+    "提取状态.json": "e54c1e3c669e622a5de728877a9e50cdc6ef5e763920b8b566147c903870b5aa",
+    "配置.json": "f67222acf6e1fd54f19fc5c631196e21d196b9e1ef878d8712db12b68018fefe",
+    "账号核对.json": "5ea2dc95d90bf4c71a8b846c1eba8b7983b1b45bd1cf5834da9af84df0841efa",
+    "markdown_name_content": "a1246e55143b8700aaee17af172eac5b3b17b24f5f0181c22d34a909a6dbabc4"
+  },
+  "full_validation_generated": false
+}
