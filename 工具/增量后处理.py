@@ -82,6 +82,20 @@ def name_of(d):
     return d.split('-', 1)[1] if re.match(r'^[0-9A-Za-z_.]+-', d) else d
 
 
+def key_of(d):
+    """稳定主键：抖音号；抖音号缺失（历史"未知"目录）时退回完整目录名。
+    昵称可改、目录可改名，抖音号不变，所以所有查找都用它。"""
+    dy = d.split('-', 1)[0]
+    return dy if dy not in ('未知', '', 'unknown', 'Unknown') else d
+
+
+def nick_of(d):
+    k = key_of(d)
+    if d.startswith(k + '-') and d[len(k) + 1:]:
+        return d[len(k) + 1:]
+    return name_of(d)
+
+
 # ---------------- 1. 扫描 ----------------
 def scan():
     rows = []
@@ -95,7 +109,7 @@ def scan():
             m = re.match(r'(\d{8})-(\d+)-', os.path.basename(f))
             if m:
                 dates.append(m.group(1))
-        rows.append({'dir': d, 'name': name_of(d), 'md': len(mds),
+        rows.append({'dir': d, 'name': name_of(d), 'key': key_of(d), 'nick': nick_of(d), 'md': len(mds),
                      'dmin': min(dates) if dates else '', 'dmax': max(dates) if dates else ''})
     return rows
 
@@ -224,7 +238,7 @@ def build_tutorial(rec, lib, mapj):
         b[cls(t)].append((p['date'], t))
     b['cog'], b['step'], b['mis'], b['key'] = b['cog'][:14], b['step'][:14], b['mis'][:10], b['key'][:18]
 
-    text = lib.get(name)
+    text = lib.get(rec['key'])
     pos = text['position'] if text else '<!--待补写定位--> 新作者，定位与学习路径待人工补充。'
     path = text['path'] if text else '<!--待补写路径-->'
 
@@ -271,7 +285,7 @@ def build_tutorial(rec, lib, mapj):
 
 
 def build_index(recs, one, groups):
-    meta = {r['name']: r for r in recs}
+    meta = {r['key']: r for r in recs}
     tot_art, tot_ch = sum(r['files'] for r in recs), sum(r['chars'] for r in recs)
     L = ['# 作者精华教程 · 总索引\n']
     L.append('[GitHub 仓库](https://github.com/AdrianAndroid/douyin-ai-knowledge-base)　|　'
@@ -290,7 +304,7 @@ def build_index(recs, one, groups):
     def row(n):
         r = meta[n]
         fn = esc(r['file'])
-        return f"| {n} | {r['files']} | {r['chars']/10000:.1f} | {one.get(n,'')} | [打开]({fn}) |"
+        return f"| {r['name']} | {r['files']} | {r['chars']/10000:.1f} | {one.get(n,'')} | [打开]({fn}) |"
 
     used = set()
     for gname, names in groups:
@@ -302,7 +316,7 @@ def build_index(recs, one, groups):
                 L.append(row(n))
                 used.add(n)
         L.append('')
-    rest = [r['name'] for r in sorted(recs, key=lambda x: -x['files']) if r['name'] not in used]
+    rest = [r['key'] for r in sorted(recs, key=lambda x: -x['files']) if r['key'] not in used]
     if rest:
         L.append('## 七、未归类（新加入或未分组）\n')
         L.append('| 作者 | 篇数 | 万字 | 一句话定位 | 教程 |')
@@ -317,10 +331,10 @@ def build_index(recs, one, groups):
              '程序员阿崔Acui、老傅1024、大厂阿星、JimChannel、林粒粒呀）为 0 篇待提取，其余多为已关注但未开始提取的作者。'
              '全名单见 [全库作者索引](../_全库作者索引.md)。\n')
     L.append('## 按篇数排序的总表\n')
-    L.append('| # | 作者 | 篇数 | 教程 |')
-    L.append('|---|---|---|---|')
+    L.append('| # | 作者 | 抖音号 | 篇数 | 教程 |')
+    L.append('|---|---|---|---|---|')
     for i, r in enumerate(sorted(recs, key=lambda x: -x['files']), 1):
-        L.append(f"| {i:03d} | {r['name']} | {r['files']} | [打开]({esc(r['file'])}) |")
+        L.append(f"| {i:03d} | {r['name']} | {r['key']} | {r['files']} | [打开]({esc(r['file'])}) |")
     L.append("")
     L.append('---\n')
     L.append('导航：[🏠 README](../README.md) · [作者分页索引](../作者/index.md) · [全库作者索引](../_全库作者索引.md) · [A 档分析](../分析/README.md)')
@@ -387,12 +401,16 @@ def main():
             rec = extract(r['dir'])
             json.dump(rec, open(jf, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
         rec['name'] = r['name']
+        rec['key'] = r['key']
+        rec['nick'] = r['nick']
         recs.append(rec)
 
     # 清掉已不存在作者的教程文件
     keep = set()
     for i, rec in enumerate(recs, 1):
-        fn = f"{i:03d}-{re.sub(r'[/\\]', '_', rec['name'])}.md"
+        kk = re.sub(r'[/\\]', '_', rec['key'])
+        fn = (f"{i:03d}-{kk}.md" if kk == re.sub(r'[/\\]', '_', rec['dir'])
+              else f"{i:03d}-{kk}-{re.sub(r'[/\\]', '_', rec['nick'])}.md")
         rec['file'] = fn
         keep.add(fn)
         open(os.path.join(TUT, fn), 'w', encoding='utf-8').write(build_tutorial(rec, lib, mapj))
@@ -406,7 +424,7 @@ def main():
 
     # 4 校验
     tot, bad = verify_links()
-    missing_lib = [r['name'] for r in recs if r['name'] not in lib]
+    missing_lib = [r['dir'] for r in recs if r['key'] not in lib]
 
     # 5 报告
     R = ['# 最近一次增量后处理报告\n', f'- 生成时间：自动', f'- 实测篇数合计：**{total_md:,}**（{len(rows)} 个目录，{len(has)} 个有内容）',
