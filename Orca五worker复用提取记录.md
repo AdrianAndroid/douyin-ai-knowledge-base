@@ -3,7 +3,7 @@
 > 创建时间：2026-11-07T02:56:37+08:00
 > 协调器：当前主会话
 > Orca run：`run_573b10a4429c`
-> 当前阶段：B 已获恢复原固定作者页后最多 2 个新 ID 的 GO；A 因上一批成功，下一批已逐步扩大为已知 737 清单最多 5 项。当前授权快照 active=2，仅 A/B，实际结果尚未返回；C/D/E 暂停等待诊断。页面 738/清单 737 与页面 407/清单 409 的双重量事实继续保留。
+> 当前阶段：A 第二批 5 项全部保存并已验收合并，累计 116 篇、621 pending；B 第二批 2 个新 ID 均超时，累计 4 条唯一错误、491 pending，已验收合并并暂停诊断。两个 agent 在 CLI 结束后曾遇 429，现额度重置时间已过，但当前真实提取 active=0，A/B 仅收到验收通知，均无新 GO；C/D/E 继续暂停。
 
 ## 一、用户目标与当前范围
 
@@ -17,8 +17,8 @@
 
 | 槽位 | worktree 路径 | 分支 | Profile | 固定 page | 当前状态 |
 |---|---|---|---|---|---|
-| A | `/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy` | `AdrianAndroid/orca-a-52327471915-known737-batch2` | `9483ec18-4a86-4e2c-92d5-a2441a1cafb6` | `01b0f677-3907-4ee8-91d7-7f707439b8de` | 已获已知737清单最多五项的新批次 GO；结果待返回 |
-| B | `/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun` | `AdrianAndroid/orca-b-wangxiaolangk-batch2` | `2bd87da7-ccc5-4110-b058-691269a45eef` | `eb12641b-ca19-470e-8bc2-8e9bce2aed98` | 已获主页恢复后最多两项的 GO；结果待返回 |
+| A | `/Users/zhaojian/orca/workspaces/ai-learn/pilot-buzhi-0753bjy` | `AdrianAndroid/orca-a-52327471915-known737-batch2` | `9483ec18-4a86-4e2c-92d5-a2441a1cafb6` | `01b0f677-3907-4ee8-91d7-7f707439b8de` | 第二批5篇已验收合并；当前无后续 GO |
+| B | `/Users/zhaojian/orca/workspaces/ai-learn/pilot-wei-qishun` | `AdrianAndroid/orca-b-wangxiaolangk-batch2` | `2bd87da7-ccc5-4110-b058-691269a45eef` | `eb12641b-ca19-470e-8bc2-8e9bce2aed98` | 第二批两项超时已封账；暂停等待诊断 |
 | C | `/Users/zhaojian/orca/workspaces/ai-learn/puffin` | `AdrianAndroid/orca-c-81957333169-batch2` | `888988a3-faae-454c-931b-b975a8a862c4` | `262c9f33-264f-442b-aec4-88fe21cb8f5b` | 第三批两项超时已封账；暂停等待诊断 |
 | D | `/Users/zhaojian/orca/workspaces/ai-learn/dugong` | `AdrianAndroid/orca-d-89017187607-batch2` | `a3385429-07ca-4470-ade7-241ede7f5697` | `a09cac76-e55d-450b-9333-8b3ab59a485a` | 第二批已封账；暂停等待诊断 |
 | E | `/Users/zhaojian/orca/workspaces/ai-learn/jellyfish` | `AdrianAndroid/orca-e-54771197908-batch3` | `ffa4d1f5-6874-4817-ae7e-085f3293bb54` | `f826d2ef-8be3-469f-a41d-037a4ffeb85a` | 第三批已封账；暂停等待诊断 |
@@ -210,6 +210,19 @@
 - 直接 `switch -c` 首次被权限分类器拒绝且未执行；改为先安全创建分支引用、再在已确认干净的 worktree 切换，两步均成功。新分支 `AdrianAndroid/orca-a-52327471915-known737-batch2` 基于 main `e2f078bc831a0312c5745b265c42bf4879710135`，切换后 HEAD 与基线一致、工作区干净，没有新建 worktree/Profile/page。
 - 通过 `msg_021afd983dd1` 发放 `KNOWN_737_PARTIAL_BATCH_GO slot=A batch=2`：恢复原固定作者页并通过绑定、身份、登录检查后，仅运行一次正常 CLI `extract_author.py --max-items 5`。禁止刷新 ID、超过 5 项、测试、代码修改、直接内部函数调用和 Git 写操作；fatal 前置停止，卡顿安全收尾，完成后保存证据并 ask，不自行续提。
 - 此步仅授权，尚未收到 A 的新批结果。即使 5 项全部保存，仍须保留 `partial:true、author_completed:false`；页面 738/实际清单 737 的最终覆盖差异另案保留。当前授权快照 active=2，仅 A/B，真实提取并发上限仍为 2；C/D/E 暂停，其余 19 位 pending，不推送 GitHub。
+
+### 步骤 21：A 五项成功与 B 两项超时均验收合并，agent 429 不作为作品结果
+
+- **agent 外部中断与真实结果分离**：A/B 的提取 CLI 均已自然结束并落盘，随后两个 Orca agent 分别在 `msg_stop_79ce0e0e83d9a518a4833a1f`、`msg_stop_a8668f9675287f8937faae7c` 报告 429：5 小时额度耗尽，原定 2026-11-07 08:01:13+08:00 重置。协调器没有据此推断作品成败，也没有重跑 CLI；直接独立核验磁盘、进程和锁。后续记录时系统时间已为 10:31，重置时间已过，但这本身不代表新提取已发生或成功。
+- **A 第二批 5 项全部保存**：预检于 05:30:29–05:30:32 通过，固定绑定、精确作者页、身份、登录均有效，页面仍显示 738。唯一一次 CLI 于 05:30:59–05:32:08 运行，exit=0、timeout=false、stderr 为空。attempted=5、saved=5、no_ai=0、errors=0；新增 ID/标题/AI 长度依次为 `7663048200747633962`《讲话不要有奴才之相》/978、`7662658779921632558`《男生个人爱好吸引女生程度从夯到拉》/904、`7662281692861828388`《这样谈恋爱真的很容易走到结婚》/1055、`7661926320535784767`《男生下头行为实力排行》/813、`7661535843206712610`《当你跟女生实在没东西聊了，那你一定要聊这三个话题》/562。
+- 协调器逐篇读取 A 新正文并核对作者、抖音号、ID、日期、标题和 AI 内容；五篇 SHA-256 分别为 `c923f2127219fbfd0682a748cf47c169188f986e682cb6861b2cf5b67739266c`、`a2254f583a010fdc773698d97b861622a0976d624363e31954fafd4e7057a0b7`、`b7e6e5a789e6ee0bed511f2626e7b762de953d84630dd4ca69af2b26d7ca4507`、`3e3eaa1b00af5e32cb64ba8487dd232127a6fe988cf91107bb62c1b5bfd050cf`、`24fb6a31c669aba6d16e9e79bf71d932a7484158af7e5e4091c9ae3b75c174c8`。
+- A 旧 112 行进度前缀不变，仅追加指定 5 行；旧 111 篇文件名与正文完全不变，仅新增 5 篇。737 个 ID、配置、账号核对和提取器不变；pending 626→621 且恰好移除这 5 个 ID。最终 saved=116、Markdown=116、进度 117 行、pending=621，`running:false、partial:true、author_completed:false`，无完整校验/完成报告，进程=0、锁释放。
+- A staged 仅本作者 TMP/OUT 10 个文件，diff-check 通过。worker 提交 `361e7f4c78da583c50620341c824038e8722df78`，本地 main 从 `899c11cae107f557e125c42d9d377ef8f7ab27c6` 顺序合并为 `7743e65d7ab57e0684a82ff2374cd9fd670f1c19`。验收通知 `msg_b84a11503acd` 不含新 GO；`msg_stop_f7c23e7e3d75c8a705e193cf` 为 agent 正常结束等待，dispatch 仍 open。
+- **B 第二批两个新 ID 均超时**：唯一一次 CLI 于 05:26:10–05:31:20 运行，worker stop 输出证实后台命令 exit=2。`7704661060138041445`、`7704244490215990257` 均为 `AI text or metadata timeout`；saved=0、no_ai=0、new_errors=2。运行状态明确 max_items=2、三个 skip ID 全部仍 pending。
+- 独立核验 B：491 个唯一 ID 与 491 个唯一 pending 集合相同且文件与旧版逐字节一致；旧 2 行进度前缀不变，仅新增上述两个错误 ID，累计 4 行、4 个唯一 error。三个 skip ID 中两个旧 error 仍各一行，中断 ID 没有新增进度。Markdown=0，无完整校验/完成报告，`running:false、partial:true、author_completed:false`，进程=0、锁释放。
+- B 浏览器审计从 275 行追加到 509 行，新增 234 行全部只含时间、命令、固定 B worktree/page 元数据；命令统计 worktree=1、tab=2、eval=231，无跨槽位绑定。staged 仅本作者允许目录 7 个文件，包含已审查的 skip 实现和隔离测试证据，diff-check 通过。
+- B worker 提交 `745afbaace406b7ebe756f9bc721d1ac4584a660`，本地 main 顺序合并为 `e5ab89b60436d4822c6c9046e3530a2fa7e3e1e3`。通过 `msg_7fd679f6931c` 仅验收并转为 `extraction_paused_pending_diagnostic`：不扩大 skip、不消耗新 ID，等待只读诊断或后续明确指令。
+- 主分支复验 A/B 文件与 worker 提交一致，A=116/621/117/116，B=4 error/491/4/0。当前真实提取 active=0，A/B 均无新 GO，C/D/E 继续暂停，completed_this_run=0，其余 19 位 pending；未推送 GitHub。
 
 ## 四、复用与防冲突规则（后续任务必须执行）
 
